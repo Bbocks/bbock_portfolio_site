@@ -20,52 +20,82 @@ interface Experience {
 
 const experiences: Experience[] = [
   {
-    id: 'ta-role',
-    title: 'Teaching Assistant - Computer Science',
-    company: 'University Name',
-    location: 'City, State',
-    period: 'Jan 2024 - Present',
-    description: 'Supporting students in understanding complex computer science concepts, particularly in systems programming and data structures.',
+    id: 'rcm-internship',
+    title: 'IT Intern',
+    company: 'RCM Healthcare Services',
+    location: 'Long Island, NY',
+    period: 'May 2024 - August 2025 (Summers)',
+    description: 'Gained hands-on experience in IT infrastructure management and process optimization for healthcare services.',
     achievements: [
-      'Reduced debugging time for students by 50% through improved pointer visualization techniques',
-      'Developed interactive debugging workshops that improved student comprehension by 40%',
-      'Mentored 30+ students in C programming and memory management concepts',
-      'Created comprehensive study guides and practice problems for systems programming course'
+      'Reduced laptop provisioning and setup time by 50%, enhancing operational efficiency and productivity',
+      'Contributed to the development of a company-wide email management naming scheme, improving organization and consistency',
+      'Supported the research and implementation of new IT asset management tools, streamlining asset tracking and resource allocation'
     ],
-    skills: ['C Programming', 'Debugging', 'Teaching', 'Memory Management', 'GDB', 'Valgrind'],
+    skills: ['IT Infrastructure', 'Asset Management', 'Process Optimization', 'System Administration', 'Documentation'],
+    icon: '🏥'
+  },
+  {
+    id: 'ud-ta-role',
+    title: 'Teaching Assistant – CISC210: Introduction to Systems Programming',
+    company: 'University of Delaware',
+    location: 'Newark, DE',
+    period: 'February 2024 - May 2024',
+    description: 'Provided comprehensive support for students learning systems programming concepts and low-level programming techniques.',
+    achievements: [
+      'Provided support for student projects involving embedded systems and interactive objects',
+      'Held weekly office hours to offer one-on-one guidance on debugging, low-level programming, and efficient resource usage',
+      'Graded assignments and labs with attention to correctness, style, and performance',
+      'Reinforced key concepts such as pointer arithmetic, memory allocation, and interfacing with hardware',
+      'Guided students in understanding and applying system-level constraints in code design'
+    ],
+    skills: ['C/C++', 'Systems Programming', 'Teaching', 'Debugging', 'Memory Management', 'Hardware Interface'],
     icon: '🎓'
   },
   {
-    id: 'internship-1',
-    title: 'Systems Engineering Intern',
-    company: 'Tech Company',
-    location: 'Remote',
-    period: 'May 2023 - Aug 2023',
-    description: 'Worked on infrastructure automation and system optimization projects, gaining hands-on experience with enterprise-level systems.',
+    id: 'radulescu-internship',
+    title: 'Product Analysis Intern',
+    company: 'Radulescu LLP — Patent Litigators',
+    location: 'Long Island, NY',
+    period: 'January 2023/24',
+    description: 'Conducted technical analysis and organization of LED products for patent litigation support.',
     achievements: [
-      'Automated laptop provisioning process, reducing setup time from 4 hours to 30 minutes',
-      'Implemented monitoring solutions that improved system uptime by 15%',
-      'Developed documentation for deployment procedures used by 20+ team members',
-      'Participated in on-call rotation, handling critical system issues'
+      'Disassembled and organized hundreds of LED bulbs for patent analysis',
+      'Developed a nomenclature system to organize the bulbs inside Microsoft Excel, increasing bulb look-up time by 50 percent',
+      'Analyzed the type of LED on the PCB and the markings on the PCB of each bulb to classify which factory the bulb originated from'
     ],
-    skills: ['Ansible', 'Docker', 'Linux', 'Monitoring', 'Automation', 'Bash Scripting'],
-    icon: '⚙️'
+    skills: ['Technical Analysis', 'Data Organization', 'Microsoft Excel', 'PCB Analysis', 'Patent Research'],
+    icon: '💡'
   },
   {
-    id: 'homelab-admin',
-    title: 'Homelab Administrator',
+    id: 'camp-scatico',
+    title: 'Assistant Division Leader / Assistant Head of Woodshop',
+    company: 'Camp Scatico',
+    location: 'New York',
+    period: 'May 2021 – August 2023 (Summers)',
+    description: 'Led educational programs and fostered positive learning environments for children in fitness and woodworking.',
+    achievements: [
+      'Fostered an open and welcoming environment to allow children to strengthen and make new connections',
+      'Created and organized personalized workout plans for 50+ campers, helping them to further their knowledge of fitness as well achieve their fitness goals',
+      'Directed and developed a woodworking program to teach kids valuable project design and problem-solving skills'
+    ],
+    skills: ['Leadership', 'Teaching', 'Program Development', 'Fitness Training', 'Woodworking', 'Child Development'],
+    icon: '🏞️'
+  },
+  {
+    id: 'homelab-project',
+    title: 'Homelab Infrastructure Project',
     company: 'Personal Project',
     location: 'Home Lab',
-    period: '2022 - Present',
-    description: 'Self-managed infrastructure project demonstrating enterprise-level system administration and automation skills.',
+    period: 'September 2021 – Present',
+    description: 'Self-managed enterprise-grade infrastructure project demonstrating advanced system administration and automation skills.',
     achievements: [
-      'Built and maintained 99.9% uptime homelab infrastructure with Proxmox virtualization',
-      'Implemented automated backup systems with Discord webhook notifications',
-      'Deployed monitoring stack with Grafana, Prometheus, and custom dashboards',
-      'Containerized applications using Docker and orchestrated with Docker Compose',
-      'Set up reverse proxy with Traefik and automatic SSL certificate management'
+      'Deployed multiple instances of Proxmox Virtual Environment on many different ranges of hardware to host several different operating systems',
+      'Utilized multiple Ubuntu 22.04 and 23.04 instances to run different services using a combination of virtual machines and lxc containers',
+      'Implemented many different Docker containers using Docker Compose as well as Docker Run for media streaming, media organization, network administration, remote management, remote access, internal DNS filtering, and several others',
+      'Implemented different methods of data storage and access across the network for local and remote access',
+      'Implemented real-time detection of up-time statistics for all running programs and services with notifications via a discord webhook if anything fails to decrease downtime by 20 percent'
     ],
-    skills: ['Proxmox', 'Docker', 'Grafana', 'Prometheus', 'Traefik', 'Discord Webhooks'],
+    skills: ['Proxmox', 'Docker', 'Ubuntu', 'LXC Containers', 'Network Administration', 'Discord Webhooks', 'System Monitoring'],
     icon: '🏠'
   }
 ]

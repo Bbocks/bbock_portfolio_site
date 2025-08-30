@@ -13,6 +13,9 @@ import BlogSection from '@/components/BlogSection'
 import ContactSection from '@/components/ContactSection'
 import NetworkAnimation from '@/components/NetworkAnimation'
 
+// Force dynamic rendering (no SSR)
+export const dynamic = 'force-dynamic'
+
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true)
 
@@ -30,7 +33,7 @@ export default function Home() {
           animate={{ opacity: 1 }}
           className="text-center"
         >
-          <div className="text-4xl font-mono gradient-text mb-4">Brett Bock</div>
+          <div className="text-4xl font-mono gradient-text mb-4">Brett Bockstein</div>
           <div className="text-primary-400">Loading systems...</div>
         </motion.div>
       </div>

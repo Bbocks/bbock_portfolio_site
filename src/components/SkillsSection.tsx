@@ -21,23 +21,23 @@ const skills: Skill[] = [
   
   // Tools
   { name: 'Docker', level: 90, category: 'tools', color: '#2496ed' },
-  { name: 'Proxmox', level: 85, category: 'tools', color: '#e57000' },
   { name: 'Git', level: 80, category: 'tools', color: '#f05032' },
-  { name: 'Ansible', level: 75, category: 'tools', color: '#ee0000' },
-  { name: 'Grafana', level: 80, category: 'tools', color: '#f46800' },
-  { name: 'Prometheus', level: 75, category: 'tools', color: '#e6522c' },
+  //{ name: 'Ansible', level: 75, category: 'tools', color: '#ee0000' },
+  //{ name: 'Grafana', level: 80, category: 'tools', color: '#f46800' },
+  //{ name: 'Prometheus', level: 75, category: 'tools', color: '#e6522c' },
   
   // OS
-  { name: 'Ubuntu', level: 90, category: 'os', color: '#e95420' },
-  { name: 'Linux', level: 85, category: 'os', color: '#fcc624' },
-  { name: 'Windows', level: 70, category: 'os', color: '#0078d4' },
+  { name: 'Ubuntu', level: 70, category: 'os', color: '#e95420' },
+  { name: 'Proxmox', level: 80, category: 'os', color: '#e57000' },
+  { name: 'Linux', level: 70, category: 'os', color: '#fcc624' },
+  { name: 'Windows', level: 90, category: 'os', color: '#0078d4' },
   { name: 'macOS', level: 65, category: 'os', color: '#000000' },
   
   // Frameworks
   { name: 'React', level: 75, category: 'frameworks', color: '#61dafb' },
   { name: 'Node.js', level: 70, category: 'frameworks', color: '#339933' },
   { name: 'Express', level: 70, category: 'frameworks', color: '#000000' },
-  { name: 'Next.js', level: 65, category: 'frameworks', color: '#000000' }
+  { name: 'Next.js', level: 25, category: 'frameworks', color: '#000000' }
 ]
 
 const SkillsSection = () => {

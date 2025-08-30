@@ -33,7 +33,7 @@ const projects: Project[] = [
       'systemctl status grafana-server'
     ]
   },
-  {
+  /*{
     id: 'docker-automation',
     title: 'Docker Compose Automation Suite',
     description: 'Automated deployment system for microservices with health checks, load balancing, and zero-downtime updates.',
@@ -47,7 +47,7 @@ const projects: Project[] = [
       'docker-compose logs -f',
       'docker system prune -a'
     ]
-  },
+  },*/
   {
     id: 'snipe-it-automation',
     title: 'Snipe-IT License Import Script',
@@ -62,7 +62,7 @@ const projects: Project[] = [
       'python license_import.py'
     ]
   },
-  {
+  /*{
     id: 'systems-programming',
     title: 'Systems Programming Projects',
     description: 'Collection of C programs demonstrating memory management, process control, and system-level programming concepts.',
@@ -75,7 +75,7 @@ const projects: Project[] = [
       'gdb ./program',
       'valgrind --leak-check=full ./program'
     ]
-  },
+  },*/
   {
     id: 'web-app',
     title: 'Full-Stack Web Application',
@@ -91,7 +91,7 @@ const projects: Project[] = [
       'npm run build'
     ]
   },
-  {
+  /*{
     id: 'coursework',
     title: 'Data Structures & Algorithms',
     description: 'Implementation of fundamental data structures and algorithms in Java, including performance analysis and optimization.',
@@ -104,7 +104,7 @@ const projects: Project[] = [
       'java -cp . Main',
       'mvn test'
     ]
-  }
+  }*/
 ]
 
 const ProjectsSection = () => {

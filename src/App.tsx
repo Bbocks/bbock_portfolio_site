@@ -17,7 +17,7 @@ function App() {
         <ExperienceSection />
         <SkillsSection />
         <HomelabSection />
-        <BlogSection />
+        {/*<BlogSection />*/}
         <ContactSection />
       </main>
     </div>

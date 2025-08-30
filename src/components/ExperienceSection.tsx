@@ -65,21 +65,6 @@ const experiences: Experience[] = [
     icon: '💡'
   },
   {
-    id: 'camp-scatico',
-    title: 'Assistant Division Leader / Assistant Head of Woodshop',
-    company: 'Camp Scatico',
-    location: 'New York',
-    period: 'May 2021 – August 2023 (Summers)',
-    description: 'Led educational programs and fostered positive learning environments for children in fitness and woodworking.',
-    achievements: [
-      'Fostered an open and welcoming environment to allow children to strengthen and make new connections',
-      'Created and organized personalized workout plans for 50+ campers, helping them to further their knowledge of fitness as well achieve their fitness goals',
-      'Directed and developed a woodworking program to teach kids valuable project design and problem-solving skills'
-    ],
-    skills: ['Leadership', 'Teaching', 'Program Development', 'Fitness Training', 'Woodworking', 'Child Development'],
-    icon: '🏞️'
-  },
-  {
     id: 'homelab-project',
     title: 'Homelab Infrastructure Project',
     company: 'Personal Project',
@@ -95,6 +80,21 @@ const experiences: Experience[] = [
     ],
     skills: ['Proxmox', 'Docker', 'Ubuntu', 'LXC Containers', 'Network Administration', 'Discord Webhooks', 'System Monitoring'],
     icon: '🏠'
+  },
+  {
+    id: 'camp-scatico',
+    title: 'Assistant Division Leader / Assistant Head of Woodshop',
+    company: 'Camp Scatico',
+    location: 'New York',
+    period: 'May 2021 – August 2023 (Summers)',
+    description: 'Led educational programs and fostered positive learning environments for children in fitness and woodworking.',
+    achievements: [
+      'Fostered an open and welcoming environment to allow children to strengthen and make new connections',
+      'Created and organized personalized workout plans for 50+ campers, helping them to further their knowledge of fitness as well achieve their fitness goals',
+      'Directed and developed a woodworking program to teach kids valuable project design and problem-solving skills'
+    ],
+    skills: ['Leadership', 'Teaching', 'Program Development', 'Fitness Training', 'Woodworking', 'Child Development'],
+    icon: '🏞️'
   }
 ]
 

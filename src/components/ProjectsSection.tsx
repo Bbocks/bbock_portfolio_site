@@ -49,6 +49,20 @@ const projects: Project[] = [
     ]
   },
   {
+    id: 'snipe-it-automation',
+    title: 'Snipe-IT License Import Script',
+    description: 'Python automation script for bulk assignment of software license seats in Snipe-IT using its REST API. Handles CSV/Excel imports with rate limiting and error handling.',
+    image: '/images/automation.jpg',
+    githubUrl: 'https://github.com/Bbocks/Snipe-IT-License-Import-Script',
+    techStack: ['Python', 'REST API', 'Pandas', 'CSV/Excel', 'Snipe-IT', 'Automation'],
+    category: 'systems',
+    terminalCommands: [
+      'pip install pandas requests python-dotenv openpyxl',
+      'python get_seat_id.py',
+      'python license_import.py'
+    ]
+  },
+  {
     id: 'systems-programming',
     title: 'Systems Programming Projects',
     description: 'Collection of C programs demonstrating memory management, process control, and system-level programming concepts.',

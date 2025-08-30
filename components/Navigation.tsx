@@ -51,7 +51,7 @@ const Navigation = () => {
             onClick={() => scrollToSection('#home')}
           >
             <Terminal className="h-8 w-8 text-primary-400" />
-            <span className="text-xl font-mono font-bold gradient-text">Brett Bock</span>
+            <span className="text-xl font-mono font-bold gradient-text">Brett Bockstein</span>
           </motion.div>
 
           {/* Desktop Navigation */}

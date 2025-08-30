@@ -51,7 +51,7 @@ const HeroSection = () => {
               transition={{ duration: 0.8, delay: 0.2 }}
               className="text-5xl md:text-7xl font-bold font-mono"
             >
-              <span className="gradient-text">Brett Bock</span>
+              <span className="gradient-text">Brett Bockstein</span>
             </motion.h1>
             
             <motion.div
@@ -83,21 +83,25 @@ const HeroSection = () => {
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.8 }}
             className="flex flex-col sm:flex-row gap-4 justify-center items-center"
-          >
-            <motion.button
+          > 
+            <motion.a
+              href="/Brett_Resume_8-20-25.pdf"
+              download="Brett_Bockstein_Resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="flex items-center space-x-2 bg-primary-600 hover:bg-primary-700 text-white px-6 py-3 rounded-lg font-medium transition-colors duration-200"
             >
               <Download className="h-5 w-5" />
               <span>Download Resume</span>
-            </motion.button>
+            </motion.a>
             
             <div className="flex space-x-4">
               <motion.a
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
-                href="https://linkedin.com/in/your-profile"
+                href="https://linkedin.com/in/brettbocks"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-3 bg-dark-700 hover:bg-dark-600 rounded-lg transition-colors duration-200"
@@ -108,7 +112,7 @@ const HeroSection = () => {
               <motion.a
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
-                href="https://github.com/your-username"
+                href="https://github.com/bbocks"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-3 bg-dark-700 hover:bg-dark-600 rounded-lg transition-colors duration-200"

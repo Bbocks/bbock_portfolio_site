@@ -47,20 +47,20 @@ const ContactSection = () => {
     {
       icon: <Mail className="h-6 w-6" />,
       title: 'Email',
-      value: 'brett.bock@example.com',
-      link: 'mailto:brett.bock@example.com'
+      value: 'bocksteink@gmail.com',
+      link: 'mailto:bocksteink@gmail.com'
     },
     {
       icon: <Linkedin className="h-6 w-6" />,
       title: 'LinkedIn',
-      value: 'linkedin.com/in/brett-bock',
-      link: 'https://linkedin.com/in/brett-bock'
+      value: 'linkedin.com/in/brettbocks',
+      link: 'https://linkedin.com/in/brettbocks'
     },
     {
       icon: <Github className="h-6 w-6" />,
       title: 'GitHub',
-      value: 'github.com/brett-bock',
-      link: 'https://github.com/brett-bock'
+      value: 'github.com/bbocks',
+      link: 'https://github.com/bbocks'
     }
   ]
 
@@ -238,14 +238,18 @@ const ContactSection = () => {
               <p className="text-gray-400 mb-4">
                 Get a detailed overview of my experience, skills, and projects in PDF format.
               </p>
-              <motion.button
+              <motion.a
+                href="/Brett_Resume_8-20-25.pdf"
+                download="Brett_Bockstein_Resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="flex items-center space-x-2 bg-primary-600 hover:bg-primary-700 text-white px-4 py-2 rounded-lg transition-colors"
+                className="flex items-center space-x-2 bg-primary-600 hover:bg-primary-700 text-white px-4 py-2 rounded-lg transition-colors cursor-pointer"
               >
                 <Download className="h-4 w-4" />
                 <span>Download PDF</span>
-              </motion.button>
+              </motion.a>
             </motion.div>
 
             {/* Availability */}

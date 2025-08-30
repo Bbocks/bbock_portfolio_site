@@ -1,6 +1,6 @@
 # Brett Bock - Interactive Systems Engineer Portfolio
 
-A modern, interactive portfolio website showcasing systems engineering expertise, homelab infrastructure, and technical projects. Built with Next.js, TypeScript, and TailwindCSS.
+A modern, interactive portfolio website showcasing systems engineering expertise, homelab infrastructure, and technical projects. Built with Vite, React, TypeScript, and TailwindCSS.
 
 ## 🚀 Features
 
@@ -19,12 +19,13 @@ A modern, interactive portfolio website showcasing systems engineering expertise
 - **Real-time Updates**: Live homelab status with simulated metrics
 - **Smooth Animations**: Framer Motion animations throughout
 - **Dark Theme**: Technical aesthetic with neon accents
+- **Fast Development**: Vite's lightning-fast HMR and build times
 - **SEO Optimized**: Meta tags and structured data
 
 ## 🛠️ Tech Stack
 
-- **Framework**: Next.js 14 with App Router
-- **Language**: TypeScript
+- **Build Tool**: Vite 5.x
+- **Framework**: React 18 with TypeScript
 - **Styling**: TailwindCSS with custom animations
 - **Animations**: Framer Motion
 - **Charts**: Recharts for data visualization
@@ -57,15 +58,15 @@ A modern, interactive portfolio website showcasing systems engineering expertise
 ### Personal Information
 Update the following files with your information:
 
-- `components/HeroSection.tsx` - Update name, title, and description
-- `components/ProjectsSection.tsx` - Add your projects
-- `components/ExperienceSection.tsx` - Update work experience
-- `components/SkillsSection.tsx` - Modify skills and proficiency levels
-- `components/ContactSection.tsx` - Update contact information
+- `src/components/HeroSection.tsx` - Update name, title, and description
+- `src/components/ProjectsSection.tsx` - Add your projects
+- `src/components/ExperienceSection.tsx` - Update work experience
+- `src/components/SkillsSection.tsx` - Modify skills and proficiency levels
+- `src/components/ContactSection.tsx` - Update contact information
 
 ### Styling
 - Modify `tailwind.config.js` for color scheme changes
-- Update `app/globals.css` for custom animations and styles
+- Update `src/styles/globals.css` for custom animations and styles
 - Adjust component-specific styles in individual component files
 
 ### Content
@@ -76,25 +77,30 @@ Update the following files with your information:
 ## 📁 Project Structure
 
 ```
-├── app/
-│   ├── globals.css          # Global styles and Tailwind imports
-│   ├── layout.tsx           # Root layout with metadata
-│   └── page.tsx             # Main page component
-├── components/
-│   ├── HeroSection.tsx      # Landing page with typing animation
-│   ├── Navigation.tsx       # Responsive navigation
-│   ├── ProjectsSection.tsx  # Interactive project cards
-│   ├── ExperienceSection.tsx # Timeline with expandable details
-│   ├── SkillsSection.tsx    # Dynamic charts and skill bubbles
-│   ├── HomelabSection.tsx   # Live system monitoring
-│   ├── BlogSection.tsx      # Technical articles
-│   ├── ContactSection.tsx   # Contact form and info
-│   ├── NetworkAnimation.tsx # Background network animation
-│   └── InteractiveTerminal.tsx # Terminal simulation
+├── src/
+│   ├── components/
+│   │   ├── HeroSection.tsx      # Landing page with typing animation
+│   │   ├── Navigation.tsx       # Responsive navigation
+│   │   ├── ProjectsSection.tsx  # Interactive project cards
+│   │   ├── ExperienceSection.tsx # Timeline with expandable details
+│   │   ├── SkillsSection.tsx    # Dynamic charts and skill bubbles
+│   │   ├── HomelabSection.tsx   # Live system monitoring
+│   │   ├── BlogSection.tsx      # Technical articles
+│   │   ├── ContactSection.tsx   # Contact form and info
+│   │   ├── NetworkAnimation.tsx # Background network animation
+│   │   └── InteractiveTerminal.tsx # Terminal simulation
+│   ├── styles/
+│   │   └── globals.css          # Global styles and Tailwind imports
+│   ├── App.tsx                  # Main app component
+│   └── main.tsx                 # React entry point
 ├── public/
-│   ├── images/              # Project images and screenshots
-│   └── resume.pdf           # Your resume
-└── package.json             # Dependencies and scripts
+│   ├── images/                  # Project images and screenshots
+│   └── resume.pdf               # Your resume
+├── index.html                   # HTML entry point
+├── vite.config.ts               # Vite configuration
+├── tailwind.config.js           # TailwindCSS configuration
+├── tsconfig.json                # TypeScript configuration
+└── package.json                 # Dependencies and scripts
 ```
 
 ## 🚀 Deployment
@@ -102,11 +108,20 @@ Update the following files with your information:
 ### Vercel (Recommended)
 1. Push your code to GitHub
 2. Connect your repository to Vercel
-3. Deploy automatically
+3. Set build command: `npm run build`
+4. Set output directory: `dist`
+5. Deploy automatically
+
+### Netlify
+1. Push your code to GitHub
+2. Connect your repository to Netlify
+3. Set build command: `npm run build`
+4. Set publish directory: `dist`
+5. Deploy automatically
 
 ### Self-hosted (Homelab)
 1. Build the project: `npm run build`
-2. Start the production server: `npm start`
+2. Serve the `dist` directory with your web server
 3. Configure your reverse proxy (Nginx/Traefik)
 4. Set up SSL certificates
 
@@ -122,11 +137,11 @@ docker run -p 3000:3000 portfolio
 ## 🔧 Configuration
 
 ### Environment Variables
-Create a `.env.local` file for any API keys or configuration:
+Create a `.env` file for any API keys or configuration:
 
 ```env
-NEXT_PUBLIC_SITE_URL=https://yourdomain.com
-NEXT_PUBLIC_GA_ID=your-google-analytics-id
+VITE_SITE_URL=https://yourdomain.com
+VITE_GA_ID=your-google-analytics-id
 ```
 
 ### API Integration
@@ -140,30 +155,31 @@ The portfolio is designed to be easily extended with backend APIs:
 ## 📝 Content Management
 
 ### Adding New Projects
-1. Edit `components/ProjectsSection.tsx`
+1. Edit `src/components/ProjectsSection.tsx`
 2. Add project data to the `projects` array
 3. Include terminal commands for interactive demos
 4. Add project images to `public/images/`
 
 ### Writing Blog Posts
-1. Add post data to `components/BlogSection.tsx`
+1. Add post data to `src/components/BlogSection.tsx`
 2. Create full article content (consider using MDX)
 3. Add appropriate tags and categories
 4. Update the featured post selection
 
 ### Updating Skills
-1. Modify the `skills` array in `components/SkillsSection.tsx`
+1. Modify the `skills` array in `src/components/SkillsSection.tsx`
 2. Adjust proficiency levels (0-100)
 3. Update skill categories and colors
 4. Add new skill bubbles as needed
 
 ## 🎯 Performance Optimization
 
-- Images are optimized with Next.js Image component
+- Vite's lightning-fast development server and HMR
+- Optimized production builds with tree shaking
+- Images are optimized and served efficiently
 - Animations use `transform` and `opacity` for GPU acceleration
 - Lazy loading for components and images
 - Code splitting with dynamic imports
-- Optimized bundle size with tree shaking
 
 ## 🔍 SEO Features
 
@@ -172,6 +188,24 @@ The portfolio is designed to be easily extended with backend APIs:
 - Semantic HTML structure
 - Fast loading times
 - Mobile-friendly design
+
+## 🚀 Migration from Next.js
+
+This portfolio was successfully migrated from Next.js to Vite for improved performance and development experience:
+
+### Benefits of Vite Migration
+- **Faster Development**: Lightning-fast HMR and server startup
+- **Simpler Configuration**: Less "magic" and more predictable behavior
+- **Better TypeScript Support**: Native TypeScript integration
+- **Cleaner Build Process**: More control over the build pipeline
+- **Reduced Bundle Size**: Optimized production builds
+
+### Migration Changes
+- Removed Next.js specific files (`next.config.js`, `next-env.d.ts`)
+- Restructured components from `components/` to `src/components/`
+- Removed `'use client'` directives (not needed in Vite)
+- Updated import paths and build configuration
+- Maintained all functionality including interactive terminal
 
 ## 🤝 Contributing
 
@@ -187,6 +221,8 @@ This project is open source and available under the [MIT License](LICENSE).
 
 ## 🙏 Acknowledgments
 
+- [Vite](https://vitejs.dev/) for the lightning-fast build tool
+- [React](https://reactjs.org/) for the UI framework
 - [Framer Motion](https://www.framer.com/motion/) for animations
 - [TailwindCSS](https://tailwindcss.com/) for styling
 - [Lucide](https://lucide.dev/) for icons

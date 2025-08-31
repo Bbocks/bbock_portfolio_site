@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
-import { Github, ExternalLink, ChevronDown, ChevronUp, Terminal } from 'lucide-react'
+import { Github, ExternalLink, ChevronDown, ChevronUp, Terminal, X, ZoomIn } from 'lucide-react'
 import InteractiveTerminal from './InteractiveTerminal'
 
 interface Project {
@@ -52,7 +52,7 @@ const projects: Project[] = [
     id: 'snipe-it-automation',
     title: 'Snipe-IT License Import Script',
     description: 'Python automation script for bulk assignment of software license seats in Snipe-IT using its REST API. Handles CSV/Excel imports with rate limiting and error handling.',
-    image: '/images/automation.jpg',
+    image: '', // Remove the non-existent image path
     githubUrl: 'https://github.com/Bbocks/Snipe-IT-License-Import-Script',
     techStack: ['Python', 'REST API', 'Pandas', 'CSV/Excel', 'Snipe-IT', 'Automation'],
     category: 'systems',
@@ -127,23 +127,37 @@ const projects: Project[] = [
 ]
 
 const ProjectsSection = () => {
-  const [expandedProject, setExpandedProject] = useState<string | null>(null)
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
   })
+  const [expandedProject, setExpandedProject] = useState<string | null>(null)
+  const [selectedImage, setSelectedImage] = useState<{ src: string; title: string } | null>(null)
 
   const toggleProject = (projectId: string) => {
     setExpandedProject(expandedProject === projectId ? null : projectId)
   }
 
+  const openImageModal = (imageSrc: string, title: string) => {
+    setSelectedImage({ src: imageSrc, title })
+  }
+
+  const closeImageModal = () => {
+    setSelectedImage(null)
+  }
+
   const getCategoryColor = (category: string) => {
     switch (category) {
-      case 'homelab': return 'bg-primary-500'
-      case 'systems': return 'bg-accent-500'
-      case 'web': return 'bg-purple-500'
-      case 'coursework': return 'bg-orange-500'
-      default: return 'bg-gray-500'
+      case 'homelab':
+        return 'bg-blue-500'
+      case 'systems':
+        return 'bg-green-500'
+      case 'web':
+        return 'bg-purple-500'
+      case 'coursework':
+        return 'bg-yellow-500'
+      default:
+        return 'bg-gray-500'
     }
   }
 
@@ -177,20 +191,40 @@ const ProjectsSection = () => {
             >
               <div className="bg-dark-700 rounded-lg overflow-hidden card-hover h-full">
                 {/* Project Image */}
-                <div className="h-48 bg-gradient-to-br from-primary-900/20 to-accent-900/20 flex items-center justify-center overflow-hidden">
+                <div className="h-48 bg-gradient-to-br from-primary-900/20 to-accent-900/20 flex items-center justify-center overflow-hidden relative group">
                   {project.image && project.image.startsWith('/') ? (
                     // Show actual image if it exists and has a valid path
-                    <img 
-                      src={project.image} 
-                      alt={project.title}
-                      className="w-full h-full object-cover"
-                      onError={(e) => {
-                        // Fallback to emoji if image fails to load
-                        const target = e.target as HTMLImageElement;
-                        target.style.display = 'none';
-                        target.nextElementSibling?.classList.remove('hidden');
-                      }}
-                    />
+                    <>
+                      <img 
+                        src={project.image} 
+                        alt={project.title}
+                        className="w-full h-full object-cover cursor-pointer transition-transform duration-300 group-hover:scale-105"
+                        onError={(e) => {
+                          // Fallback to emoji if image fails to load
+                          const target = e.target as HTMLImageElement;
+                          target.style.display = 'none';
+                          target.nextElementSibling?.classList.remove('hidden');
+                        }}
+                        onClick={(e) => {
+                          e.preventDefault();
+                          e.stopPropagation();
+                          console.log('Image clicked:', project.title); // Debug log
+                          openImageModal(project.image, project.title);
+                        }}
+                      />
+                      {/* Zoom overlay */}
+                      <div 
+                        className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center cursor-pointer"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          e.stopPropagation();
+                          console.log('Overlay clicked:', project.title); // Debug log
+                          openImageModal(project.image, project.title);
+                        }}
+                      >
+                        <ZoomIn className="h-8 w-8 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                      </div>
+                    </>
                   ) : null}
                   <div className={`text-6xl opacity-20 ${project.image && project.image.startsWith('/') ? 'hidden' : ''}`}>
                     {project.category === 'homelab' && '🏠'}
@@ -298,6 +332,48 @@ const ProjectsSection = () => {
             </motion.div>
           ))}
         </div>
+
+        {/* Image Modal */}
+        <AnimatePresence>
+          {selectedImage && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 bg-black bg-opacity-90 z-50 flex items-center justify-center p-4"
+              onClick={closeImageModal}
+            >
+              <motion.div
+                initial={{ scale: 0.8, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                exit={{ scale: 0.8, opacity: 0 }}
+                transition={{ type: "spring", damping: 25, stiffness: 300 }}
+                className="relative w-[80vw] h-[80vh] max-w-none max-h-none"
+                onClick={(e) => e.stopPropagation()}
+              >
+                {/* Close button */}
+                <button
+                  onClick={closeImageModal}
+                  className="absolute -top-12 right-0 text-white hover:text-gray-300 transition-colors z-10"
+                >
+                  <X className="h-8 w-8" />
+                </button>
+                
+                {/* Image */}
+                <img
+                  src={selectedImage.src}
+                  alt={selectedImage.title}
+                  className="w-full h-full object-contain rounded-lg shadow-2xl"
+                />
+                
+                {/* Title */}
+                <div className="absolute bottom-4 left-4 right-4 bg-black bg-opacity-70 text-white p-3 rounded-lg">
+                  <h3 className="text-lg font-semibold">{selectedImage.title}</h3>
+                </div>
+              </motion.div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </section>
   )

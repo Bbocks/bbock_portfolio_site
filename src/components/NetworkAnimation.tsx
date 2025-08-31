@@ -35,7 +35,7 @@ const NetworkAnimation = () => {
         this.radius = Math.random() * 2 + 1
       }
 
-      update() {
+      update(canvas: HTMLCanvasElement) {
         this.x += this.vx
         this.y += this.vy
 
@@ -48,7 +48,7 @@ const NetworkAnimation = () => {
         this.y = Math.max(0, Math.min(canvas.height, this.y))
       }
 
-      draw() {
+      draw(ctx: CanvasRenderingContext2D) {
         ctx.beginPath()
         ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2)
         ctx.fillStyle = '#0ea5e9'
@@ -74,8 +74,8 @@ const NetworkAnimation = () => {
 
       // Update and draw nodes
       nodes.forEach(node => {
-        node.update()
-        node.draw()
+        node.update(canvas)
+        node.draw(ctx)
       })
 
       // Draw connections

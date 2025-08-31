@@ -62,6 +62,20 @@ const projects: Project[] = [
       'python license_import.py'
     ]
   },
+  {
+    id: 'construct-a-flow-ai',
+    title: 'Construct-a-Flow AI Web',
+    description: 'The website for Construct-a-Flow AI, a modern web application for automating the construction bid process using AI-powered solutions. Built for estimators by estimators to streamline workflows and increase efficiency in the construction industry.',
+    image: 'Construct-a-Flow.png',
+    githubUrl: 'https://construct-a-flow.com',
+    techStack: ['React', 'TypeScript', 'Web Development', 'Workflow Automation'],
+    category: 'web',
+    terminalCommands: [
+      'npm install',
+      'npm run dev',
+      'npm run build'
+    ]
+  },
   /*{
     id: 'systems-programming',
     title: 'Systems Programming Projects',
@@ -76,7 +90,7 @@ const projects: Project[] = [
       'valgrind --leak-check=full ./program'
     ]
   },*/
-  {
+  /*{
     id: 'web-app',
     title: 'Full-Stack Web Application',
     description: 'Modern web application built with React and Node.js, featuring real-time updates and responsive design.',
@@ -90,7 +104,7 @@ const projects: Project[] = [
       'npm run dev',
       'npm run build'
     ]
-  },
+  },*/
   /*{
     id: 'coursework',
     title: 'Data Structures & Algorithms',

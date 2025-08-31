@@ -50,3 +50,13 @@
     animation: blink 1s infinite;
   }
 }
+
+/* Add the missing keyframes */
+@keyframes blink {
+  0%, 50% {
+    opacity: 1;
+  }
+  51%, 100% {
+    opacity: 0;
+  }
+}

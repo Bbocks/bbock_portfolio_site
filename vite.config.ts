@@ -9,6 +9,18 @@ export default defineConfig({
   },
   build: {
     outDir: 'dist',
-    sourcemap: true
+    sourcemap: false, // Disable sourcemaps for production
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          vendor: ['react', 'react-dom'],
+          animations: ['framer-motion'],
+          charts: ['recharts']
+        }
+      }
+    }
+  },
+  preview: {
+    port: 4173
   }
 })

@@ -67,7 +67,8 @@ const projects: Project[] = [
     title: 'Construct-a-Flow AI Web',
     description: 'The website for Construct-a-Flow AI, a modern web application for automating the construction bid process using AI-powered solutions. Built for estimators by estimators to streamline workflows and increase efficiency in the construction industry.',
     image: 'Construct-a-Flow.png',
-    githubUrl: 'https://construct-a-flow.com',
+    githubUrl: 'https://github.com/Bbocks/construct-a-flow-ai-web.git',
+    liveUrl: 'https://construct-a-flow.com',
     techStack: [
       'React 18', 'TypeScript', 'Vite', 'React Router DOM', 'Tailwind CSS', 
       'shadcn/ui', 'Radix UI', 'Lucide React', 'React Hook Form', 'Zod', 

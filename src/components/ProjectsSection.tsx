@@ -23,7 +23,7 @@ const projects: Project[] = [
     title: 'Proxmox Homelab Infrastructure',
     description: 'Enterprise-grade virtualization setup with automated monitoring, backup systems, and container orchestration. Features Discord webhook notifications and Grafana dashboards.',
     image: '/Homelab-Dashboard.png',
-    githubUrl: 'https://github.com/your-username/homelab',
+    githubUrl: 'https://github.com/Bbocks/Docker-Compose-Files.git',
     techStack: ['Proxmox', 'Docker', 'Grafana', 'Prometheus', 'Discord Webhooks', 'Ansible'],
     category: 'homelab',
     terminalCommands: [
@@ -33,21 +33,6 @@ const projects: Project[] = [
       'systemctl status grafana-server'
     ]
   },
-  /*{
-    id: 'docker-automation',
-    title: 'Docker Compose Automation Suite',
-    description: 'Automated deployment system for microservices with health checks, load balancing, and zero-downtime updates.',
-    image: '/images/docker.jpg',
-    githubUrl: 'https://github.com/your-username/docker-automation',
-    liveUrl: 'https://demo.yourdomain.com',
-    techStack: ['Docker', 'Docker Compose', 'Nginx', 'Traefik', 'Let\'s Encrypt'],
-    category: 'homelab',
-    terminalCommands: [
-      'docker-compose up -d',
-      'docker-compose logs -f',
-      'docker system prune -a'
-    ]
-  },*/
   {
     id: 'snipe-it-automation',
     title: 'Snipe-IT License Import Script',
@@ -81,49 +66,6 @@ const projects: Project[] = [
       'npm run build'
     ]
   },
-  /*{
-    id: 'systems-programming',
-    title: 'Systems Programming Projects',
-    description: 'Collection of C programs demonstrating memory management, process control, and system-level programming concepts.',
-    image: '/images/c-programming.jpg',
-    githubUrl: 'https://github.com/your-username/systems-programming',
-    techStack: ['C', 'Linux', 'GDB', 'Make', 'Valgrind'],
-    category: 'systems',
-    terminalCommands: [
-      'gcc -g -o program program.c',
-      'gdb ./program',
-      'valgrind --leak-check=full ./program'
-    ]
-  },*/
-  /*{
-    id: 'web-app',
-    title: 'Full-Stack Web Application',
-    description: 'Modern web application built with React and Node.js, featuring real-time updates and responsive design.',
-    image: '/images/web-app.jpg',
-    githubUrl: 'https://github.com/your-username/web-app',
-    liveUrl: 'https://app.yourdomain.com',
-    techStack: ['React', 'Node.js', 'Express', 'PostgreSQL', 'TypeScript'],
-    category: 'web',
-    terminalCommands: [
-      'npm install',
-      'npm run dev',
-      'npm run build'
-    ]
-  },*/
-  /*{
-    id: 'coursework',
-    title: 'Data Structures & Algorithms',
-    description: 'Implementation of fundamental data structures and algorithms in Java, including performance analysis and optimization.',
-    image: '/images/algorithms.jpg',
-    githubUrl: 'https://github.com/your-username/algorithms',
-    techStack: ['Java', 'JUnit', 'Maven', 'Algorithm Analysis'],
-    category: 'coursework',
-    terminalCommands: [
-      'javac *.java',
-      'java -cp . Main',
-      'mvn test'
-    ]
-  }*/
 ]
 
 const ProjectsSection = () => {
@@ -189,7 +131,7 @@ const ProjectsSection = () => {
               transition={{ duration: 0.8, delay: index * 0.1 }}
               className="gradient-border"
             >
-              <div className="bg-dark-700 rounded-lg overflow-hidden card-hover h-full">
+              <div className="bg-dark-700 rounded-lg overflow-hidden card-hover h-full relative z-10">
                 {/* Project Image */}
                 <div className="h-48 bg-gradient-to-br from-primary-900/20 to-accent-900/20 flex items-center justify-center overflow-hidden relative group">
                   {project.image && project.image.startsWith('/') ? (
@@ -235,7 +177,7 @@ const ProjectsSection = () => {
                 </div>
 
                 {/* Project Content */}
-                <div className="p-6">
+                <div className="p-6 relative z-20">
                   <div className="flex items-center justify-between mb-3">
                     <span className={`px-2 py-1 rounded-full text-xs font-medium text-white ${getCategoryColor(project.category)}`}>
                       {project.category}
@@ -264,7 +206,7 @@ const ProjectsSection = () => {
                   </div>
 
                   {/* Action Buttons */}
-                  <div className="flex space-x-2">
+                  <div className="flex space-x-2 relative z-30">
                     <motion.a
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}

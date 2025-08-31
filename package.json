@@ -10,14 +10,15 @@
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0"
   },
   "dependencies": {
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
+    "date-fns": "^2.30.0",
     "framer-motion": "^10.16.16",
     "lucide-react": "^0.294.0",
+    "posthog-js": "^1.261.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "react-intersection-observer": "^9.5.3",
     "react-terminal-ui": "^1.2.0",
-    "recharts": "^2.8.0",
-    "date-fns": "^2.30.0"
+    "recharts": "^2.8.0"
   },
   "devDependencies": {
     "@types/react": "^18.2.43",

@@ -22,7 +22,7 @@ const projects: Project[] = [
     id: 'homelab',
     title: 'Proxmox Homelab Infrastructure',
     description: 'Enterprise-grade virtualization setup with automated monitoring, backup systems, and container orchestration. Features Discord webhook notifications and Grafana dashboards.',
-    image: '/images/homelab.jpg',
+    image: '/Homelab-Dashboard.png',
     githubUrl: 'https://github.com/your-username/homelab',
     techStack: ['Proxmox', 'Docker', 'Grafana', 'Prometheus', 'Discord Webhooks', 'Ansible'],
     category: 'homelab',
@@ -66,7 +66,7 @@ const projects: Project[] = [
     id: 'construct-a-flow-ai',
     title: 'Construct-a-Flow AI Web',
     description: 'The website for Construct-a-Flow AI, a modern web application for automating the construction bid process using AI-powered solutions. Built for estimators by estimators to streamline workflows and increase efficiency in the construction industry.',
-    image: 'Construct-a-Flow.png',
+    image: '/Construct-A-Flow.png',
     githubUrl: 'https://github.com/Bbocks/construct-a-flow-ai-web.git',
     liveUrl: 'https://construct-a-flow.com',
     techStack: [
@@ -173,111 +173,127 @@ const ProjectsSection = () => {
               initial={{ opacity: 0, y: 50 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: index * 0.1 }}
-              className="bg-dark-700 rounded-lg overflow-hidden card-hover"
+              className="gradient-border"
             >
-              {/* Project Image */}
-              <div className="h-48 bg-gradient-to-br from-primary-900/20 to-accent-900/20 flex items-center justify-center">
-                <div className="text-6xl opacity-20">
-                  {project.category === 'homelab' && '🏠'}
-                  {project.category === 'systems' && '⚙️'}
-                  {project.category === 'web' && '🌐'}
-                  {project.category === 'coursework' && '📚'}
+              <div className="bg-dark-700 rounded-lg overflow-hidden card-hover h-full">
+                {/* Project Image */}
+                <div className="h-48 bg-gradient-to-br from-primary-900/20 to-accent-900/20 flex items-center justify-center overflow-hidden">
+                  {project.image && project.image.startsWith('/') ? (
+                    // Show actual image if it exists and has a valid path
+                    <img 
+                      src={project.image} 
+                      alt={project.title}
+                      className="w-full h-full object-cover"
+                      onError={(e) => {
+                        // Fallback to emoji if image fails to load
+                        const target = e.target as HTMLImageElement;
+                        target.style.display = 'none';
+                        target.nextElementSibling?.classList.remove('hidden');
+                      }}
+                    />
+                  ) : null}
+                  <div className={`text-6xl opacity-20 ${project.image && project.image.startsWith('/') ? 'hidden' : ''}`}>
+                    {project.category === 'homelab' && '🏠'}
+                    {project.category === 'systems' && '⚙️'}
+                    {project.category === 'web' && '🌐'}
+                    {project.category === 'coursework' && '📚'}
+                  </div>
                 </div>
-              </div>
 
-              {/* Project Content */}
-              <div className="p-6">
-                <div className="flex items-center justify-between mb-3">
-                  <span className={`px-2 py-1 rounded-full text-xs font-medium text-white ${getCategoryColor(project.category)}`}>
-                    {project.category}
-                  </span>
-                  <button
-                    onClick={() => toggleProject(project.id)}
-                    className="text-gray-400 hover:text-primary-400 transition-colors"
-                  >
-                    {expandedProject === project.id ? <ChevronUp className="h-5 w-5" /> : <ChevronDown className="h-5 w-5" />}
-                  </button>
-                </div>
-
-                <h3 className="text-xl font-bold mb-2 text-white">{project.title}</h3>
-                <p className="text-gray-400 text-sm mb-4 line-clamp-3">{project.description}</p>
-
-                {/* Tech Stack */}
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {project.techStack.slice(0, 3).map((tech) => (
-                    <span key={tech} className="skill-bubble text-xs">
-                      {tech}
+                {/* Project Content */}
+                <div className="p-6">
+                  <div className="flex items-center justify-between mb-3">
+                    <span className={`px-2 py-1 rounded-full text-xs font-medium text-white ${getCategoryColor(project.category)}`}>
+                      {project.category}
                     </span>
-                  ))}
-                  {project.techStack.length > 3 && (
-                    <span className="skill-bubble text-xs">+{project.techStack.length - 3}</span>
-                  )}
-                </div>
+                    <button
+                      onClick={() => toggleProject(project.id)}
+                      className="text-gray-400 hover:text-primary-400 transition-colors"
+                    >
+                      {expandedProject === project.id ? <ChevronUp className="h-5 w-5" /> : <ChevronDown className="h-5 w-5" />}
+                    </button>
+                  </div>
 
-                {/* Action Buttons */}
-                <div className="flex space-x-2">
-                  <motion.a
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    href={project.githubUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex-1 flex items-center justify-center space-x-2 bg-dark-600 hover:bg-dark-500 text-white px-3 py-2 rounded text-sm transition-colors"
-                  >
-                    <Github className="h-4 w-4" />
-                    <span>Code</span>
-                  </motion.a>
-                  
-                  {project.liveUrl && (
+                  <h3 className="text-xl font-bold mb-2 text-white">{project.title}</h3>
+                  <p className="text-gray-400 text-sm mb-4 line-clamp-3">{project.description}</p>
+
+                  {/* Tech Stack */}
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    {project.techStack.slice(0, 3).map((tech) => (
+                      <span key={tech} className="skill-bubble text-xs">
+                        {tech}
+                      </span>
+                    ))}
+                    {project.techStack.length > 3 && (
+                      <span className="skill-bubble text-xs">+{project.techStack.length - 3}</span>
+                    )}
+                  </div>
+
+                  {/* Action Buttons */}
+                  <div className="flex space-x-2">
                     <motion.a
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
-                      href={project.liveUrl}
+                      href={project.githubUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center justify-center space-x-2 bg-primary-600 hover:bg-primary-700 text-white px-3 py-2 rounded text-sm transition-colors"
+                      className="flex-1 flex items-center justify-center space-x-2 bg-dark-600 hover:bg-dark-500 text-white px-3 py-2 rounded text-sm transition-colors"
                     >
-                      <ExternalLink className="h-4 w-4" />
-                      <span>Demo</span>
+                      <Github className="h-4 w-4" />
+                      <span>Code</span>
                     </motion.a>
-                  )}
-                </div>
+                    
+                    {project.liveUrl && (
+                      <motion.a
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                        href={project.liveUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center justify-center space-x-2 bg-primary-600 hover:bg-primary-700 text-white px-3 py-2 rounded text-sm transition-colors"
+                      >
+                        <ExternalLink className="h-4 w-4" />
+                        <span>Demo</span>
+                      </motion.a>
+                    )}
+                  </div>
 
-                {/* Expanded Content */}
-                <AnimatePresence>
-                  {expandedProject === project.id && (
-                    <motion.div
-                      initial={{ opacity: 0, height: 0 }}
-                      animate={{ opacity: 1, height: 'auto' }}
-                      exit={{ opacity: 0, height: 0 }}
-                      transition={{ duration: 0.3 }}
-                      className="mt-4 pt-4 border-t border-dark-600"
-                    >
-                      {/* Terminal Demo */}
-                      {project.terminalCommands && (
-                        <div className="mb-4">
-                          <div className="flex items-center space-x-2 mb-2">
-                            <Terminal className="h-4 w-4 text-primary-400" />
-                            <span className="text-sm font-medium text-gray-300">Interactive Terminal</span>
+                  {/* Expanded Content */}
+                  <AnimatePresence>
+                    {expandedProject === project.id && (
+                      <motion.div
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: 'auto' }}
+                        exit={{ opacity: 0, height: 0 }}
+                        transition={{ duration: 0.3 }}
+                        className="mt-4 pt-4 border-t border-dark-600"
+                      >
+                        {/* Terminal Demo */}
+                        {project.terminalCommands && (
+                          <div className="mb-4">
+                            <div className="flex items-center space-x-2 mb-2">
+                              <Terminal className="h-4 w-4 text-primary-400" />
+                              <span className="text-sm font-medium text-gray-300">Interactive Terminal</span>
+                            </div>
+                            <InteractiveTerminal commands={project.terminalCommands} />
                           </div>
-                          <InteractiveTerminal commands={project.terminalCommands} />
-                        </div>
-                      )}
+                        )}
 
-                      {/* Full Tech Stack */}
-                      <div>
-                        <h4 className="text-sm font-medium text-gray-300 mb-2">Full Tech Stack:</h4>
-                        <div className="flex flex-wrap gap-1">
-                          {project.techStack.map((tech) => (
-                            <span key={tech} className="skill-bubble text-xs">
-                              {tech}
-                            </span>
-                          ))}
+                        {/* Full Tech Stack */}
+                        <div>
+                          <h4 className="text-sm font-medium text-gray-300 mb-2">Full Tech Stack:</h4>
+                          <div className="flex flex-wrap gap-1">
+                            {project.techStack.map((tech) => (
+                              <span key={tech} className="skill-bubble text-xs">
+                                {tech}
+                              </span>
+                            ))}
+                          </div>
                         </div>
-                      </div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
               </div>
             </motion.div>
           ))}

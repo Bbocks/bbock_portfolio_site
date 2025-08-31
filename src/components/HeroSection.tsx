@@ -71,7 +71,7 @@ const HeroSection = () => {
             className="text-lg text-gray-400 max-w-3xl mx-auto leading-relaxed"
           >
             Building robust systems and infrastructure solutions. From homelab automation 
-            to systems programming, I bridge the gap between development and operations 
+            to full stack development, I bridge the gap between development and operations 
             with a focus on reliability and performance.
           </motion.p>
 
@@ -125,7 +125,7 @@ const HeroSection = () => {
             initial={{ opacity: 0 }}
             animate={inView ? { opacity: 1 } : {}}
             transition={{ duration: 0.8, delay: 1.0 }}
-            className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-2xl mx-auto pt-8"
+            className="grid grid-cols-1 md:grid-cols-4 gap-8 max-w-2.5xl mx-auto pt-8"
           >
             <div className="text-center">
               <div className="text-3xl font-bold text-primary-400">3+</div>
@@ -133,10 +133,14 @@ const HeroSection = () => {
             </div>
             <div className="text-center">
               <div className="text-3xl font-bold text-accent-400">15+</div>
+              <div className="text-gray-400">Services Deployed</div>
+            </div>
+            <div className="text-center">
+              <div className="text-3xl font-bold text-primary-400">3+</div>
               <div className="text-gray-400">Projects Completed</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl font-bold text-primary-400">99.9%</div>
+              <div className="text-3xl font-bold text-accent-400">99.9%</div>
               <div className="text-gray-400">Uptime</div>
             </div>
           </motion.div>

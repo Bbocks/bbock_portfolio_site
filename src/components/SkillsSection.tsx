@@ -12,12 +12,12 @@ interface Skill {
 
 const skills: Skill[] = [
   // Languages
-  { name: 'Java', level: 90, category: 'languages', color: '#f89820' },
-  { name: 'C', level: 85, category: 'languages', color: '#00599c' },
-  { name: 'Python', level: 80, category: 'languages', color: '#3776ab' },
+  { name: 'Java', level: 50, category: 'languages', color: '#f89820' },
+  { name: 'C', level: 60, category: 'languages', color: '#00599c' },
+  { name: 'Python', level: 70, category: 'languages', color: '#3776ab' },
   { name: 'JavaScript', level: 75, category: 'languages', color: '#f7df1e' },
-  { name: 'TypeScript', level: 70, category: 'languages', color: '#3178c6' },
-  { name: 'Bash', level: 85, category: 'languages', color: '#4eaa25' },
+  { name: 'TypeScript', level: 80, category: 'languages', color: '#3178c6' },
+  { name: 'Bash', level: 73, category: 'languages', color: '#4eaa25' },
   
   // Tools
   { name: 'Docker', level: 90, category: 'tools', color: '#2496ed' },

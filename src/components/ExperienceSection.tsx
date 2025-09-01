@@ -148,11 +148,11 @@ const ExperienceSection = () => {
                   </div>
 
                   {/* Content */}
-                  <div className="flex-1 bg-dark-700 rounded-lg p-6 card-hover">
+                  <div className="flex-1 bg-dark-700 rounded-lg p-6 card-hover min-w-0">
                     <div className="flex items-start justify-between mb-4">
-                      <div>
+                      <div className="min-w-0 flex-1">
                         <h3 className="text-xl font-bold text-white mb-1">{experience.title}</h3>
-                        <div className="flex items-center space-x-4 text-sm text-gray-400 mb-2">
+                        <div className="flex flex-col sm:flex-row sm:items-center space-y-2 sm:space-y-0 sm:space-x-4 text-sm text-gray-400 mb-2">
                           <div className="flex items-center space-x-1">
                             <Building className="h-4 w-4" />
                             <span>{experience.company}</span>
@@ -169,7 +169,7 @@ const ExperienceSection = () => {
                       </div>
                       <button
                         onClick={() => toggleExperience(experience.id)}
-                        className="text-gray-400 hover:text-primary-400 transition-colors"
+                        className="text-gray-400 hover:text-primary-400 transition-colors flex-shrink-0 ml-2"
                       >
                         {expandedExperience === experience.id ? <ChevronUp className="h-5 w-5" /> : <ChevronDown className="h-5 w-5" />}
                       </button>

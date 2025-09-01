@@ -56,7 +56,7 @@ const HeroSection = () => {
               initial={{ opacity: 0 }}
               animate={inView ? { opacity: 1 } : {}}
               transition={{ duration: 0.8, delay: 0.4 }}
-              className="text-lg md:text-xl lg:text-2xl text-gray-300 font-mono h-6 md:h-8 mb-4 md:mb-0"
+              className="text-lg md:text-xl lg:text-2xl text-gray-300 font-mono h-6 md:h-8"
             >
               {text}
               <span className="animate-blink">|</span>
@@ -68,7 +68,7 @@ const HeroSection = () => {
             initial={{ opacity: 0 }}
             animate={inView ? { opacity: 1 } : {}}
             transition={{ duration: 0.8, delay: 0.6 }}
-            className="text-base md:text-lg text-gray-400 max-w-3xl mx-auto leading-relaxed px-2"
+            className="text-base md:text-lg text-gray-400 max-w-3xl mx-auto leading-relaxed px-2 sm:pt-4"
           >
             Building robust systems and infrastructure solutions. From homelab automation 
             to full stack development, I bridge the gap between development and operations 

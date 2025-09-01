@@ -39,15 +39,15 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 50 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
-          className="space-y-8"
+          className="space-y-6 md:space-y-8"
         >
           {/* Main Title */}
-          <div className="space-y-4">
+          <div className="space-y-3 md:space-y-4">
             <motion.h1
               initial={{ opacity: 0, scale: 0.8 }}
               animate={inView ? { opacity: 1, scale: 1 } : {}}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-5xl md:text-7xl font-bold font-mono"
+              className="text-4xl md:text-5xl lg:text-7xl font-bold font-mono"
             >
               <span className="gradient-text">Brett Bockstein</span>
             </motion.h1>
@@ -56,7 +56,7 @@ const HeroSection = () => {
               initial={{ opacity: 0 }}
               animate={inView ? { opacity: 1 } : {}}
               transition={{ duration: 0.8, delay: 0.4 }}
-              className="text-xl md:text-2xl text-gray-300 font-mono h-8"
+              className="text-lg md:text-xl lg:text-2xl text-gray-300 font-mono h-6 md:h-8"
             >
               {text}
               <span className="animate-blink">|</span>
@@ -68,7 +68,7 @@ const HeroSection = () => {
             initial={{ opacity: 0 }}
             animate={inView ? { opacity: 1 } : {}}
             transition={{ duration: 0.8, delay: 0.6 }}
-            className="text-lg text-gray-400 max-w-3xl mx-auto leading-relaxed"
+            className="text-base md:text-lg text-gray-400 max-w-3xl mx-auto leading-relaxed px-2"
           >
             Building robust systems and infrastructure solutions. From homelab automation 
             to full stack development, I bridge the gap between development and operations 
@@ -125,23 +125,23 @@ const HeroSection = () => {
             initial={{ opacity: 0 }}
             animate={inView ? { opacity: 1 } : {}}
             transition={{ duration: 0.8, delay: 1.0 }}
-            className="grid grid-cols-1 md:grid-cols-4 gap-8 max-w-2.5xl mx-auto pt-8 sm:pb-8"
+            className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 max-w-2.5xl mx-auto pt-6 md:pt-8"
           >
             <div className="text-center">
-              <div className="text-3xl font-bold text-primary-400">3+</div>
-              <div className="text-gray-400">Years Experience</div>
+              <div className="text-2xl md:text-3xl font-bold text-primary-400">3+</div>
+              <div className="text-sm md:text-base text-gray-400">Years Experience</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl font-bold text-accent-400">15+</div>
-              <div className="text-gray-400">Services Deployed</div>
+              <div className="text-2xl md:text-3xl font-bold text-accent-400">15+</div>
+              <div className="text-sm md:text-base text-gray-400">Services Deployed</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl font-bold text-primary-400">3+</div>
-              <div className="text-gray-400">Projects Completed</div>
+              <div className="text-2xl md:text-3xl font-bold text-primary-400">3+</div>
+              <div className="text-sm md:text-base text-gray-400">Projects Completed</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl font-bold text-accent-400">99.9%</div>
-              <div className="text-gray-400">Uptime</div>
+              <div className="text-2xl md:text-3xl font-bold text-accent-400">99.9%</div>
+              <div className="text-sm md:text-base text-gray-400">Uptime</div>
             </div>
           </motion.div>
         </motion.div>
@@ -153,9 +153,9 @@ const HeroSection = () => {
         animate={inView ? { opacity: 1 } : {}}
         transition={{ duration: 0.8, delay: 1.2 }}
         onClick={scrollToNext}
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce sm:pt-8"
+        className="absolute bottom-4 md:bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce"
       >
-        <ChevronDown className="h-8 w-8 text-primary-400" />
+        <ChevronDown className="h-6 w-6 md:h-8 md:w-8 text-primary-400" />
       </motion.button>
     </section>
   )

@@ -22,9 +22,17 @@ const skills: Skill[] = [
   // Tools
   { name: 'Docker', level: 90, category: 'tools', color: '#2496ed' },
   { name: 'Git', level: 80, category: 'tools', color: '#f05032' },
-  //{ name: 'Ansible', level: 75, category: 'tools', color: '#ee0000' },
-  //{ name: 'Grafana', level: 80, category: 'tools', color: '#f46800' },
-  //{ name: 'Prometheus', level: 75, category: 'tools', color: '#e6522c' },
+  { name: 'Vite', level: 70, category: 'tools', color: '#646cff' },
+  { name: 'ESLint', level: 30, category: 'tools', color: '#4b32c3' },
+  { name: 'PostCSS', level: 40, category: 'tools', color: '#dc3a0c' },
+  { name: 'Pandas', level: 45, category: 'tools', color: '#130654' },
+  { name: 'REST API', level: 68, category: 'tools', color: '#ff6b6b' },
+  { name: 'CSV/Excel', level: 80, category: 'tools', color: '#217346' },
+  { name: 'Discord Webhooks', level: 75, category: 'tools', color: '#5865f2' },
+  { name: 'Cloudflare Pages', level: 57, category: 'tools', color: '#f38020' },
+  { name: 'Gmail API', level: 65, category: 'tools', color: '#ea4335' },
+  { name: 'PostHog Analytics', level: 43, category: 'tools', color: '#6366f1' },
+  { name: 'Snipe-IT', level: 75, category: 'tools', color: '#ff6b35' },
   
   // OS
   { name: 'Ubuntu', level: 70, category: 'os', color: '#e95420' },
@@ -37,7 +45,16 @@ const skills: Skill[] = [
   { name: 'React', level: 75, category: 'frameworks', color: '#61dafb' },
   { name: 'Node.js', level: 70, category: 'frameworks', color: '#339933' },
   { name: 'Express', level: 70, category: 'frameworks', color: '#000000' },
-  { name: 'Next.js', level: 25, category: 'frameworks', color: '#000000' }
+  { name: 'Next.js', level: 25, category: 'frameworks', color: '#000000' },
+  { name: 'React Router DOM', level: 75, category: 'frameworks', color: '#ca4245' },
+  { name: 'Tailwind CSS', level: 85, category: 'frameworks', color: '#06b6d4' },
+  { name: 'Framer Motion', level: 70, category: 'frameworks', color: '#0055ff' },
+  { name: 'Lucide React', level: 60, category: 'frameworks', color: '#000000' },
+  { name: 'shadcn/ui', level: 50, category: 'frameworks', color: '#000000' },
+  { name: 'Radix UI', level: 22, category: 'frameworks', color: '#161618' },
+  { name: 'React Hook Form', level: 75, category: 'frameworks', color: '#ec5990' },
+  { name: 'Zod', level: 30, category: 'frameworks', color: '#e53e3e' },
+  { name: 'TanStack Query', level: 15, category: 'frameworks', color: '#ff4154' },
 ]
 
 const SkillsSection = () => {

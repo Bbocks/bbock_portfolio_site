@@ -34,10 +34,29 @@ const projects: Project[] = [
     ]
   },
   {
+    id: 'portfolio-website',
+    title: 'Personal Portfolio Website',
+    description: 'A modern, responsive portfolio website showcasing my projects, skills, and experience. Features interactive animations, gradient borders, image modals, and a terminal-style project demo. Built with React and TypeScript for optimal performance and developer experience.',
+    image: '', // No image - will show emoji
+    githubUrl: 'https://github.com/Bbocks/bbock_portfolio_site',
+    liveUrl: 'https://brettbockstein.com', // Update this to your actual domain
+    techStack: [
+      'React 18', 'TypeScript', 'Vite', 'Tailwind CSS', 'Framer Motion', 
+      'Lucide React', 'PostHog Analytics', 'Cloudflare Pages', 'ESLint', 'PostCSS'
+    ],
+    category: 'web',
+    terminalCommands: [
+      'npm install',
+      'npm run dev',
+      'npm run build',
+      'npm run preview'
+    ]
+  },
+  {
     id: 'snipe-it-automation',
     title: 'Snipe-IT License Import Script',
     description: 'Python automation script for bulk assignment of software license seats in Snipe-IT using its REST API. Handles CSV/Excel imports with rate limiting and error handling.',
-    image: '', // Remove the non-existent image path
+    image: '',
     githubUrl: 'https://github.com/Bbocks/Snipe-IT-License-Import-Script',
     techStack: ['Python', 'REST API', 'Pandas', 'CSV/Excel', 'Snipe-IT', 'Automation'],
     category: 'systems',
@@ -65,7 +84,7 @@ const projects: Project[] = [
       'npm run dev',
       'npm run build'
     ]
-  },
+  }
 ]
 
 const ProjectsSection = () => {

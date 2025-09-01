@@ -56,7 +56,7 @@ const HeroSection = () => {
               initial={{ opacity: 0 }}
               animate={inView ? { opacity: 1 } : {}}
               transition={{ duration: 0.8, delay: 0.4 }}
-              className="text-lg md:text-xl lg:text-2xl text-gray-300 font-mono h-6 md:h-8"
+              className="text-lg md:text-xl lg:text-2xl text-gray-300 font-mono h-6 md:h-8 mb-4 md:mb-0"
             >
               {text}
               <span className="animate-blink">|</span>

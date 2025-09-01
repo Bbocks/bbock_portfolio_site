@@ -125,7 +125,7 @@ const HeroSection = () => {
             initial={{ opacity: 0 }}
             animate={inView ? { opacity: 1 } : {}}
             transition={{ duration: 0.8, delay: 1.0 }}
-            className="grid grid-cols-1 md:grid-cols-4 gap-8 max-w-2.5xl mx-auto pt-8"
+            className="grid grid-cols-1 md:grid-cols-4 gap-8 max-w-2.5xl mx-auto pt-8 sm:pb-2"
           >
             <div className="text-center">
               <div className="text-3xl font-bold text-primary-400">3+</div>
@@ -153,7 +153,7 @@ const HeroSection = () => {
         animate={inView ? { opacity: 1 } : {}}
         transition={{ duration: 0.8, delay: 1.2 }}
         onClick={scrollToNext}
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce"
+        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce sm:pt-2"
       >
         <ChevronDown className="h-8 w-8 text-primary-400" />
       </motion.button>

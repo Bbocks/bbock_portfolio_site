@@ -1,4 +1,4 @@
-# Brett Bock - Interactive Systems Engineer Portfolio
+# Brett Bockstein - Interactive Systems Engineer Portfolio
 
 A modern, interactive portfolio website showcasing systems engineering expertise, homelab infrastructure, and technical projects. Built with Vite, React, TypeScript, and TailwindCSS.
 

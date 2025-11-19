@@ -18,6 +18,20 @@ interface Experience {
 
 const experiences: Experience[] = [
   {
+    id: 'ods-delaware',
+    title: 'Casual/Seasonal IT Support Technician',
+    company: 'Office of Defence Services, State of Delaware',
+    location: 'Wilmington, DE',
+    period: 'September 2025 - Present',
+    description: 'Gained hands-on experience in IT infrastructure management and process optimization for healthcare services.',
+    achievements: [
+      'Assisted in the deployment and configuration of new workstations, ensuring compliance with organizational standards',
+      'Provided technical support for software and hardware issues, improving resolution times by 20%',
+    ],
+    skills: ['IT Infrastructure', 'System Administration', 'Documentation'],
+    icon: '⚖️'
+  },
+  {
     id: 'rcm-internship',
     title: 'IT Intern',
     company: 'RCM Healthcare Services',

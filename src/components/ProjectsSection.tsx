@@ -24,7 +24,7 @@ const projects: Project[] = [
     description: 'Enterprise-grade virtualization setup with automated monitoring, backup systems, and container orchestration. Features Discord webhook notifications and Grafana dashboards.',
     image: '/Homelab-Dashboard.png',
     githubUrl: 'https://github.com/Bbocks/Docker-Compose-Files.git',
-    techStack: ['Proxmox', 'Docker', 'Grafana', 'Prometheus', 'Discord Webhooks', 'Ansible'],
+    techStack: ['Proxmox', 'Docker', 'Grafana', 'Prometheus', 'Discord Webhooks', 'Bash', 'Linux', 'ZFS'],
     category: 'homelab',
     terminalCommands: [
       'ssh root@proxmox.local',

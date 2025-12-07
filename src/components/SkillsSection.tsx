@@ -45,7 +45,7 @@ const skills: Skill[] = [
   { name: 'React', level: 75, category: 'frameworks', color: '#61dafb' },
   { name: 'Node.js', level: 70, category: 'frameworks', color: '#339933' },
   { name: 'Express', level: 70, category: 'frameworks', color: '#000000' },
-  { name: 'Next.js', level: 25, category: 'frameworks', color: '#000000' },
+  { name: 'Next.js', level: 50, category: 'frameworks', color: '#000000' },
   { name: 'React Router DOM', level: 75, category: 'frameworks', color: '#ca4245' },
   { name: 'Tailwind CSS', level: 85, category: 'frameworks', color: '#06b6d4' },
   { name: 'Framer Motion', level: 70, category: 'frameworks', color: '#0055ff' },

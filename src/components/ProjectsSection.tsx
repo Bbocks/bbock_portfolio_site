@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import { Github, ExternalLink, ChevronDown, ChevronUp, Terminal, X, ZoomIn } from 'lucide-react'
 import InteractiveTerminal from './InteractiveTerminal'
+import ScrollSection from './ScrollSection'
 
 interface Project {
   id: string
@@ -123,7 +124,7 @@ const ProjectsSection = () => {
   }
 
   return (
-    <section id="projects" className="py-20 bg-dark-800">
+    <ScrollSection id="projects" className="py-20 bg-dark-800" movement={55}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           ref={ref}
@@ -336,7 +337,7 @@ const ProjectsSection = () => {
           )}
         </AnimatePresence>
       </div>
-    </section>
+    </ScrollSection>
   )
 }
 

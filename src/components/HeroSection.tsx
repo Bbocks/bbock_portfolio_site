@@ -1,9 +1,15 @@
 import { useState, useEffect } from 'react'
-import { motion } from 'framer-motion'
+import { motion, useReducedMotion, useScroll, useTransform } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import { Download, Linkedin, Github, ChevronDown } from 'lucide-react'
+import ScrollSection from './ScrollSection'
 
 const HeroSection = () => {
+  const { scrollYProgress } = useScroll()
+  const prefersReducedMotion = useReducedMotion()
+  const contentY = useTransform(scrollYProgress, [0, 1], prefersReducedMotion ? [0, 0] : [0, -120])
+  const indicatorY = useTransform(scrollYProgress, [0, 1], prefersReducedMotion ? [0, 0] : [0, 80])
+
   const [text, setText] = useState('')
   const [currentIndex, setCurrentIndex] = useState(0)
   const [ref, inView] = useInView({
@@ -32,9 +38,10 @@ const HeroSection = () => {
   }
 
   return (
-    <section id="home" className="min-h-screen flex items-center justify-center relative pt-16 md:pt-0">
+    <ScrollSection id="home" className="min-h-screen flex items-center justify-center relative pt-16 md:pt-0" movement={70}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <motion.div
+          style={{ y: contentY }}
           ref={ref}
           initial={{ opacity: 0, y: 50 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
@@ -149,6 +156,7 @@ const HeroSection = () => {
 
       {/* Scroll Indicator */}
       <motion.button
+        style={{ y: indicatorY }}
         initial={{ opacity: 0 }}
         animate={inView ? { opacity: 1 } : {}}
         transition={{ duration: 0.8, delay: 1.2 }}
@@ -157,7 +165,7 @@ const HeroSection = () => {
       >
         <ChevronDown className="h-6 w-6 md:h-8 md:w-8 text-primary-400" />
       </motion.button>
-    </section>
+    </ScrollSection>
   )
 }
 

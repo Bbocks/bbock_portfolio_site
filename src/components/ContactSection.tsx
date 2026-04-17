@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import { Mail, Linkedin, Github, Download, Send, CheckCircle } from 'lucide-react'
+import ScrollSection from './ScrollSection'
 
 const ContactSection = () => {
   const [formData, setFormData] = useState({
@@ -63,7 +64,7 @@ const ContactSection = () => {
   ]
 
   return (
-    <section id="contact" className="py-20 bg-dark-900">
+    <ScrollSection id="contact" className="py-20 bg-dark-900" movement={40}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           ref={ref}
@@ -276,7 +277,7 @@ const ContactSection = () => {
           </motion.div>
         </div>
       </div>
-    </section>
+    </ScrollSection>
   )
 }
 

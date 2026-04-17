@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import { Calendar, MapPin, Building, ChevronDown, ChevronUp } from 'lucide-react'
+import ScrollSection from './ScrollSection'
 
 interface Experience {
   id: string
@@ -124,7 +125,7 @@ const ExperienceSection = () => {
   }
 
   return (
-    <section id="experience" className="py-20 bg-dark-900">
+    <ScrollSection id="experience" className="py-20 bg-dark-900" movement={50}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           ref={ref}
@@ -235,7 +236,7 @@ const ExperienceSection = () => {
           </div>
         </div>
       </div>
-    </section>
+    </ScrollSection>
   )
 }
 

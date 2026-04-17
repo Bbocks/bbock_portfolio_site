@@ -21,7 +21,8 @@ const tegakiCaveatFont = {
 
 const ROLE_PHRASES = [
   'Computer Science Graduate', 
-  'Developer', 'DevOps Designer/Engineer', 
+  'Developer', 
+  'DevOps Designer/Engineer', 
   'Network Technician', 
   'Homelab Enthusiast'
 ] as const

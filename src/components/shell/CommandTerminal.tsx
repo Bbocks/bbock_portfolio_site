@@ -1,21 +1,60 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, type ReactNode } from 'react'
+import { HelpCircle } from 'lucide-react'
 import TerminalPanel from '../terminal/TerminalPanel'
 import type { TerminalLine } from '../../lib/terminalCommands'
+
+export type CommandTerminalVariant = 'full' | 'compact'
 
 interface CommandTerminalProps {
   lines: TerminalLine[]
   onSubmitLine: (raw: string) => void
   className?: string
   contentClassName?: string
+  /** `compact` = single input row + optional help button (mobile). `full` = desktop log + panel chrome. */
+  variant?: CommandTerminalVariant
+  /** Shown only in `compact` variant; opens the tips sheet. */
+  onOpenHelp?: () => void
 }
 
-const CommandTerminal = ({ lines, onSubmitLine, className = '', contentClassName = '' }: CommandTerminalProps) => {
+const CommandTerminal = ({
+  lines,
+  onSubmitLine,
+  className = '',
+  contentClassName = '',
+  variant = 'full',
+  onOpenHelp,
+}: CommandTerminalProps) => {
   const logRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     const el = logRef.current
     if (el) el.scrollTop = el.scrollHeight
   }, [lines])
+
+  if (variant === 'compact') {
+    return (
+      <div
+        className={`rounded-lg border border-[var(--color-border)] bg-[var(--color-panel)] shadow-[0_0_0_1px_rgba(56,189,248,0.06),0_4px_16px_rgba(0,0,0,0.25)] ${className}`}
+      >
+        <TerminalInput
+          onSubmit={onSubmitLine}
+          compact
+          trailing={
+            onOpenHelp ? (
+              <button
+                type="button"
+                onClick={onOpenHelp}
+                className="shrink-0 rounded-md p-1.5 text-[var(--color-terminal)] hover:bg-[var(--color-bg-elevated)] focus-visible:focus-ring"
+                aria-label="Open terminal tips"
+              >
+                <HelpCircle className="h-5 w-5" aria-hidden />
+              </button>
+            ) : null
+          }
+        />
+      </div>
+    )
+  }
 
   return (
     <TerminalPanel
@@ -51,12 +90,20 @@ const CommandTerminal = ({ lines, onSubmitLine, className = '', contentClassName
           </div>
         ))}
       </div>
-      <TerminalInput onSubmit={onSubmitLine} />
+      <TerminalInput onSubmit={onSubmitLine} compact={false} />
     </TerminalPanel>
   )
 }
 
-function TerminalInput({ onSubmit }: { onSubmit: (raw: string) => void }) {
+function TerminalInput({
+  onSubmit,
+  compact = false,
+  trailing,
+}: {
+  onSubmit: (raw: string) => void
+  compact?: boolean
+  trailing?: ReactNode
+}) {
   return (
     <form
       onSubmit={(e) => {
@@ -66,7 +113,11 @@ function TerminalInput({ onSubmit }: { onSubmit: (raw: string) => void }) {
         onSubmit(raw)
         e.currentTarget.reset()
       }}
-      className="flex shrink-0 items-center gap-2 border-t border-[var(--color-border-subtle)] bg-[var(--color-panel-header)]/80 px-3 py-2"
+      className={`flex shrink-0 items-center gap-2 border-[var(--color-border-subtle)] bg-[var(--color-panel-header)]/80 ${
+        compact
+          ? 'border-none px-2 py-1.5'
+          : 'border-t border-[var(--color-border-subtle)] px-3 py-2'
+      }`}
     >
       <span className="shrink-0 font-mono text-[var(--color-accent)]" aria-hidden>
         &gt;
@@ -79,6 +130,7 @@ function TerminalInput({ onSubmit }: { onSubmit: (raw: string) => void }) {
         autoComplete="off"
         spellCheck={false}
       />
+      {trailing}
     </form>
   )
 }

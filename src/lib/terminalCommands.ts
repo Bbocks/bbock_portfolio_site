@@ -24,10 +24,16 @@ const NAV_ALIASES: Record<string, PortfolioView> = {
 export function helpText(): string {
   return `Commands:
   help              Show this list
+  hints | guide     Open tips panel (small screens)
   home              Back to hero / welcome
   projects | experience | skills | homelab | blog | contact
   cd <page>         Same as typing the page name
   open <page>       Same as cd`
+}
+
+/** Short intro shown above the command list in the mobile tips sheet. */
+export function mobileTipsIntro(): string {
+  return 'On mobile, only the command line is shown so content uses most of the screen. Type a command below or open this panel with hints, guide, or the help button on the right of the bar. Command output appears in the full terminal on desktop.'
 }
 
 function normalizeTokens(line: string): string[] {
@@ -38,13 +44,19 @@ function normalizeTokens(line: string): string[] {
     .filter(Boolean)
 }
 
-/** Returns target view, or null if not a navigation command (e.g. help only). */
-export function parseNavigationCommand(line: string): { view: PortfolioView } | { help: true } | { error: string } {
+/** Parsed shell input: navigate, show help, open mobile tips, or error. */
+export function parseNavigationCommand(
+  line: string,
+): { view: PortfolioView } | { help: true } | { openHelp: true } | { error: string } {
   const tokens = normalizeTokens(line)
   if (tokens.length === 0) return { error: '(empty)' }
 
   if (tokens[0] === 'help' || tokens[0] === '?') {
     return { help: true }
+  }
+
+  if (tokens[0] === 'hints' || tokens[0] === 'guide' || tokens[0] === 'directions') {
+    return { openHelp: true }
   }
 
   if (tokens[0] === 'cd' || tokens[0] === 'open') {

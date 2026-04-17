@@ -13,7 +13,7 @@
     "date-fns": "^2.30.0",
     "framer-motion": "^10.16.16",
     "lucide-react": "^0.294.0",
-    "posthog-js": "^1.261.0",
+    "posthog-js": "^1.369.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-intersection-observer": "^9.5.3",

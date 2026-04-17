@@ -58,7 +58,8 @@ const PortfolioShell = () => {
   }, [isLg])
 
   useEffect(() => {
-    posthog?.capture('portfolio_section_changed', { section: activeView })
+    if (!import.meta.env.VITE_PUBLIC_POSTHOG_KEY?.trim()) return
+    posthog.capture('portfolio_section_changed', { section: activeView })
   }, [activeView, posthog])
 
   const onSubmitLine = useCallback((raw: string) => {

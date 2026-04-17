@@ -19,7 +19,7 @@ const tegakiCaveatFont = {
   fontFaceCSS: `@font-face { font-family: '${caveat.family}'; src: url(${assetBase}/fonts/tegaki/caveat-3dc76002.ttf); } @font-face { font-family: '${caveat.fullFamily}'; src: url(${assetBase}/fonts/tegaki/caveat.ttf); }`,
 } as const
 
-const ROLE_PHRASES = ['Computer Science Major', 'Systems Programmer', 'DevOps Enthusiast'] as const
+const ROLE_PHRASES = ['Computer Science Graduate', 'Developer', 'DevOps Designer/Engineer', 'Network Technician', 'Homelab Enthusiast'] as const
 
 interface HeroSectionProps {
   /** When true, used inside the portfolio shell (no full-page scroll section, compact chrome). */

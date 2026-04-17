@@ -1,0 +1,937 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e3]:
+    - navigation "Primary" [ref=e4]:
+      - generic [ref=e5]:
+        - button "brett@portfolio session" [ref=e6] [cursor=pointer]:
+          - img [ref=e7]
+          - generic [ref=e10]: brett@portfolio
+          - generic [ref=e11]: session
+        - generic [ref=e12]:
+          - button "Home" [ref=e13] [cursor=pointer]
+          - button "Projects" [ref=e14] [cursor=pointer]
+          - button "Experience" [ref=e15] [cursor=pointer]
+          - button "Skills" [ref=e16] [cursor=pointer]
+          - button "Homelab" [ref=e17] [cursor=pointer]
+          - button "Blog" [ref=e18] [cursor=pointer]
+          - button "Contact" [ref=e19] [cursor=pointer]
+    - main [ref=e20]:
+      - generic [ref=e22]:
+        - generic [ref=e25]:
+          - generic [ref=e26]:
+            - generic "~/session" [ref=e31]
+            - generic [ref=e32]: login
+          - generic [ref=e33]:
+            - paragraph [ref=e34]: ok — ready
+            - heading "Brett Bockstein" [level=1] [ref=e35]
+            - generic [ref=e38]:
+              - generic:
+                - generic: Computer Science Major
+              - generic [ref=e39]: Computer Science Major
+            - paragraph [ref=e40]: Building robust systems and infrastructure solutions. From homelab automation to full stack development, I bridge the gap between development and operations with a focus on reliability and performance.
+            - generic [ref=e41]:
+              - link "Download Resume" [ref=e42] [cursor=pointer]:
+                - /url: /Brett_Resume_8-20-25.pdf
+                - img [ref=e43]
+                - generic [ref=e47]: Download Resume
+              - generic [ref=e48]:
+                - link "LinkedIn profile" [ref=e49] [cursor=pointer]:
+                  - /url: https://linkedin.com/in/brettbocks
+                  - img [ref=e50]
+                - link "GitHub profile" [ref=e54] [cursor=pointer]:
+                  - /url: https://github.com/bbocks
+                  - img [ref=e55]
+            - generic [ref=e58]:
+              - generic [ref=e59]:
+                - generic [ref=e60]: 3+
+                - generic [ref=e61]: Years Experience
+              - generic [ref=e62]:
+                - generic [ref=e63]: 15+
+                - generic [ref=e64]: Services Deployed
+              - generic [ref=e65]:
+                - generic [ref=e66]: 3+
+                - generic [ref=e67]: Projects Completed
+              - generic [ref=e68]:
+                - generic [ref=e69]: 99.9%
+                - generic [ref=e70]: Uptime
+        - button "Scroll to projects" [ref=e71] [cursor=pointer]:
+          - img [ref=e72]
+      - generic [ref=e76]:
+        - generic [ref=e77]:
+          - heading "Projects" [level=2] [ref=e78]
+          - paragraph [ref=e79]: From homelab infrastructure to systems programming, explore my technical projects and see them in action with interactive demos.
+        - generic [ref=e80]:
+          - generic [ref=e82]:
+            - generic [ref=e83]:
+              - generic "Proxmox Homelab Infrastructure" [ref=e88]
+              - generic [ref=e89]: ~/work/homelab
+            - generic [ref=e90]:
+              - generic [ref=e91]:
+                - img "Proxmox Homelab Infrastructure" [ref=e92] [cursor=pointer]
+                - img [ref=e93] [cursor=pointer]
+              - generic [ref=e98]:
+                - generic [ref=e99]:
+                  - generic [ref=e100]: homelab
+                  - button "Expand project details" [ref=e101] [cursor=pointer]:
+                    - img [ref=e102]
+                - heading "Proxmox Homelab Infrastructure" [level=3] [ref=e104]
+                - paragraph [ref=e105]: Enterprise-grade virtualization setup with automated monitoring, backup systems, and container orchestration. Features Discord webhook notifications and Grafana dashboards.
+                - generic [ref=e106]:
+                  - generic [ref=e107]: Proxmox
+                  - generic [ref=e108]: Docker
+                  - generic [ref=e109]: Grafana
+                  - generic [ref=e110]: "+5"
+                - link "Code" [ref=e112] [cursor=pointer]:
+                  - /url: https://github.com/Bbocks/Docker-Compose-Files.git
+                  - img [ref=e113]
+                  - generic [ref=e116]: Code
+          - generic [ref=e118]:
+            - generic [ref=e119]:
+              - generic "Personal Portfolio Website" [ref=e124]
+              - generic [ref=e125]: ~/work/portfolio-website
+            - generic [ref=e126]:
+              - img [ref=e129]
+              - generic [ref=e133]:
+                - generic [ref=e134]:
+                  - generic [ref=e135]: web
+                  - button "Expand project details" [ref=e136] [cursor=pointer]:
+                    - img [ref=e137]
+                - heading "Personal Portfolio Website" [level=3] [ref=e139]
+                - paragraph [ref=e140]: A modern, responsive portfolio website showcasing my projects, skills, and experience. Features interactive animations, gradient borders, image modals, and a terminal-style project demo. Built with React and TypeScript for optimal performance and developer experience.
+                - generic [ref=e141]:
+                  - generic [ref=e142]: React 18
+                  - generic [ref=e143]: TypeScript
+                  - generic [ref=e144]: Vite
+                  - generic [ref=e145]: "+7"
+                - generic [ref=e146]:
+                  - link "Code" [ref=e147] [cursor=pointer]:
+                    - /url: https://github.com/Bbocks/bbock_portfolio_site
+                    - img [ref=e148]
+                    - generic [ref=e151]: Code
+                  - link "Demo" [ref=e152] [cursor=pointer]:
+                    - /url: https://brettbockstein.com
+                    - img [ref=e153]
+                    - generic [ref=e157]: Demo
+          - generic [ref=e159]:
+            - generic [ref=e160]:
+              - generic "Snipe-IT License Import Script" [ref=e165]
+              - generic [ref=e166]: ~/work/snipe-it-automation
+            - generic [ref=e167]:
+              - img [ref=e170]
+              - generic [ref=e185]:
+                - generic [ref=e186]:
+                  - generic [ref=e187]: systems
+                  - button "Expand project details" [ref=e188] [cursor=pointer]:
+                    - img [ref=e189]
+                - heading "Snipe-IT License Import Script" [level=3] [ref=e191]
+                - paragraph [ref=e192]: Python automation script for bulk assignment of software license seats in Snipe-IT using its REST API. Handles CSV/Excel imports with rate limiting and error handling.
+                - generic [ref=e193]:
+                  - generic [ref=e194]: Python
+                  - generic [ref=e195]: REST API
+                  - generic [ref=e196]: Pandas
+                  - generic [ref=e197]: "+3"
+                - link "Code" [ref=e199] [cursor=pointer]:
+                  - /url: https://github.com/Bbocks/Snipe-IT-License-Import-Script
+                  - img [ref=e200]
+                  - generic [ref=e203]: Code
+          - generic [ref=e205]:
+            - generic [ref=e206]:
+              - generic "Construct-a-Flow AI Web" [ref=e211]
+              - generic [ref=e212]: ~/work/construct-a-flow-ai
+            - generic [ref=e213]:
+              - generic [ref=e214]:
+                - img "Construct-a-Flow AI Web" [ref=e215] [cursor=pointer]
+                - img [ref=e216] [cursor=pointer]
+              - generic [ref=e221]:
+                - generic [ref=e222]:
+                  - generic [ref=e223]: web
+                  - button "Expand project details" [ref=e224] [cursor=pointer]:
+                    - img [ref=e225]
+                - heading "Construct-a-Flow AI Web" [level=3] [ref=e227]
+                - paragraph [ref=e228]: The website for Construct-a-Flow AI, a modern web application for automating the construction bid process using AI-powered solutions. Built for estimators by estimators to streamline workflows and increase efficiency in the construction industry.
+                - generic [ref=e229]:
+                  - generic [ref=e230]: React 18
+                  - generic [ref=e231]: TypeScript
+                  - generic [ref=e232]: Vite
+                  - generic [ref=e233]: "+12"
+                - generic [ref=e234]:
+                  - link "Code" [ref=e235] [cursor=pointer]:
+                    - /url: https://github.com/Bbocks/construct-a-flow-ai-web.git
+                    - img [ref=e236]
+                    - generic [ref=e239]: Code
+                  - link "Demo" [ref=e240] [cursor=pointer]:
+                    - /url: https://construct-a-flow.com
+                    - img [ref=e241]
+                    - generic [ref=e245]: Demo
+      - generic [ref=e248]:
+        - generic [ref=e249]:
+          - heading "Experience" [level=2] [ref=e250]
+          - paragraph [ref=e251]: My journey through systems engineering, from hands-on internships to teaching the next generation of developers.
+        - generic [ref=e254]:
+          - generic [ref=e256]:
+            - img [ref=e258]
+            - generic [ref=e264]:
+              - generic [ref=e265]:
+                - generic "Office of Defence Services, State of Delaware" [ref=e270]
+                - generic [ref=e271]: September 2025 - Present
+              - generic [ref=e272]:
+                - generic [ref=e273]:
+                  - generic [ref=e274]:
+                    - heading "Casual/Seasonal IT Support Technician" [level=3] [ref=e275]
+                    - generic [ref=e276]:
+                      - generic [ref=e277]:
+                        - img [ref=e278]
+                        - text: Office of Defence Services, State of Delaware
+                      - generic [ref=e290]:
+                        - img [ref=e291]
+                        - text: Wilmington, DE
+                      - generic [ref=e294]:
+                        - img [ref=e295]
+                        - text: September 2025 - Present
+                  - button "Expand achievements" [ref=e300] [cursor=pointer]:
+                    - img [ref=e301]
+                - paragraph [ref=e303]: Gained hands-on experience in IT infrastructure management and process optimization for healthcare services.
+                - generic [ref=e304]:
+                  - generic [ref=e305]: IT Infrastructure
+                  - generic [ref=e306]: System Administration
+                  - generic [ref=e307]: Documentation
+          - generic [ref=e309]:
+            - img [ref=e311]
+            - generic [ref=e319]:
+              - generic [ref=e320]:
+                - generic "RCM Healthcare Services" [ref=e325]
+                - generic [ref=e326]: May 2024 - August 2025 (Summers)
+              - generic [ref=e327]:
+                - generic [ref=e328]:
+                  - generic [ref=e329]:
+                    - heading "IT Intern" [level=3] [ref=e330]
+                    - generic [ref=e331]:
+                      - generic [ref=e332]:
+                        - img [ref=e333]
+                        - text: RCM Healthcare Services
+                      - generic [ref=e345]:
+                        - img [ref=e346]
+                        - text: Long Island, NY
+                      - generic [ref=e349]:
+                        - img [ref=e350]
+                        - text: May 2024 - August 2025 (Summers)
+                  - button "Expand achievements" [ref=e355] [cursor=pointer]:
+                    - img [ref=e356]
+                - paragraph [ref=e358]: Gained hands-on experience in IT infrastructure management and process optimization for healthcare services.
+                - generic [ref=e359]:
+                  - generic [ref=e360]: IT Infrastructure
+                  - generic [ref=e361]: Asset Management
+                  - generic [ref=e362]: Process Optimization
+                  - generic [ref=e363]: System Administration
+                  - generic [ref=e364]: Documentation
+          - generic [ref=e366]:
+            - img [ref=e368]
+            - generic [ref=e371]:
+              - generic [ref=e372]:
+                - generic "University of Delaware" [ref=e377]
+                - generic [ref=e378]: February 2024 - May 2024
+              - generic [ref=e379]:
+                - generic [ref=e380]:
+                  - generic [ref=e381]:
+                    - 'heading "Teaching Assistant – CISC210: Introduction to Systems Programming" [level=3] [ref=e382]'
+                    - generic [ref=e383]:
+                      - generic [ref=e384]:
+                        - img [ref=e385]
+                        - text: University of Delaware
+                      - generic [ref=e397]:
+                        - img [ref=e398]
+                        - text: Newark, DE
+                      - generic [ref=e401]:
+                        - img [ref=e402]
+                        - text: February 2024 - May 2024
+                  - button "Expand achievements" [ref=e407] [cursor=pointer]:
+                    - img [ref=e408]
+                - paragraph [ref=e410]: Provided comprehensive support for students learning systems programming concepts and low-level programming techniques.
+                - generic [ref=e411]:
+                  - generic [ref=e412]: C/C++
+                  - generic [ref=e413]: Systems Programming
+                  - generic [ref=e414]: Teaching
+                  - generic [ref=e415]: Debugging
+                  - generic [ref=e416]: Memory Management
+                  - generic [ref=e417]: Hardware Interface
+          - generic [ref=e419]:
+            - img [ref=e421]
+            - generic [ref=e425]:
+              - generic [ref=e426]:
+                - generic "Radulescu LLP — Patent Litigators" [ref=e431]
+                - generic [ref=e432]: January 2023/24
+              - generic [ref=e433]:
+                - generic [ref=e434]:
+                  - generic [ref=e435]:
+                    - heading "Product Analysis Intern" [level=3] [ref=e436]
+                    - generic [ref=e437]:
+                      - generic [ref=e438]:
+                        - img [ref=e439]
+                        - text: Radulescu LLP — Patent Litigators
+                      - generic [ref=e451]:
+                        - img [ref=e452]
+                        - text: Long Island, NY
+                      - generic [ref=e455]:
+                        - img [ref=e456]
+                        - text: January 2023/24
+                  - button "Expand achievements" [ref=e461] [cursor=pointer]:
+                    - img [ref=e462]
+                - paragraph [ref=e464]: Conducted technical analysis and organization of LED products for patent litigation support.
+                - generic [ref=e465]:
+                  - generic [ref=e466]: Technical Analysis
+                  - generic [ref=e467]: Data Organization
+                  - generic [ref=e468]: Microsoft Excel
+                  - generic [ref=e469]: PCB Analysis
+                  - generic [ref=e470]: Patent Research
+          - generic [ref=e472]:
+            - img [ref=e474]
+            - generic [ref=e477]:
+              - generic [ref=e478]:
+                - generic "Personal Project" [ref=e483]
+                - generic [ref=e484]: September 2021 – Present
+              - generic [ref=e485]:
+                - generic [ref=e486]:
+                  - generic [ref=e487]:
+                    - heading "Homelab Infrastructure Project" [level=3] [ref=e488]
+                    - generic [ref=e489]:
+                      - generic [ref=e490]:
+                        - img [ref=e491]
+                        - text: Personal Project
+                      - generic [ref=e503]:
+                        - img [ref=e504]
+                        - text: Home Lab
+                      - generic [ref=e507]:
+                        - img [ref=e508]
+                        - text: September 2021 – Present
+                  - button "Expand achievements" [ref=e513] [cursor=pointer]:
+                    - img [ref=e514]
+                - paragraph [ref=e516]: Self-managed enterprise-grade infrastructure project demonstrating advanced system administration and automation skills.
+                - generic [ref=e517]:
+                  - generic [ref=e518]: Proxmox
+                  - generic [ref=e519]: Docker
+                  - generic [ref=e520]: Ubuntu
+                  - generic [ref=e521]: LXC Containers
+                  - generic [ref=e522]: Network Administration
+                  - generic [ref=e523]: Discord Webhooks
+                  - generic [ref=e524]: System Monitoring
+          - generic [ref=e526]:
+            - img [ref=e528]
+            - generic [ref=e533]:
+              - generic [ref=e534]:
+                - generic "Camp Scatico" [ref=e539]
+                - generic [ref=e540]: May 2021 – August 2023 (Summers)
+              - generic [ref=e541]:
+                - generic [ref=e542]:
+                  - generic [ref=e543]:
+                    - heading "Assistant Division Leader / Assistant Head of Woodshop" [level=3] [ref=e544]
+                    - generic [ref=e545]:
+                      - generic [ref=e546]:
+                        - img [ref=e547]
+                        - text: Camp Scatico
+                      - generic [ref=e559]:
+                        - img [ref=e560]
+                        - text: New York
+                      - generic [ref=e563]:
+                        - img [ref=e564]
+                        - text: May 2021 – August 2023 (Summers)
+                  - button "Expand achievements" [ref=e569] [cursor=pointer]:
+                    - img [ref=e570]
+                - paragraph [ref=e572]: Led educational programs and fostered positive learning environments for children in fitness and woodworking.
+                - generic [ref=e573]:
+                  - generic [ref=e574]: Leadership
+                  - generic [ref=e575]: Teaching
+                  - generic [ref=e576]: Program Development
+                  - generic [ref=e577]: Fitness Training
+                  - generic [ref=e578]: Woodworking
+                  - generic [ref=e579]: Child Development
+      - generic [ref=e582]:
+        - generic [ref=e583]:
+          - heading "Skills" [level=2] [ref=e584]
+          - paragraph [ref=e585]: A comprehensive overview of my technical skills, from programming languages to infrastructure tools and operating systems.
+        - tablist "Skill categories" [ref=e586]:
+          - tab "Languages" [selected] [ref=e587] [cursor=pointer]:
+            - img [ref=e588]
+            - text: Languages
+          - tab "Tools" [ref=e592] [cursor=pointer]:
+            - img [ref=e593]
+            - text: Tools
+          - tab "Operating Systems" [ref=e595] [cursor=pointer]:
+            - img [ref=e596]
+            - text: Operating Systems
+          - tab "Frameworks" [ref=e600] [cursor=pointer]:
+            - img [ref=e601]
+            - text: Frameworks
+        - generic [ref=e603]:
+          - generic [ref=e605]:
+            - generic [ref=e606]:
+              - generic "skill-profile.json" [ref=e611]
+              - generic [ref=e612]: bar
+            - generic [ref=e613]:
+              - heading "Skill proficiency" [level=3] [ref=e614]
+              - img "Bar chart of skill levels for the selected category" [ref=e615]:
+                - img [ref=e618]:
+                  - generic [ref=e636]:
+                    - generic [ref=e638]: Java
+                    - generic [ref=e640]: C
+                    - generic [ref=e642]: Python
+                    - generic [ref=e644]: JavaScript
+                    - generic [ref=e646]: TypeScript
+                    - generic [ref=e648]: Bash
+                  - generic [ref=e651]:
+                    - generic [ref=e653]: "0"
+                    - generic [ref=e655]: "20"
+                    - generic [ref=e657]: "40"
+                    - generic [ref=e659]: "60"
+                    - generic [ref=e661]: "80"
+          - generic [ref=e677]:
+            - generic [ref=e678]:
+              - generic "distribution.svg" [ref=e683]
+              - generic [ref=e684]: pie
+            - generic [ref=e685]:
+              - heading "Skill distribution" [level=3] [ref=e686]
+              - img "Pie chart of skill counts by category" [ref=e687]:
+                - img [ref=e690]:
+                  - generic [ref=e691]:
+                    - img [ref=e693]
+                    - img [ref=e695]
+                    - img [ref=e697]
+                    - img [ref=e699]
+                    - generic [ref=e700]:
+                      - generic [ref=e702]: Languages 16%
+                      - generic [ref=e704]: Tools 35%
+                      - generic [ref=e706]: OS 14%
+                      - generic [ref=e708]: Frameworks 35%
+        - generic [ref=e710]:
+          - generic [ref=e711]:
+            - generic "tags.txt" [ref=e716]
+            - generic [ref=e717]: all skills
+          - generic [ref=e718]:
+            - heading "All skills" [level=3] [ref=e719]
+            - generic [ref=e720]:
+              - generic [ref=e722] [cursor=pointer]: Java
+              - generic [ref=e724] [cursor=pointer]: C
+              - generic [ref=e726] [cursor=pointer]: Python
+              - generic [ref=e728] [cursor=pointer]: JavaScript
+              - generic [ref=e730] [cursor=pointer]: TypeScript
+              - generic [ref=e732] [cursor=pointer]: Bash
+              - generic [ref=e734] [cursor=pointer]: Docker
+              - generic [ref=e736] [cursor=pointer]: Git
+              - generic [ref=e738] [cursor=pointer]: Vite
+              - generic [ref=e740] [cursor=pointer]: ESLint
+              - generic [ref=e742] [cursor=pointer]: PostCSS
+              - generic [ref=e744] [cursor=pointer]: Pandas
+              - generic [ref=e746] [cursor=pointer]: REST API
+              - generic [ref=e748] [cursor=pointer]: CSV/Excel
+              - generic [ref=e750] [cursor=pointer]: Discord Webhooks
+              - generic [ref=e752] [cursor=pointer]: Cloudflare Pages
+              - generic [ref=e754] [cursor=pointer]: Gmail API
+              - generic [ref=e756] [cursor=pointer]: PostHog Analytics
+              - generic [ref=e758] [cursor=pointer]: Snipe-IT
+              - generic [ref=e760] [cursor=pointer]: Ubuntu
+              - generic [ref=e762] [cursor=pointer]: Proxmox
+              - generic [ref=e764] [cursor=pointer]: Linux
+              - generic [ref=e766] [cursor=pointer]: Windows
+              - generic [ref=e768] [cursor=pointer]: macOS
+              - generic [ref=e770] [cursor=pointer]: React
+              - generic [ref=e772] [cursor=pointer]: Node.js
+              - generic [ref=e774] [cursor=pointer]: Express
+              - generic [ref=e776] [cursor=pointer]: Next.js
+              - generic [ref=e778] [cursor=pointer]: React Router DOM
+              - generic [ref=e780] [cursor=pointer]: Tailwind CSS
+              - generic [ref=e782] [cursor=pointer]: Framer Motion
+              - generic [ref=e784] [cursor=pointer]: Lucide React
+              - generic [ref=e786] [cursor=pointer]: shadcn/ui
+              - generic [ref=e788] [cursor=pointer]: Radix UI
+              - generic [ref=e790] [cursor=pointer]: React Hook Form
+              - generic [ref=e792] [cursor=pointer]: Zod
+              - generic [ref=e794] [cursor=pointer]: TanStack Query
+      - generic [ref=e797]:
+        - generic [ref=e798]:
+          - heading "Homelab Status" [level=2] [ref=e799]
+          - paragraph [ref=e800]: Live monitoring of my enterprise-grade homelab infrastructure. Real-time system metrics and uptime statistics.
+        - generic [ref=e801]:
+          - generic [ref=e802]:
+            - generic [ref=e803]:
+              - generic "metric" [ref=e808]
+              - generic [ref=e809]: overall-uptime
+            - generic [ref=e810]:
+              - generic [ref=e811]: 99.9%
+              - generic [ref=e812]: Overall Uptime
+          - generic [ref=e813]:
+            - generic [ref=e814]:
+              - generic "metric" [ref=e819]
+              - generic [ref=e820]: active-systems
+            - generic [ref=e821]:
+              - generic [ref=e822]: "4"
+              - generic [ref=e823]: Active Systems
+          - generic [ref=e824]:
+            - generic [ref=e825]:
+              - generic "metric" [ref=e830]
+              - generic [ref=e831]: running-containers
+            - generic [ref=e832]:
+              - generic [ref=e833]: 15+
+              - generic [ref=e834]: Running Containers
+          - generic [ref=e835]:
+            - generic [ref=e836]:
+              - generic "metric" [ref=e841]
+              - generic [ref=e842]: monitoring
+            - generic [ref=e843]:
+              - generic [ref=e844]: 24/7
+              - generic [ref=e845]: Monitoring
+        - generic [ref=e846]:
+          - generic [ref=e848]:
+            - generic [ref=e849]:
+              - generic "Proxmox Host" [ref=e854]
+              - generic [ref=e855]: online
+            - generic [ref=e856]:
+              - generic [ref=e857]:
+                - img [ref=e858]
+                - generic [ref=e861]: online
+              - generic [ref=e862]:
+                - img [ref=e863]
+                - generic [ref=e866]: "Uptime: 15 days, 8 hours"
+              - generic [ref=e867]:
+                - generic [ref=e868]:
+                  - generic [ref=e869]:
+                    - img [ref=e870]
+                    - generic [ref=e881]: CPU
+                  - generic [ref=e885]: 45%
+                - generic [ref=e886]:
+                  - generic [ref=e887]:
+                    - img [ref=e888]
+                    - generic [ref=e893]: Memory
+                  - generic [ref=e897]: 67%
+                - generic [ref=e898]:
+                  - generic [ref=e899]:
+                    - img [ref=e900]
+                    - generic [ref=e905]: Disk
+                  - generic [ref=e909]: 23%
+                - generic [ref=e910]:
+                  - generic [ref=e911]:
+                    - img [ref=e912]
+                    - generic [ref=e917]: Network
+                  - generic [ref=e921]: 12%
+              - generic [ref=e923]:
+                - generic [ref=e924]: "Last updated: 2 minutes ago"
+                - generic [ref=e927]: Live
+          - generic [ref=e929]:
+            - generic [ref=e930]:
+              - generic "Docker Server" [ref=e935]
+              - generic [ref=e936]: online
+            - generic [ref=e937]:
+              - generic [ref=e938]:
+                - img [ref=e939]
+                - generic [ref=e942]: online
+              - generic [ref=e943]:
+                - img [ref=e944]
+                - generic [ref=e947]: "Uptime: 7 days, 12 hours"
+              - generic [ref=e948]:
+                - generic [ref=e949]:
+                  - generic [ref=e950]:
+                    - img [ref=e951]
+                    - generic [ref=e962]: CPU
+                  - generic [ref=e966]: 28%
+                - generic [ref=e967]:
+                  - generic [ref=e968]:
+                    - img [ref=e969]
+                    - generic [ref=e974]: Memory
+                  - generic [ref=e978]: 45%
+                - generic [ref=e979]:
+                  - generic [ref=e980]:
+                    - img [ref=e981]
+                    - generic [ref=e986]: Disk
+                  - generic [ref=e990]: 18%
+                - generic [ref=e991]:
+                  - generic [ref=e992]:
+                    - img [ref=e993]
+                    - generic [ref=e998]: Network
+                  - generic [ref=e1002]: 8%
+              - generic [ref=e1004]:
+                - generic [ref=e1005]: "Last updated: 1 minute ago"
+                - generic [ref=e1008]: Live
+          - generic [ref=e1010]:
+            - generic [ref=e1011]:
+              - generic "Monitoring Stack" [ref=e1016]
+              - generic [ref=e1017]: online
+            - generic [ref=e1018]:
+              - generic [ref=e1019]:
+                - img [ref=e1020]
+                - generic [ref=e1023]: online
+              - generic [ref=e1024]:
+                - img [ref=e1025]
+                - generic [ref=e1028]: "Uptime: 30 days, 2 hours"
+              - generic [ref=e1029]:
+                - generic [ref=e1030]:
+                  - generic [ref=e1031]:
+                    - img [ref=e1032]
+                    - generic [ref=e1043]: CPU
+                  - generic [ref=e1047]: 15%
+                - generic [ref=e1048]:
+                  - generic [ref=e1049]:
+                    - img [ref=e1050]
+                    - generic [ref=e1055]: Memory
+                  - generic [ref=e1059]: 32%
+                - generic [ref=e1060]:
+                  - generic [ref=e1061]:
+                    - img [ref=e1062]
+                    - generic [ref=e1067]: Disk
+                  - generic [ref=e1071]: 12%
+                - generic [ref=e1072]:
+                  - generic [ref=e1073]:
+                    - img [ref=e1074]
+                    - generic [ref=e1079]: Network
+                  - generic [ref=e1083]: 5%
+              - generic [ref=e1085]:
+                - generic [ref=e1086]: "Last updated: 30 seconds ago"
+                - generic [ref=e1089]: Live
+          - generic [ref=e1091]:
+            - generic [ref=e1092]:
+              - generic "Backup Server" [ref=e1097]
+              - generic [ref=e1098]: warning
+            - generic [ref=e1099]:
+              - generic [ref=e1100]:
+                - img [ref=e1101]
+                - generic [ref=e1105]: warning
+              - generic [ref=e1106]:
+                - img [ref=e1107]
+                - generic [ref=e1110]: "Uptime: 2 days, 5 hours"
+              - generic [ref=e1111]:
+                - generic [ref=e1112]:
+                  - generic [ref=e1113]:
+                    - img [ref=e1114]
+                    - generic [ref=e1125]: CPU
+                  - generic [ref=e1129]: 8%
+                - generic [ref=e1130]:
+                  - generic [ref=e1131]:
+                    - img [ref=e1132]
+                    - generic [ref=e1137]: Memory
+                  - generic [ref=e1141]: 25%
+                - generic [ref=e1142]:
+                  - generic [ref=e1143]:
+                    - img [ref=e1144]
+                    - generic [ref=e1149]: Disk
+                  - generic [ref=e1153]: 78%
+                - generic [ref=e1154]:
+                  - generic [ref=e1155]:
+                    - img [ref=e1156]
+                    - generic [ref=e1161]: Network
+                  - generic [ref=e1165]: 3%
+              - generic [ref=e1167]:
+                - generic [ref=e1168]: "Last updated: 5 minutes ago"
+                - generic [ref=e1171]: Live
+        - generic [ref=e1173]:
+          - generic [ref=e1174]:
+            - generic "infrastructure.md" [ref=e1179]
+            - generic [ref=e1180]: overview
+          - generic [ref=e1181]:
+            - heading "Infrastructure overview" [level=3] [ref=e1182]
+            - generic [ref=e1183]:
+              - generic [ref=e1184]:
+                - heading "Virtualization" [level=4] [ref=e1185]
+                - list [ref=e1186]:
+                  - listitem [ref=e1187]: • Proxmox VE 8.0
+                  - listitem [ref=e1188]: • 4 VMs running
+                  - listitem [ref=e1189]: • LXC containers
+                  - listitem [ref=e1190]: • Automated backups
+              - generic [ref=e1191]:
+                - heading "Containerization" [level=4] [ref=e1192]
+                - list [ref=e1193]:
+                  - listitem [ref=e1194]: • Docker & Docker Compose
+                  - listitem [ref=e1195]: • 15+ containers
+                  - listitem [ref=e1196]: • Traefik reverse proxy
+                  - listitem [ref=e1197]: • Auto SSL certificates
+              - generic [ref=e1198]:
+                - heading "Monitoring" [level=4] [ref=e1199]
+                - list [ref=e1200]:
+                  - listitem [ref=e1201]: • Grafana dashboards
+                  - listitem [ref=e1202]: • Prometheus metrics
+                  - listitem [ref=e1203]: • Discord notifications
+                  - listitem [ref=e1204]: • Uptime monitoring
+      - generic [ref=e1207]:
+        - generic [ref=e1208]:
+          - heading "Blog & Notes" [level=2] [ref=e1209]
+          - paragraph [ref=e1210]: Technical articles, tutorials, and insights from my journey in systems engineering and infrastructure management.
+        - tablist "Filter posts by category" [ref=e1211]:
+          - tab "All Posts 6" [selected] [ref=e1212] [cursor=pointer]:
+            - text: All Posts
+            - generic [ref=e1213]: "6"
+          - tab "Homelab 2" [ref=e1214] [cursor=pointer]:
+            - text: Homelab
+            - generic [ref=e1215]: "2"
+          - tab "Systems 1" [ref=e1216] [cursor=pointer]:
+            - text: Systems
+            - generic [ref=e1217]: "1"
+          - tab "Tutorials 2" [ref=e1218] [cursor=pointer]:
+            - text: Tutorials
+            - generic [ref=e1219]: "2"
+          - tab "Debugging 1" [ref=e1220] [cursor=pointer]:
+            - text: Debugging
+            - generic [ref=e1221]: "1"
+        - generic [ref=e1223]:
+          - generic [ref=e1224]:
+            - generic "proxmox-setup.md" [ref=e1229]
+            - generic [ref=e1230]: featured
+          - generic [ref=e1231]:
+            - generic [ref=e1232]:
+              - generic [ref=e1233]: homelab
+              - generic [ref=e1234]: featured
+            - heading "Building a Proxmox Homelab on Old Hardware" [level=3] [ref=e1235]
+            - paragraph [ref=e1236]: How I transformed an old Dell OptiPlex into a powerful virtualization server using Proxmox VE, complete with automated backups and monitoring.
+            - generic [ref=e1237]:
+              - generic [ref=e1238]:
+                - generic [ref=e1239]:
+                  - img [ref=e1240]
+                  - text: 14/01/2024
+                - generic [ref=e1245]:
+                  - img [ref=e1246]
+                  - text: 8 min read
+              - button "Read more" [ref=e1249] [cursor=pointer]:
+                - generic [ref=e1250]: Read more
+                - img [ref=e1251]
+        - generic [ref=e1254]:
+          - article [ref=e1255]:
+            - generic [ref=e1256]:
+              - generic [ref=e1257]:
+                - generic "Optimizing Docker Compose fo…" [ref=e1262]
+                - generic [ref=e1263]: docker-optimization
+              - generic [ref=e1264]:
+                - generic [ref=e1265]:
+                  - generic [ref=e1266]: tutorial
+                  - generic [ref=e1267]:
+                    - img [ref=e1268]
+                    - text: 12 min read
+                - heading "Optimizing Docker Compose for Production" [level=3] [ref=e1271]
+                - paragraph [ref=e1272]: Best practices for structuring Docker Compose files, implementing health checks, and achieving zero-downtime deployments.
+                - generic [ref=e1273]:
+                  - generic [ref=e1274]:
+                    - img [ref=e1275]
+                    - text: Docker
+                  - generic [ref=e1278]:
+                    - img [ref=e1279]
+                    - text: Docker Compose
+                  - generic [ref=e1282]:
+                    - img [ref=e1283]
+                    - text: DevOps
+                  - generic [ref=e1286]: "+1"
+                - generic [ref=e1287]:
+                  - generic [ref=e1288]:
+                    - img [ref=e1289]
+                    - text: 09/01/2024
+                  - button "Read" [ref=e1294] [cursor=pointer]:
+                    - text: Read
+                    - img [ref=e1295]
+          - article [ref=e1298]:
+            - generic [ref=e1299]:
+              - generic [ref=e1300]:
+                - generic "Debugging C Memory Leaks in …" [ref=e1305]
+                - generic [ref=e1306]: c-memory-debugging
+              - generic [ref=e1307]:
+                - generic [ref=e1308]:
+                  - generic [ref=e1309]: debugging
+                  - generic [ref=e1310]:
+                    - img [ref=e1311]
+                    - text: 10 min read
+                - heading "Debugging C Memory Leaks in Teaching Labs" [level=3] [ref=e1314]
+                - paragraph [ref=e1315]: Common memory management pitfalls in C programming and how to use Valgrind and GDB to identify and fix memory leaks.
+                - generic [ref=e1316]:
+                  - generic [ref=e1317]:
+                    - img [ref=e1318]
+                    - text: C Programming
+                  - generic [ref=e1321]:
+                    - img [ref=e1322]
+                    - text: Memory Management
+                  - generic [ref=e1325]:
+                    - img [ref=e1326]
+                    - text: Debugging
+                  - generic [ref=e1329]: "+1"
+                - generic [ref=e1330]:
+                  - generic [ref=e1331]:
+                    - img [ref=e1332]
+                    - text: 04/01/2024
+                  - button "Read" [ref=e1337] [cursor=pointer]:
+                    - text: Read
+                    - img [ref=e1338]
+          - article [ref=e1341]:
+            - generic [ref=e1342]:
+              - generic [ref=e1343]:
+                - generic "Setting Up Grafana Monitorin…" [ref=e1348]
+                - generic [ref=e1349]: grafana-monitoring
+              - generic [ref=e1350]:
+                - generic [ref=e1351]:
+                  - generic [ref=e1352]: homelab
+                  - generic [ref=e1353]:
+                    - img [ref=e1354]
+                    - text: 15 min read
+                - heading "Setting Up Grafana Monitoring for Homelab" [level=3] [ref=e1357]
+                - paragraph [ref=e1358]: Complete guide to monitoring your homelab infrastructure with Grafana, Prometheus, and custom dashboards.
+                - generic [ref=e1359]:
+                  - generic [ref=e1360]:
+                    - img [ref=e1361]
+                    - text: Grafana
+                  - generic [ref=e1364]:
+                    - img [ref=e1365]
+                    - text: Prometheus
+                  - generic [ref=e1368]:
+                    - img [ref=e1369]
+                    - text: Monitoring
+                  - generic [ref=e1372]: "+1"
+                - generic [ref=e1373]:
+                  - generic [ref=e1374]:
+                    - img [ref=e1375]
+                    - text: 27/12/2023
+                  - button "Read" [ref=e1380] [cursor=pointer]:
+                    - text: Read
+                    - img [ref=e1381]
+          - article [ref=e1384]:
+            - generic [ref=e1385]:
+              - generic [ref=e1386]:
+                - generic "Systems Programming Fundamen…" [ref=e1391]
+                - generic [ref=e1392]: systems-programming
+              - generic [ref=e1393]:
+                - generic [ref=e1394]:
+                  - generic [ref=e1395]: systems
+                  - generic [ref=e1396]:
+                    - img [ref=e1397]
+                    - text: 20 min read
+                - heading "Systems Programming Fundamentals" [level=3] [ref=e1400]
+                - paragraph [ref=e1401]: Understanding the basics of systems programming, from process management to inter-process communication.
+                - generic [ref=e1402]:
+                  - generic [ref=e1403]:
+                    - img [ref=e1404]
+                    - text: Systems Programming
+                  - generic [ref=e1407]:
+                    - img [ref=e1408]
+                    - text: Linux
+                  - generic [ref=e1411]:
+                    - img [ref=e1412]
+                    - text: Process Management
+                  - generic [ref=e1415]: "+1"
+                - generic [ref=e1416]:
+                  - generic [ref=e1417]:
+                    - img [ref=e1418]
+                    - text: 19/12/2023
+                  - button "Read" [ref=e1423] [cursor=pointer]:
+                    - text: Read
+                    - img [ref=e1424]
+          - article [ref=e1427]:
+            - generic [ref=e1428]:
+              - generic [ref=e1429]:
+                - generic "Infrastructure Automation wi…" [ref=e1434]
+                - generic [ref=e1435]: ansible-automation
+              - generic [ref=e1436]:
+                - generic [ref=e1437]:
+                  - generic [ref=e1438]: tutorial
+                  - generic [ref=e1439]:
+                    - img [ref=e1440]
+                    - text: 14 min read
+                - heading "Infrastructure Automation with Ansible" [level=3] [ref=e1443]
+                - paragraph [ref=e1444]: Automating server provisioning and configuration management using Ansible playbooks and roles.
+                - generic [ref=e1445]:
+                  - generic [ref=e1446]:
+                    - img [ref=e1447]
+                    - text: Ansible
+                  - generic [ref=e1450]:
+                    - img [ref=e1451]
+                    - text: Automation
+                  - generic [ref=e1454]:
+                    - img [ref=e1455]
+                    - text: DevOps
+                  - generic [ref=e1458]: "+1"
+                - generic [ref=e1459]:
+                  - generic [ref=e1460]:
+                    - img [ref=e1461]
+                    - text: 14/12/2023
+                  - button "Read" [ref=e1466] [cursor=pointer]:
+                    - text: Read
+                    - img [ref=e1467]
+        - generic [ref=e1471]:
+          - generic [ref=e1472]:
+            - generic "notify.list" [ref=e1477]
+            - generic [ref=e1478]: mailing
+          - generic [ref=e1479]:
+            - heading "Stay updated" [level=3] [ref=e1480]
+            - paragraph [ref=e1481]: Get notified when I publish new articles about homelab setup, systems programming, and infrastructure automation.
+            - generic [ref=e1482]:
+              - generic [ref=e1483]: Email for updates
+              - textbox "Email for updates" [ref=e1484]:
+                - /placeholder: you@example.com
+              - button "Subscribe" [ref=e1485] [cursor=pointer]
+      - generic [ref=e1488]:
+        - generic [ref=e1489]:
+          - heading "Get In Touch" [level=2] [ref=e1490]
+          - paragraph [ref=e1491]: Interested in collaborating on systems engineering projects or have questions about my work? Let's connect and discuss how we can work together.
+        - generic [ref=e1492]:
+          - generic [ref=e1494]:
+            - generic [ref=e1495]:
+              - generic "compose" [ref=e1500]
+              - generic [ref=e1501]: "--to brett"
+            - generic [ref=e1502]:
+              - heading "Send a message" [level=3] [ref=e1503]
+              - generic [ref=e1504]:
+                - generic [ref=e1505]:
+                  - generic [ref=e1506]:
+                    - generic [ref=e1507]: Name
+                    - textbox "Name" [ref=e1508]:
+                      - /placeholder: Your name
+                  - generic [ref=e1509]:
+                    - generic [ref=e1510]: Email
+                    - textbox "Email" [ref=e1511]:
+                      - /placeholder: your.email@example.com
+                - generic [ref=e1512]:
+                  - generic [ref=e1513]: Subject
+                  - textbox "Subject" [ref=e1514]:
+                    - /placeholder: What's this about?
+                - generic [ref=e1515]:
+                  - generic [ref=e1516]: Message
+                  - textbox "Message" [ref=e1517]:
+                    - /placeholder: Tell me about your project or question...
+                - button "Send message" [ref=e1518] [cursor=pointer]:
+                  - img [ref=e1519]
+                  - generic [ref=e1522]: Send message
+          - generic [ref=e1523]:
+            - generic [ref=e1524]:
+              - generic [ref=e1525]:
+                - generic "contact.rc" [ref=e1530]
+                - generic [ref=e1531]: links
+              - generic [ref=e1532]:
+                - heading "Contact information" [level=3] [ref=e1533]
+                - generic [ref=e1534]:
+                  - link "Email bocksteink@gmail.com" [ref=e1535] [cursor=pointer]:
+                    - /url: mailto:bocksteink@gmail.com
+                    - img [ref=e1537]
+                    - generic [ref=e1540]:
+                      - generic [ref=e1541]: Email
+                      - generic [ref=e1542]: bocksteink@gmail.com
+                  - link "LinkedIn linkedin.com/in/brettbocks" [ref=e1543] [cursor=pointer]:
+                    - /url: https://linkedin.com/in/brettbocks
+                    - img [ref=e1545]
+                    - generic [ref=e1549]:
+                      - generic [ref=e1550]: LinkedIn
+                      - generic [ref=e1551]: linkedin.com/in/brettbocks
+                  - link "GitHub github.com/bbocks" [ref=e1552] [cursor=pointer]:
+                    - /url: https://github.com/bbocks
+                    - img [ref=e1554]
+                    - generic [ref=e1557]:
+                      - generic [ref=e1558]: GitHub
+                      - generic [ref=e1559]: github.com/bbocks
+            - generic [ref=e1560]:
+              - generic [ref=e1561]:
+                - generic "resume.pdf" [ref=e1566]
+                - generic [ref=e1567]: artifact
+              - generic [ref=e1568]:
+                - heading "Download resume" [level=4] [ref=e1569]
+                - paragraph [ref=e1570]: Get a detailed overview of my experience, skills, and projects in PDF format.
+                - link "Download PDF" [ref=e1571] [cursor=pointer]:
+                  - /url: /Brett_Resume_8-20-25.pdf
+                  - img [ref=e1572]
+                  - generic [ref=e1576]: Download PDF
+            - generic [ref=e1577]:
+              - generic [ref=e1578]:
+                - generic "status" [ref=e1583]
+                - generic [ref=e1584]: availability
+              - generic [ref=e1585]:
+                - heading "Availability" [level=4] [ref=e1586]
+                - generic [ref=e1587]:
+                  - generic [ref=e1590]: Open to new opportunities
+                  - generic [ref=e1593]: Available for freelance projects
+                  - generic [ref=e1596]: Interested in collaboration
+  - generic [ref=e1597]: "0"

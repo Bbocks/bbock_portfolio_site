@@ -2,6 +2,9 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import { Calendar, Clock, ArrowRight, Tag } from 'lucide-react'
+import ScrollSection from './ScrollSection'
+import TerminalPanel from './terminal/TerminalPanel'
+import { motionEnter, staggerChildren } from '../lib/motion'
 
 interface BlogPost {
   id: string
@@ -19,33 +22,36 @@ const blogPosts: BlogPost[] = [
   {
     id: 'proxmox-setup',
     title: 'Building a Proxmox Homelab on Old Hardware',
-    excerpt: 'How I transformed an old Dell OptiPlex into a powerful virtualization server using Proxmox VE, complete with automated backups and monitoring.',
+    excerpt:
+      'How I transformed an old Dell OptiPlex into a powerful virtualization server using Proxmox VE, complete with automated backups and monitoring.',
     content: 'Full article content would go here...',
     date: '2024-01-15',
     readTime: '8 min read',
     tags: ['Proxmox', 'Homelab', 'Virtualization', 'Hardware'],
     category: 'homelab',
-    featured: true
+    featured: true,
   },
   {
     id: 'docker-optimization',
     title: 'Optimizing Docker Compose for Production',
-    excerpt: 'Best practices for structuring Docker Compose files, implementing health checks, and achieving zero-downtime deployments.',
+    excerpt:
+      'Best practices for structuring Docker Compose files, implementing health checks, and achieving zero-downtime deployments.',
     content: 'Full article content would go here...',
     date: '2024-01-10',
     readTime: '12 min read',
     tags: ['Docker', 'Docker Compose', 'DevOps', 'Deployment'],
-    category: 'tutorial'
+    category: 'tutorial',
   },
   {
     id: 'c-memory-debugging',
     title: 'Debugging C Memory Leaks in Teaching Labs',
-    excerpt: 'Common memory management pitfalls in C programming and how to use Valgrind and GDB to identify and fix memory leaks.',
+    excerpt:
+      'Common memory management pitfalls in C programming and how to use Valgrind and GDB to identify and fix memory leaks.',
     content: 'Full article content would go here...',
     date: '2024-01-05',
     readTime: '10 min read',
     tags: ['C Programming', 'Memory Management', 'Debugging', 'Valgrind'],
-    category: 'debugging'
+    category: 'debugging',
   },
   {
     id: 'grafana-monitoring',
@@ -55,17 +61,18 @@ const blogPosts: BlogPost[] = [
     date: '2023-12-28',
     readTime: '15 min read',
     tags: ['Grafana', 'Prometheus', 'Monitoring', 'Homelab'],
-    category: 'homelab'
+    category: 'homelab',
   },
   {
     id: 'systems-programming',
     title: 'Systems Programming Fundamentals',
-    excerpt: 'Understanding the basics of systems programming, from process management to inter-process communication.',
+    excerpt:
+      'Understanding the basics of systems programming, from process management to inter-process communication.',
     content: 'Full article content would go here...',
     date: '2023-12-20',
     readTime: '20 min read',
     tags: ['Systems Programming', 'Linux', 'Process Management', 'IPC'],
-    category: 'systems'
+    category: 'systems',
   },
   {
     id: 'ansible-automation',
@@ -75,219 +82,246 @@ const blogPosts: BlogPost[] = [
     date: '2023-12-15',
     readTime: '14 min read',
     tags: ['Ansible', 'Automation', 'DevOps', 'Configuration Management'],
-    category: 'tutorial'
-  }
+    category: 'tutorial',
+  },
 ]
 
-const BlogSection = () => {
+const BlogSection = ({ enableParallax = true }: { enableParallax?: boolean }) => {
   const [selectedCategory, setSelectedCategory] = useState<string>('all')
   const [ref, inView] = useInView({
     triggerOnce: true,
-    threshold: 0.1,
+    threshold: 0.06,
   })
 
   const categories = [
     { id: 'all', name: 'All Posts', count: blogPosts.length },
-    { id: 'homelab', name: 'Homelab', count: blogPosts.filter(p => p.category === 'homelab').length },
-    { id: 'systems', name: 'Systems', count: blogPosts.filter(p => p.category === 'systems').length },
-    { id: 'tutorial', name: 'Tutorials', count: blogPosts.filter(p => p.category === 'tutorial').length },
-    { id: 'debugging', name: 'Debugging', count: blogPosts.filter(p => p.category === 'debugging').length }
+    { id: 'homelab', name: 'Homelab', count: blogPosts.filter((p) => p.category === 'homelab').length },
+    { id: 'systems', name: 'Systems', count: blogPosts.filter((p) => p.category === 'systems').length },
+    { id: 'tutorial', name: 'Tutorials', count: blogPosts.filter((p) => p.category === 'tutorial').length },
+    { id: 'debugging', name: 'Debugging', count: blogPosts.filter((p) => p.category === 'debugging').length },
   ]
 
-  const filteredPosts = selectedCategory === 'all' 
-    ? blogPosts 
-    : blogPosts.filter(post => post.category === selectedCategory)
+  const filteredPosts =
+    selectedCategory === 'all' ? blogPosts : blogPosts.filter((post) => post.category === selectedCategory)
 
-  const getCategoryColor = (category: string) => {
+  const getCategoryStyles = (category: string) => {
     switch (category) {
-      case 'homelab': return 'bg-primary-500'
-      case 'systems': return 'bg-accent-500'
-      case 'tutorial': return 'bg-purple-500'
-      case 'debugging': return 'bg-orange-500'
-      default: return 'bg-gray-500'
+      case 'homelab':
+        return 'bg-sky-500/90 text-white'
+      case 'systems':
+        return 'bg-emerald-500/90 text-white'
+      case 'tutorial':
+        return 'bg-violet-500/90 text-white'
+      case 'debugging':
+        return 'bg-amber-500/90 text-white'
+      default:
+        return 'bg-slate-500 text-white'
     }
   }
 
   return (
-    <section id="blog" className="py-20 bg-dark-800">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <ScrollSection
+      id="blog"
+      className="bg-[var(--color-bg-elevated)] py-12 lg:py-20"
+      movement={32}
+      enableParallax={enableParallax}
+    >
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <motion.div
           ref={ref}
-          initial={{ opacity: 0, y: 50 }}
+          initial={{ opacity: 0, y: 28 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-16"
+          transition={motionEnter}
+          className="mb-14 text-center"
         >
-          <h2 className="text-4xl md:text-5xl font-bold font-mono mb-4">
+          <h2 className="font-mono text-3xl font-bold tracking-tight text-[var(--color-text)] md:text-5xl">
             <span className="gradient-text">Blog & Notes</span>
           </h2>
-          <p className="text-xl text-gray-400 max-w-3xl mx-auto">
-            Technical articles, tutorials, and insights from my journey in systems engineering 
-            and infrastructure management.
+          <p className="mx-auto mt-4 max-w-3xl text-lg text-[var(--color-text-muted)]">
+            Technical articles, tutorials, and insights from my journey in systems engineering and infrastructure management.
           </p>
         </motion.div>
 
-        {/* Category Filter */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 16 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="flex flex-wrap justify-center gap-4 mb-12"
+          transition={{ ...motionEnter, delay: staggerChildren * 2 }}
+          className="mb-12 flex flex-wrap justify-center gap-3"
+          role="tablist"
+          aria-label="Filter posts by category"
         >
-          {categories.map((category) => (
-            <motion.button
-              key={category.id}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={() => setSelectedCategory(category.id)}
-              className={`flex items-center space-x-2 px-4 py-2 rounded-lg font-medium transition-all duration-200 ${
-                selectedCategory === category.id
-                  ? 'bg-primary-600 text-white shadow-lg'
-                  : 'bg-dark-700 text-gray-300 hover:bg-dark-600'
-              }`}
-            >
-              <span>{category.name}</span>
-              <span className="text-xs bg-white/20 px-2 py-1 rounded-full">
-                {category.count}
-              </span>
-            </motion.button>
-          ))}
+          {categories.map((category) => {
+            const selected = selectedCategory === category.id
+            return (
+              <motion.button
+                key={category.id}
+                type="button"
+                role="tab"
+                aria-selected={selected}
+                whileHover={{ y: -2 }}
+                whileTap={{ scale: 0.98 }}
+                transition={motionEnter}
+                onClick={() => setSelectedCategory(category.id)}
+                className={`inline-flex items-center gap-2 rounded-md border px-4 py-2 font-mono text-sm transition-colors focus-visible:focus-ring ${
+                  selected
+                    ? 'border-[var(--color-terminal)] bg-[var(--color-terminal)]/15 text-[var(--color-terminal)]'
+                    : 'border-[var(--color-border-subtle)] bg-[var(--color-panel-header)] text-[var(--color-text-muted)] hover:border-[var(--color-border)]'
+                }`}
+              >
+                {category.name}
+                <span className="stamp-pill border-0 bg-white/10 px-2 py-0.5 text-[10px] text-[var(--color-text)]">
+                  {category.count}
+                </span>
+              </motion.button>
+            )
+          })}
         </motion.div>
 
-        {/* Featured Post */}
         {selectedCategory === 'all' && (
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.4 }}
+            transition={{ ...motionEnter, delay: staggerChildren * 3 }}
             className="mb-12"
           >
-            {blogPosts.filter(post => post.featured).map((post) => (
-              <div key={post.id} className="bg-dark-700 rounded-lg p-8 card-hover">
-                <div className="flex items-center space-x-2 mb-4">
-                  <span className={`px-3 py-1 rounded-full text-xs font-medium text-white ${getCategoryColor(post.category)}`}>
-                    {post.category}
-                  </span>
-                  <span className="text-primary-400 text-sm font-medium">Featured</span>
-                </div>
-                
-                <h3 className="text-2xl font-bold text-white mb-4">{post.title}</h3>
-                <p className="text-gray-300 mb-6 text-lg leading-relaxed">{post.excerpt}</p>
-                
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center space-x-4 text-sm text-gray-400">
-                    <div className="flex items-center space-x-1">
-                      <Calendar className="h-4 w-4" />
-                      <span>{new Date(post.date).toLocaleDateString()}</span>
-                    </div>
-                    <div className="flex items-center space-x-1">
-                      <Clock className="h-4 w-4" />
-                      <span>{post.readTime}</span>
-                    </div>
+            {blogPosts
+              .filter((post) => post.featured)
+              .map((post) => (
+                <TerminalPanel
+                  key={post.id}
+                  title={`${post.id}.md`}
+                  subtitle="featured"
+                  className="card-hover"
+                  contentClassName="p-8"
+                >
+                  <div className="mb-4 flex flex-wrap items-center gap-2">
+                    <span className={`stamp-pill border-0 px-2.5 py-1 text-[11px] font-medium normal-case ${getCategoryStyles(post.category)}`}>
+                      {post.category}
+                    </span>
+                    <span className="font-mono text-xs text-[var(--color-accent)]">featured</span>
                   </div>
-                  
-                  <motion.button
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="flex items-center space-x-2 bg-primary-600 hover:bg-primary-700 text-white px-4 py-2 rounded-lg transition-colors"
-                  >
-                    <span>Read More</span>
-                    <ArrowRight className="h-4 w-4" />
-                  </motion.button>
-                </div>
-              </div>
-            ))}
+                  <h3 className="mb-3 font-mono text-2xl font-semibold text-[var(--color-text)]">{post.title}</h3>
+                  <p className="mb-6 text-lg leading-relaxed text-[var(--color-text-muted)]">{post.excerpt}</p>
+                  <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+                    <div className="flex flex-wrap items-center gap-4 text-sm text-[var(--color-text-muted)]">
+                      <span className="stamp-pill inline-flex items-center gap-1 normal-case">
+                        <Calendar className="h-3.5 w-3.5" aria-hidden />
+                        {new Date(post.date).toLocaleDateString()}
+                      </span>
+                      <span className="inline-flex items-center gap-1">
+                        <Clock className="h-4 w-4" aria-hidden />
+                        {post.readTime}
+                      </span>
+                    </div>
+                    <motion.button
+                      type="button"
+                      whileHover={{ y: -1 }}
+                      whileTap={{ scale: 0.98 }}
+                      transition={motionEnter}
+                      className="inline-flex items-center gap-2 rounded-md bg-[var(--color-terminal)] px-4 py-2 font-mono text-sm font-medium text-[var(--color-bg-deep)] focus-visible:focus-ring"
+                    >
+                      <span>Read more</span>
+                      <ArrowRight className="h-4 w-4" aria-hidden />
+                    </motion.button>
+                  </div>
+                </TerminalPanel>
+              ))}
           </motion.div>
         )}
 
-        {/* Blog Posts Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredPosts.filter(post => !post.featured || selectedCategory !== 'all').map((post, index) => (
-            <motion.article
-              key={post.id}
-              initial={{ opacity: 0, y: 50 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.8, delay: 0.5 + index * 0.1 }}
-              className="bg-dark-700 rounded-lg overflow-hidden card-hover"
-            >
-              <div className="p-6">
-                <div className="flex items-center justify-between mb-4">
-                  <span className={`px-2 py-1 rounded-full text-xs font-medium text-white ${getCategoryColor(post.category)}`}>
-                    {post.category}
-                  </span>
-                  <div className="flex items-center space-x-1 text-xs text-gray-400">
-                    <Clock className="h-3 w-3" />
-                    <span>{post.readTime}</span>
-                  </div>
-                </div>
-
-                <h3 className="text-xl font-bold text-white mb-3 line-clamp-2">{post.title}</h3>
-                <p className="text-gray-400 text-sm mb-4 line-clamp-3">{post.excerpt}</p>
-
-                {/* Tags */}
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {post.tags.slice(0, 3).map((tag) => (
-                    <span key={tag} className="flex items-center space-x-1 text-xs text-gray-500">
-                      <Tag className="h-3 w-3" />
-                      <span>{tag}</span>
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+          {filteredPosts
+            .filter((post) => !post.featured || selectedCategory !== 'all')
+            .map((post, index) => (
+              <motion.article
+                key={post.id}
+                initial={{ opacity: 0, y: 28 }}
+                animate={inView ? { opacity: 1, y: 0 } : {}}
+                transition={{ ...motionEnter, delay: 0.08 + index * staggerChildren }}
+              >
+                <TerminalPanel
+                  title={post.title.slice(0, 28) + (post.title.length > 28 ? '…' : '')}
+                  subtitle={post.id}
+                  className="card-hover h-full"
+                  contentClassName="p-6"
+                >
+                  <div className="mb-4 flex items-center justify-between gap-2">
+                    <span className={`stamp-pill border-0 px-2 py-1 text-[10px] font-medium normal-case ${getCategoryStyles(post.category)}`}>
+                      {post.category}
                     </span>
-                  ))}
-                  {post.tags.length > 3 && (
-                    <span className="text-xs text-gray-500">+{post.tags.length - 3} more</span>
-                  )}
-                </div>
-
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center space-x-1 text-xs text-gray-400">
-                    <Calendar className="h-3 w-3" />
-                    <span>{new Date(post.date).toLocaleDateString()}</span>
+                    <span className="inline-flex items-center gap-1 font-mono text-xs text-[var(--color-text-muted)]">
+                      <Clock className="h-3.5 w-3.5" aria-hidden />
+                      {post.readTime}
+                    </span>
                   </div>
-                  
-                  <motion.button
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="flex items-center space-x-1 text-primary-400 hover:text-primary-300 text-sm font-medium transition-colors"
-                  >
-                    <span>Read</span>
-                    <ArrowRight className="h-3 w-3" />
-                  </motion.button>
-                </div>
-              </div>
-            </motion.article>
-          ))}
+                  <h3 className="mb-2 line-clamp-2 font-mono text-lg font-semibold text-[var(--color-text)]">{post.title}</h3>
+                  <p className="mb-4 line-clamp-3 text-sm leading-relaxed text-[var(--color-text-muted)]">{post.excerpt}</p>
+                  <div className="mb-4 flex flex-wrap gap-2">
+                    {post.tags.slice(0, 3).map((tag) => (
+                      <span key={tag} className="inline-flex items-center gap-1 font-mono text-[11px] text-[var(--color-text-muted)]">
+                        <Tag className="h-3 w-3 text-[var(--color-terminal)]" aria-hidden />
+                        {tag}
+                      </span>
+                    ))}
+                    {post.tags.length > 3 && (
+                      <span className="font-mono text-[11px] text-[var(--color-text-muted)]">+{post.tags.length - 3}</span>
+                    )}
+                  </div>
+                  <div className="flex items-center justify-between border-t border-[var(--color-border-subtle)] pt-4">
+                    <span className="stamp-pill inline-flex items-center gap-1 normal-case">
+                      <Calendar className="h-3 w-3" aria-hidden />
+                      {new Date(post.date).toLocaleDateString()}
+                    </span>
+                    <motion.button
+                      type="button"
+                      whileHover={{ x: 2 }}
+                      transition={motionEnter}
+                      className="inline-flex items-center gap-1 font-mono text-sm font-medium text-[var(--color-terminal)] focus-visible:focus-ring"
+                    >
+                      Read
+                      <ArrowRight className="h-3.5 w-3.5" aria-hidden />
+                    </motion.button>
+                  </div>
+                </TerminalPanel>
+              </motion.article>
+            ))}
         </div>
 
-        {/* Newsletter Signup */}
         <motion.div
-          initial={{ opacity: 0, y: 50 }}
+          initial={{ opacity: 0, y: 24 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, delay: 0.8 }}
-          className="mt-16 bg-gradient-to-r from-primary-900/20 to-accent-900/20 rounded-lg p-8 border border-primary-500/20"
+          transition={{ ...motionEnter, delay: 0.5 }}
+          className="mt-16"
         >
-          <div className="text-center">
-            <h3 className="text-2xl font-bold text-white mb-4">Stay Updated</h3>
-            <p className="text-gray-400 mb-6 max-w-2xl mx-auto">
-              Get notified when I publish new articles about homelab setup, systems programming, 
-              and infrastructure automation.
+          <TerminalPanel title="notify.list" subtitle="mailing" contentClassName="p-8 text-center">
+            <h3 className="mb-3 font-mono text-2xl font-semibold text-[var(--color-text)]">Stay updated</h3>
+            <p className="mx-auto mb-6 max-w-2xl text-[var(--color-text-muted)]">
+              Get notified when I publish new articles about homelab setup, systems programming, and infrastructure automation.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
+            <div className="mx-auto flex max-w-md flex-col gap-3 sm:flex-row">
+              <label htmlFor="blog-email" className="sr-only">
+                Email for updates
+              </label>
               <input
+                id="blog-email"
                 type="email"
-                placeholder="Enter your email"
-                className="flex-1 px-4 py-3 bg-dark-700 border border-dark-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-primary-400"
+                placeholder="you@example.com"
+                className="min-h-[44px] flex-1 rounded-md border border-[var(--color-border-subtle)] bg-[var(--color-bg-elevated)] px-4 py-3 text-[var(--color-text)] placeholder:text-[var(--color-text-muted)] focus:border-[var(--color-terminal)] focus:outline-none focus:ring-1 focus:ring-[var(--color-terminal)]"
               />
               <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="px-6 py-3 bg-primary-600 hover:bg-primary-700 text-white rounded-lg font-medium transition-colors"
+                type="button"
+                whileHover={{ y: -1 }}
+                whileTap={{ scale: 0.98 }}
+                transition={motionEnter}
+                className="min-h-[44px] rounded-md bg-[var(--color-terminal)] px-6 font-mono text-sm font-medium text-[var(--color-bg-deep)] focus-visible:focus-ring"
               >
                 Subscribe
               </motion.button>
             </div>
-          </div>
+          </TerminalPanel>
         </motion.div>
       </div>
-    </section>
+    </ScrollSection>
   )
 }
 

@@ -1,9 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: [
-    "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
-  ],
+  content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
     extend: {
       colors: {
@@ -42,18 +39,22 @@ export default {
           700: '#334155',
           800: '#1e293b',
           900: '#0f172a',
-        }
+        },
       },
       fontFamily: {
         mono: ['JetBrains Mono', 'Fira Code', 'Consolas', 'monospace'],
-        sans: ['Inter', 'system-ui', 'sans-serif'],
+        sans: ['Source Sans 3', 'system-ui', 'sans-serif'],
+      },
+      transitionDuration: {
+        'motion-enter': '380ms',
+        'motion-exit': '240ms',
       },
       animation: {
         'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-        'glow': 'glow 2s ease-in-out infinite alternate',
-        'typing': 'typing 3.5s steps(40, end)',
-        'blink': 'blink 1s infinite',
-        'float': 'float 6s ease-in-out infinite',
+        glow: 'glow 2s ease-in-out infinite alternate',
+        typing: 'typing 3.5s steps(40, end)',
+        blink: 'blink 1s infinite',
+        float: 'float 6s ease-in-out infinite',
         'network-pulse': 'network-pulse 4s ease-in-out infinite',
       },
       keyframes: {
@@ -62,8 +63,8 @@ export default {
           '100%': { boxShadow: '0 0 10px #0ea5e9, 0 0 20px #0ea5e9, 0 0 30px #0ea5e9' },
         },
         typing: {
-          'from': { width: '0' },
-          'to': { width: '100%' },
+          from: { width: '0' },
+          to: { width: '100%' },
         },
         blink: {
           '0%, 50%': { opacity: '1' },

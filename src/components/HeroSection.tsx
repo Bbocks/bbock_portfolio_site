@@ -55,12 +55,13 @@ const HeroSection = ({ shell = false }: HeroSectionProps) => {
     <div
       className={
         shell
-          ? 'relative z-[1] h-full min-h-0 px-2 py-3 sm:px-3 sm:py-4'
+          ? 'relative z-[1] flex h-full min-h-0 flex-col px-2 pb-1 pt-3 sm:px-3 sm:pb-1 sm:pt-4 lg:px-0 lg:pt-3 lg:pb-1'
           : 'relative z-[1] mx-auto max-w-4xl px-4 sm:px-6 lg:px-8'
       }
     >
       <motion.div
         ref={ref}
+        className={shell ? 'flex min-h-0 flex-1 flex-col' : undefined}
         initial={{ opacity: 0, x: prefersReducedMotion ? 0 : -28 }}
         animate={shell || inView ? { opacity: 1, x: 0 } : {}}
         transition={motionEnter}
@@ -68,7 +69,10 @@ const HeroSection = ({ shell = false }: HeroSectionProps) => {
         <TerminalPanel
           title="~/session"
           subtitle="login"
-          contentClassName={shell ? 'p-4 sm:p-5' : 'p-6 sm:p-10'}
+          className={shell ? 'flex min-h-0 flex-1 flex-col' : ''}
+          contentClassName={
+            shell ? 'flex min-h-0 flex-1 flex-col overflow-y-auto p-4 sm:p-5' : 'p-6 sm:p-10'
+          }
         >
           <p className="mb-2 font-mono text-[10px] uppercase tracking-[0.2em] text-[var(--color-text-muted)] sm:text-xs">
             <span className="text-[var(--color-accent)]">ok</span> — ready
@@ -191,7 +195,7 @@ const HeroSection = ({ shell = false }: HeroSectionProps) => {
             animate={shell || inView ? { opacity: 1 } : {}}
             transition={{ ...motionEnter, delay: staggerChildren * 6 }}
             className={`grid grid-cols-2 gap-3 border-t border-[var(--color-border-subtle)] sm:gap-4 md:grid-cols-4 md:gap-6 ${
-              shell ? 'mt-6 pt-5' : 'mt-10 pt-8'
+              shell ? 'mt-4 pt-4 sm:mt-auto sm:pt-5' : 'mt-10 pt-8'
             }`}
           >
             {[

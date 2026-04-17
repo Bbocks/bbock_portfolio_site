@@ -146,11 +146,11 @@ const PortfolioShell = () => {
   return (
     <div className="flex h-[100dvh] min-h-0 flex-col overflow-hidden bg-[var(--color-bg-deep)] text-[var(--color-text)] lg:flex-row">
       {isLg && (
-        <aside className="flex min-h-0 w-[25%] shrink-0 flex-col border-r border-[var(--color-border-subtle)] bg-[var(--color-bg-deep)]">
-          <div className="h-[60vh] min-h-0 shrink-0 overflow-hidden border-b border-[var(--color-border-subtle)]">
+        <aside className="flex min-h-0 w-[25%] shrink-0 flex-col gap-1 border-r border-[var(--color-border-subtle)] bg-[var(--color-bg-deep)] px-2 pb-2 pt-2">
+          <div className="h-[60vh] min-h-0 w-full min-w-0 shrink-0 overflow-hidden">
             <HeroSection shell />
           </div>
-          <div className="flex min-h-0 flex-1 basis-0 flex-col p-2">
+          <div className="flex min-h-0 w-full min-w-0 flex-1 basis-0 flex-col">
             <CommandTerminal
               lines={terminalLines}
               onSubmitLine={onSubmitLine}

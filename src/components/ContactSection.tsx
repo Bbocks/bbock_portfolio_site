@@ -3,39 +3,42 @@ import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import { Mail, Linkedin, Github, Download, Send, CheckCircle } from 'lucide-react'
 import ScrollSection from './ScrollSection'
+import TerminalPanel from './terminal/TerminalPanel'
+import { motionEnter, staggerChildren } from '../lib/motion'
+
+const fieldClass =
+  'min-h-[44px] w-full rounded-md border border-[var(--color-border-subtle)] bg-[var(--color-bg-elevated)] px-4 py-3 text-[var(--color-text)] placeholder:text-[var(--color-text-muted)] focus:border-[var(--color-terminal)] focus:outline-none focus:ring-1 focus:ring-[var(--color-terminal)]'
 
 const ContactSection = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     subject: '',
-    message: ''
+    message: '',
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
   const [ref, inView] = useInView({
     triggerOnce: true,
-    threshold: 0.1,
+    threshold: 0.06,
   })
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     })
   }
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
-    
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 2000))
-    
+
+    await new Promise((resolve) => setTimeout(resolve, 2000))
+
     setIsSubmitting(false)
     setIsSubmitted(true)
-    
-    // Reset form after 3 seconds
+
     setTimeout(() => {
       setIsSubmitted(false)
       setFormData({ name: '', email: '', subject: '', message: '' })
@@ -44,197 +47,197 @@ const ContactSection = () => {
 
   const contactInfo = [
     {
-      icon: <Mail className="h-6 w-6" />,
+      icon: <Mail className="h-6 w-6" aria-hidden />,
       title: 'Email',
       value: 'bocksteink@gmail.com',
-      link: 'mailto:bocksteink@gmail.com'
+      link: 'mailto:bocksteink@gmail.com',
     },
     {
-      icon: <Linkedin className="h-6 w-6" />,
+      icon: <Linkedin className="h-6 w-6" aria-hidden />,
       title: 'LinkedIn',
       value: 'linkedin.com/in/brettbocks',
-      link: 'https://linkedin.com/in/brettbocks'
+      link: 'https://linkedin.com/in/brettbocks',
     },
     {
-      icon: <Github className="h-6 w-6" />,
+      icon: <Github className="h-6 w-6" aria-hidden />,
       title: 'GitHub',
       value: 'github.com/bbocks',
-      link: 'https://github.com/bbocks'
-    }
+      link: 'https://github.com/bbocks',
+    },
   ]
 
   return (
-    <ScrollSection id="contact" className="py-20 bg-dark-900" movement={40}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <ScrollSection id="contact" className="bg-[var(--color-bg-deep)] py-20" movement={28}>
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <motion.div
           ref={ref}
-          initial={{ opacity: 0, y: 50 }}
+          initial={{ opacity: 0, y: 28 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-16"
+          transition={motionEnter}
+          className="mb-14 text-center"
         >
-          <h2 className="text-4xl md:text-5xl font-bold font-mono mb-4">
+          <h2 className="font-mono text-3xl font-bold tracking-tight text-[var(--color-text)] md:text-5xl">
             <span className="gradient-text">Get In Touch</span>
           </h2>
-          <p className="text-xl text-gray-400 max-w-3xl mx-auto">
-            Interested in collaborating on systems engineering projects or have questions 
-            about my work? Let's connect and discuss how we can work together.
+          <p className="mx-auto mt-4 max-w-3xl text-lg text-[var(--color-text-muted)]">
+            Interested in collaborating on systems engineering projects or have questions about my work? Let&apos;s connect and
+            discuss how we can work together.
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          {/* Contact Form */}
+        <div className="grid grid-cols-1 gap-10 lg:grid-cols-2 lg:gap-12">
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
+            initial={{ opacity: 0, x: -28 }}
             animate={inView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="bg-dark-700 rounded-lg p-8"
+            transition={{ ...motionEnter, delay: staggerChildren * 2 }}
           >
-            <h3 className="text-2xl font-bold text-white mb-6">Send a Message</h3>
-            
-            {isSubmitted ? (
-              <motion.div
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                className="text-center py-8"
-              >
-                <CheckCircle className="h-16 w-16 text-green-400 mx-auto mb-4" />
-                <h4 className="text-xl font-bold text-white mb-2">Message Sent!</h4>
-                <p className="text-gray-400">Thank you for reaching out. I'll get back to you soon.</p>
-              </motion.div>
-            ) : (
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <TerminalPanel title="compose" subtitle="--to brett" contentClassName="p-6 md:p-8">
+              <h3 className="mb-6 font-mono text-xl font-semibold text-[var(--color-text)]">Send a message</h3>
+
+              {isSubmitted ? (
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.96 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={motionEnter}
+                  className="py-8 text-center"
+                  role="status"
+                  aria-live="polite"
+                >
+                  <CheckCircle className="mx-auto mb-4 h-16 w-16 text-[var(--color-accent)]" aria-hidden />
+                  <h4 className="mb-2 font-mono text-xl font-semibold text-[var(--color-text)]">Message sent</h4>
+                  <p className="text-[var(--color-text-muted)]">Thank you for reaching out. I&apos;ll get back to you soon.</p>
+                </motion.div>
+              ) : (
+                <form onSubmit={handleSubmit} className="space-y-6" aria-busy={isSubmitting}>
+                  <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+                    <div>
+                      <label htmlFor="name" className="mb-2 block text-sm font-medium text-[var(--color-text-muted)]">
+                        Name
+                      </label>
+                      <input
+                        type="text"
+                        id="name"
+                        name="name"
+                        value={formData.name}
+                        onChange={handleInputChange}
+                        required
+                        autoComplete="name"
+                        className={fieldClass}
+                        placeholder="Your name"
+                      />
+                    </div>
+                    <div>
+                      <label htmlFor="email" className="mb-2 block text-sm font-medium text-[var(--color-text-muted)]">
+                        Email
+                      </label>
+                      <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        value={formData.email}
+                        onChange={handleInputChange}
+                        required
+                        autoComplete="email"
+                        className={fieldClass}
+                        placeholder="your.email@example.com"
+                      />
+                    </div>
+                  </div>
+
                   <div>
-                    <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-2">
-                      Name
+                    <label htmlFor="subject" className="mb-2 block text-sm font-medium text-[var(--color-text-muted)]">
+                      Subject
                     </label>
                     <input
                       type="text"
-                      id="name"
-                      name="name"
-                      value={formData.name}
+                      id="subject"
+                      name="subject"
+                      value={formData.subject}
                       onChange={handleInputChange}
                       required
-                      className="w-full px-4 py-3 bg-dark-600 border border-dark-500 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-primary-400 transition-colors"
-                      placeholder="Your name"
+                      className={fieldClass}
+                      placeholder="What's this about?"
                     />
                   </div>
+
                   <div>
-                    <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-2">
-                      Email
+                    <label htmlFor="message" className="mb-2 block text-sm font-medium text-[var(--color-text-muted)]">
+                      Message
                     </label>
-                    <input
-                      type="email"
-                      id="email"
-                      name="email"
-                      value={formData.email}
+                    <textarea
+                      id="message"
+                      name="message"
+                      value={formData.message}
                       onChange={handleInputChange}
                       required
-                      className="w-full px-4 py-3 bg-dark-600 border border-dark-500 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-primary-400 transition-colors"
-                      placeholder="your.email@example.com"
+                      rows={6}
+                      className={`${fieldClass} resize-none`}
+                      placeholder="Tell me about your project or question..."
                     />
                   </div>
-                </div>
-                
-                <div>
-                  <label htmlFor="subject" className="block text-sm font-medium text-gray-300 mb-2">
-                    Subject
-                  </label>
-                  <input
-                    type="text"
-                    id="subject"
-                    name="subject"
-                    value={formData.subject}
-                    onChange={handleInputChange}
-                    required
-                    className="w-full px-4 py-3 bg-dark-600 border border-dark-500 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-primary-400 transition-colors"
-                    placeholder="What's this about?"
-                  />
-                </div>
-                
-                <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-gray-300 mb-2">
-                    Message
-                  </label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    value={formData.message}
-                    onChange={handleInputChange}
-                    required
-                    rows={6}
-                    className="w-full px-4 py-3 bg-dark-600 border border-dark-500 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-primary-400 transition-colors resize-none"
-                    placeholder="Tell me about your project or question..."
-                  />
-                </div>
-                
-                <motion.button
-                  type="submit"
-                  disabled={isSubmitting}
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  className="w-full flex items-center justify-center space-x-2 bg-primary-600 hover:bg-primary-700 disabled:bg-primary-800 text-white px-6 py-3 rounded-lg font-medium transition-colors"
-                >
-                  {isSubmitting ? (
-                    <>
-                      <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white"></div>
-                      <span>Sending...</span>
-                    </>
-                  ) : (
-                    <>
-                      <Send className="h-5 w-5" />
-                      <span>Send Message</span>
-                    </>
-                  )}
-                </motion.button>
-              </form>
-            )}
+
+                  <motion.button
+                    type="submit"
+                    disabled={isSubmitting}
+                    whileHover={{ y: isSubmitting ? 0 : -1 }}
+                    whileTap={{ scale: isSubmitting ? 1 : 0.98 }}
+                    transition={motionEnter}
+                    className="flex min-h-[48px] w-full items-center justify-center gap-2 rounded-md bg-[var(--color-terminal)] px-6 py-3 font-mono text-sm font-semibold text-[var(--color-bg-deep)] disabled:cursor-not-allowed disabled:opacity-50 focus-visible:focus-ring"
+                  >
+                    {isSubmitting ? (
+                      <>
+                        <span
+                          className="h-5 w-5 animate-spin rounded-full border-2 border-[var(--color-bg-deep)] border-t-transparent"
+                          aria-hidden
+                        />
+                        <span>Sending...</span>
+                      </>
+                    ) : (
+                      <>
+                        <Send className="h-5 w-5" aria-hidden />
+                        <span>Send message</span>
+                      </>
+                    )}
+                  </motion.button>
+                </form>
+              )}
+            </TerminalPanel>
           </motion.div>
 
-          {/* Contact Information */}
           <motion.div
-            initial={{ opacity: 0, x: 50 }}
+            initial={{ opacity: 0, x: 28 }}
             animate={inView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.4 }}
+            transition={{ ...motionEnter, delay: staggerChildren * 3 }}
             className="space-y-8"
           >
-            <div>
-              <h3 className="text-2xl font-bold text-white mb-6">Contact Information</h3>
-              <div className="space-y-4">
+            <TerminalPanel title="contact.rc" subtitle="links" contentClassName="p-6 md:p-8">
+              <h3 className="mb-6 font-mono text-xl font-semibold text-[var(--color-text)]">Contact information</h3>
+              <div className="space-y-3">
                 {contactInfo.map((info, index) => (
                   <motion.a
                     key={info.title}
                     href={info.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    initial={{ opacity: 0, y: 20 }}
+                    initial={{ opacity: 0, y: 12 }}
                     animate={inView ? { opacity: 1, y: 0 } : {}}
-                    transition={{ duration: 0.5, delay: 0.6 + index * 0.1 }}
-                    whileHover={{ scale: 1.02 }}
-                    className="flex items-center space-x-4 p-4 bg-dark-700 rounded-lg hover:bg-dark-600 transition-colors"
+                    transition={{ ...motionEnter, delay: 0.15 + index * staggerChildren }}
+                    whileHover={{ y: -2 }}
+                    className="flex items-center gap-4 rounded-md border border-[var(--color-border-subtle)] bg-[var(--color-bg-elevated)] p-4 transition-colors hover:border-[var(--color-border)] focus-visible:focus-ring"
                   >
-                    <div className="text-primary-400">
-                      {info.icon}
-                    </div>
-                    <div>
-                      <div className="text-sm font-medium text-gray-400">{info.title}</div>
-                      <div className="text-white">{info.value}</div>
+                    <div className="text-[var(--color-terminal)]">{info.icon}</div>
+                    <div className="min-w-0">
+                      <div className="text-sm font-medium text-[var(--color-text-muted)]">{info.title}</div>
+                      <div className="truncate font-mono text-sm text-[var(--color-text)]">{info.value}</div>
                     </div>
                   </motion.a>
                 ))}
               </div>
-            </div>
+            </TerminalPanel>
 
-            {/* Resume Download */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: 0.9 }}
-              className="bg-gradient-to-r from-primary-900/20 to-accent-900/20 rounded-lg p-6 border border-primary-500/20"
-            >
-              <h4 className="text-lg font-bold text-white mb-3">Download Resume</h4>
-              <p className="text-gray-400 mb-4">
+            <TerminalPanel title="resume.pdf" subtitle="artifact" contentClassName="p-6">
+              <h4 className="mb-2 font-mono text-lg font-semibold text-[var(--color-text)]">Download resume</h4>
+              <p className="mb-4 text-sm text-[var(--color-text-muted)]">
                 Get a detailed overview of my experience, skills, and projects in PDF format.
               </p>
               <motion.a
@@ -242,38 +245,33 @@ const ContactSection = () => {
                 download="Brett_Bockstein_Resume.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="inline-flex items-center space-x-2 bg-primary-600 hover:bg-primary-700 text-white px-4 py-2 rounded-lg transition-colors cursor-pointer"
+                whileHover={{ y: -1 }}
+                whileTap={{ scale: 0.98 }}
+                transition={motionEnter}
+                className="inline-flex min-h-[44px] items-center gap-2 rounded-md bg-[var(--color-terminal)] px-4 py-2 font-mono text-sm font-medium text-[var(--color-bg-deep)] focus-visible:focus-ring"
               >
-                <Download className="h-4 w-4" />
+                <Download className="h-4 w-4" aria-hidden />
                 <span>Download PDF</span>
               </motion.a>
-            </motion.div>
+            </TerminalPanel>
 
-            {/* Availability */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: 1.0 }}
-              className="bg-dark-700 rounded-lg p-6"
-            >
-              <h4 className="text-lg font-bold text-white mb-3">Availability</h4>
-              <div className="space-y-2 text-gray-400">
-                <div className="flex items-center space-x-2">
-                  <div className="w-2 h-2 bg-green-400 rounded-full"></div>
+            <TerminalPanel title="status" subtitle="availability" contentClassName="p-6">
+              <h4 className="mb-3 font-mono text-lg font-semibold text-[var(--color-text)]">Availability</h4>
+              <div className="space-y-2 text-sm text-[var(--color-text-muted)]">
+                <div className="flex items-center gap-2">
+                  <span className="h-2 w-2 shrink-0 rounded-full bg-emerald-400" aria-hidden />
                   <span>Open to new opportunities</span>
                 </div>
-                <div className="flex items-center space-x-2">
-                  <div className="w-2 h-2 bg-green-400 rounded-full"></div>
+                <div className="flex items-center gap-2">
+                  <span className="h-2 w-2 shrink-0 rounded-full bg-emerald-400" aria-hidden />
                   <span>Available for freelance projects</span>
                 </div>
-                <div className="flex items-center space-x-2">
-                  <div className="w-2 h-2 bg-green-400 rounded-full"></div>
+                <div className="flex items-center gap-2">
+                  <span className="h-2 w-2 shrink-0 rounded-full bg-emerald-400" aria-hidden />
                   <span>Interested in collaboration</span>
                 </div>
               </div>
-            </motion.div>
+            </TerminalPanel>
           </motion.div>
         </div>
       </div>

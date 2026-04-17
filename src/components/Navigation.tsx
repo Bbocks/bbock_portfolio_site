@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { Menu, X, Terminal } from 'lucide-react'
+import { motionEnter } from '../lib/motion'
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false)
@@ -8,9 +9,10 @@ const Navigation = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 50)
+      setScrolled(window.scrollY > 24)
     }
-    window.addEventListener('scroll', handleScroll)
+    handleScroll()
+    window.addEventListener('scroll', handleScroll, { passive: true })
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
@@ -36,71 +38,82 @@ const Navigation = () => {
     <motion.nav
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? 'bg-dark-900/90 backdrop-blur-md border-b border-dark-600' : 'bg-transparent'
+      transition={motionEnter}
+      className={`fixed top-0 left-0 right-0 z-50 border-b transition-[background,border-color] duration-motion-enter ${
+        scrolled
+          ? 'border-[var(--color-border-subtle)] bg-[var(--color-panel-header)]/90 backdrop-blur-md'
+          : 'border-transparent bg-transparent'
       }`}
+      aria-label="Primary"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
-          {/* Logo */}
-          <motion.div
-            whileHover={{ scale: 1.05 }}
-            className="flex items-center space-x-2 cursor-pointer"
-            onClick={() => scrollToSection('#home')}
-          >
-            <Terminal className="h-8 w-8 text-primary-400" />
-            <span className="text-xl font-mono font-bold gradient-text">Brett Bockstein</span>
-          </motion.div>
+      <div className="mx-auto flex h-14 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+        <motion.button
+          type="button"
+          whileHover={{ scale: 1.02 }}
+          whileTap={{ scale: 0.98 }}
+          transition={motionEnter}
+          className="flex cursor-pointer items-center gap-2 rounded-md font-mono text-sm text-[var(--color-text)] focus-visible:focus-ring"
+          onClick={() => scrollToSection('#home')}
+        >
+          <Terminal className="h-6 w-6 shrink-0 text-[var(--color-terminal)]" aria-hidden />
+          <span className="hidden font-semibold tracking-tight gradient-text sm:inline">brett@portfolio</span>
+          <span className="stamp-pill hidden sm:inline">session</span>
+        </motion.button>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
-            {navItems.map((item) => (
-              <motion.button
-                key={item.name}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                onClick={() => scrollToSection(item.href)}
-                className="text-gray-300 hover:text-primary-400 transition-colors duration-200 font-medium"
-              >
-                {item.name}
-              </motion.button>
-            ))}
-          </div>
-
-          {/* Mobile menu button */}
-          <div className="md:hidden">
+        <div className="hidden items-center gap-1 md:flex">
+          {navItems.map((item) => (
             <motion.button
-              whileTap={{ scale: 0.95 }}
-              onClick={() => setIsOpen(!isOpen)}
-              className="text-gray-300 hover:text-primary-400 transition-colors duration-200"
+              key={item.name}
+              type="button"
+              whileHover={{ y: -1 }}
+              whileTap={{ scale: 0.97 }}
+              transition={motionEnter}
+              onClick={() => scrollToSection(item.href)}
+              className="rounded px-3 py-1.5 font-mono text-xs uppercase tracking-wider text-[var(--color-text-muted)] transition-colors hover:text-[var(--color-terminal)] focus-visible:focus-ring"
             >
-              {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+              {item.name}
             </motion.button>
-          </div>
+          ))}
         </div>
 
-        {/* Mobile Navigation */}
-        {isOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            className="md:hidden"
+        <div className="md:hidden">
+          <motion.button
+            type="button"
+            whileTap={{ scale: 0.95 }}
+            transition={motionEnter}
+            onClick={() => setIsOpen(!isOpen)}
+            className="rounded-md p-2 text-[var(--color-text-muted)] hover:text-[var(--color-terminal)] focus-visible:focus-ring"
+            aria-expanded={isOpen}
+            aria-controls="mobile-nav"
+            aria-label={isOpen ? 'Close menu' : 'Open menu'}
           >
-            <div className="px-2 pt-2 pb-3 space-y-1 bg-dark-800/95 backdrop-blur-md rounded-lg mt-2 border border-dark-600">
-              {navItems.map((item) => (
-                <button
-                  key={item.name}
-                  onClick={() => scrollToSection(item.href)}
-                  className="block w-full text-left px-3 py-2 text-gray-300 hover:text-primary-400 hover:bg-dark-700 rounded-md transition-colors duration-200"
-                >
-                  {item.name}
-                </button>
-              ))}
-            </div>
-          </motion.div>
-        )}
+            {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          </motion.button>
+        </div>
       </div>
+
+      {isOpen && (
+        <motion.div
+          id="mobile-nav"
+          initial={{ opacity: 0, height: 0 }}
+          animate={{ opacity: 1, height: 'auto' }}
+          exit={{ opacity: 0, height: 0 }}
+          className="border-t border-[var(--color-border-subtle)] bg-[var(--color-panel-header)]/95 backdrop-blur-md md:hidden"
+        >
+          <div className="mx-auto max-w-7xl space-y-1 px-4 py-3">
+            {navItems.map((item) => (
+              <button
+                key={item.name}
+                type="button"
+                onClick={() => scrollToSection(item.href)}
+                className="block w-full rounded-md px-3 py-2.5 text-left font-mono text-sm text-[var(--color-text)] hover:bg-[var(--color-panel)] focus-visible:focus-ring"
+              >
+                <span className="text-[var(--color-terminal)]">$</span> cd {item.name.toLowerCase().replace(/\s+/g, '-')}
+              </button>
+            ))}
+          </div>
+        </motion.div>
+      )}
     </motion.nav>
   )
 }

@@ -142,6 +142,9 @@ temp/
 # Turbo
 .turbo
 
+# Cursor
+.cursor
+
 # Sentry
 .sentryclirc
 

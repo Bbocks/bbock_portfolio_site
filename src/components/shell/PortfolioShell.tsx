@@ -4,6 +4,7 @@ import { usePostHog } from 'posthog-js/react'
 import HeroSection from '../HeroSection'
 import HeroWelcome from './HeroWelcome'
 import CommandTerminal from './CommandTerminal'
+import TerminalHelpSheet from './TerminalHelpSheet'
 import ProjectsSection from '../ProjectsSection'
 import ExperienceSection from '../ExperienceSection'
 import SkillsSection from '../SkillsSection'
@@ -20,6 +21,7 @@ const PortfolioShell = () => {
     typeof window !== 'undefined' ? parseViewFromHash() : 'home',
   )
   const [terminalLines, setTerminalLines] = useState<TerminalLine[]>(TERMINAL_BOOT_LINES)
+  const [terminalHelpOpen, setTerminalHelpOpen] = useState(false)
   const mainRef = useRef<HTMLElement>(null)
   const prefersReducedMotion = useReducedMotion()
   const isLg = useIsLg()
@@ -48,6 +50,14 @@ const PortfolioShell = () => {
   }, [activeView])
 
   useEffect(() => {
+    setTerminalHelpOpen(false)
+  }, [activeView])
+
+  useEffect(() => {
+    if (isLg) setTerminalHelpOpen(false)
+  }, [isLg])
+
+  useEffect(() => {
     posthog?.capture('portfolio_section_changed', { section: activeView })
   }, [activeView, posthog])
 
@@ -62,6 +72,21 @@ const PortfolioShell = () => {
       setTerminalLines((prev) => [...prev, { kind: 'out', text: helpText() }])
       return
     }
+    if ('openHelp' in parsed && parsed.openHelp) {
+      if (isLg) {
+        setTerminalLines((prev) => [
+          ...prev,
+          {
+            kind: 'out',
+            text: 'Tips panel is for the compact mobile bar. Type help for the full command list here.',
+          },
+        ])
+      } else {
+        setTerminalHelpOpen(true)
+        setTerminalLines((prev) => [...prev, { kind: 'out', text: '→ tips' }])
+      }
+      return
+    }
     if ('error' in parsed) {
       setTerminalLines((prev) => [...prev, { kind: 'err', text: parsed.error }])
       return
@@ -70,7 +95,7 @@ const PortfolioShell = () => {
       setTerminalLines((prev) => [...prev, { kind: 'out', text: `→ ${parsed.view}` }])
       setActiveView(parsed.view)
     }
-  }, [])
+  }, [isLg])
 
   const enter = prefersReducedMotion ? { opacity: 1 } : { opacity: 0, x: 16 }
   const animate = { opacity: 1, x: 0 }
@@ -173,9 +198,18 @@ const PortfolioShell = () => {
         </main>
 
         {!isLg && (
-          <div className="h-[min(40vh,280px)] min-h-[200px] shrink-0 border-t border-[var(--color-border-subtle)] bg-[var(--color-bg-deep)] p-2">
-            <CommandTerminal lines={terminalLines} onSubmitLine={onSubmitLine} className="h-full" />
-          </div>
+          <>
+            {terminalHelpOpen && <TerminalHelpSheet onClose={() => setTerminalHelpOpen(false)} />}
+            <div className="shrink-0 border-t border-[var(--color-border-subtle)] bg-[var(--color-bg-deep)] px-2 pb-[max(0.5rem,env(safe-area-inset-bottom))] pt-1.5">
+              <CommandTerminal
+                variant="compact"
+                lines={terminalLines}
+                onSubmitLine={onSubmitLine}
+                onOpenHelp={() => setTerminalHelpOpen(true)}
+                className="w-full"
+              />
+            </div>
+          </>
         )}
       </div>
     </div>

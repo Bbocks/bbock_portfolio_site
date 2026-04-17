@@ -5,6 +5,7 @@ import { Mail, Linkedin, Github, Download, Send, CheckCircle } from 'lucide-reac
 import ScrollSection from './ScrollSection'
 import TerminalPanel from './terminal/TerminalPanel'
 import { motionEnter, staggerChildren } from '../lib/motion'
+import { RESUME_PDF_HREF } from '../lib/resume'
 
 const fieldClass =
   'min-h-[44px] w-full rounded-md border border-[var(--color-border-subtle)] bg-[var(--color-bg-elevated)] px-4 py-3 text-[var(--color-text)] placeholder:text-[var(--color-text-muted)] focus:border-[var(--color-terminal)] focus:outline-none focus:ring-1 focus:ring-[var(--color-terminal)]'
@@ -241,13 +242,12 @@ const ContactSection = ({ enableParallax = true }: { enableParallax?: boolean })
             </TerminalPanel>
 
             <TerminalPanel title="resume.pdf" subtitle="artifact" contentClassName="p-6">
-              <h4 className="mb-2 font-mono text-lg font-semibold text-[var(--color-text)]">Download resume</h4>
+              <h4 className="mb-2 font-mono text-lg font-semibold text-[var(--color-text)]">Resume</h4>
               <p className="mb-4 text-sm text-[var(--color-text-muted)]">
-                Get a detailed overview of my experience, skills, and projects in PDF format.
+                Opens on this site in a new tab so you can bookmark it or download from your browser’s PDF viewer.
               </p>
               <motion.a
-                href="/Brett_Resume_8-20-25.pdf"
-                download="Brett_Bockstein_Resume.pdf"
+                href={RESUME_PDF_HREF}
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ y: -1 }}
@@ -256,7 +256,7 @@ const ContactSection = ({ enableParallax = true }: { enableParallax?: boolean })
                 className="inline-flex min-h-[44px] items-center gap-2 rounded-md bg-[var(--color-terminal)] px-4 py-2 font-mono text-sm font-medium text-[var(--color-bg-deep)] focus-visible:focus-ring"
               >
                 <Download className="h-4 w-4" aria-hidden />
-                <span>Download PDF</span>
+                <span>View resume</span>
               </motion.a>
             </TerminalPanel>
 

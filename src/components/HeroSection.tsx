@@ -7,6 +7,7 @@ import { Download, Linkedin, Github } from 'lucide-react'
 import ScrollSection from './ScrollSection'
 import TerminalPanel from './terminal/TerminalPanel'
 import { motionEnter, staggerChildren } from '../lib/motion'
+import { RESUME_PDF_HREF } from '../lib/resume'
 
 // Serve subset + full Caveat from /public so FontFace loads a normal static URL.
 // Vite's dependency URL for the bundled .ttf can be rejected by Firefox's font sanitizer in dev.
@@ -195,8 +196,7 @@ const HeroSection = ({ shell = false }: HeroSectionProps) => {
               </motion.a>
             </div>
             <motion.a
-              href="/Brett_Resume_8-20-25.pdf"
-              download="Brett_Bockstein_Resume.pdf"
+              href={RESUME_PDF_HREF}
               target="_blank"
               rel="noopener noreferrer"
               whileHover={{ scale: 1.03 }}
@@ -207,7 +207,7 @@ const HeroSection = ({ shell = false }: HeroSectionProps) => {
               }`}
             >
               <Download className={`shrink-0 ${shell ? 'h-4 w-4' : 'h-5 w-5'}`} aria-hidden />
-              <span>Download Resume</span>
+              <span>View resume</span>
             </motion.a>
           </motion.div>
 

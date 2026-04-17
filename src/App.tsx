@@ -1,29 +1,13 @@
-import Navigation from './components/Navigation'
-import HeroSection from './components/HeroSection'
-import ProjectsSection from './components/ProjectsSection'
-import ExperienceSection from './components/ExperienceSection'
-import SkillsSection from './components/SkillsSection'
-import HomelabSection from './components/HomelabSection'
-import BlogSection from './components/BlogSection'
-import ContactSection from './components/ContactSection'
-import { motion, useReducedMotion, useScroll, useSpring, useTransform } from 'framer-motion'
+import PortfolioShell from './components/shell/PortfolioShell'
+import { motion, useReducedMotion } from 'framer-motion'
 
 function App() {
-  const { scrollYProgress } = useScroll()
   const prefersReducedMotion = useReducedMotion()
-  const progressScaleX = useSpring(scrollYProgress, {
-    stiffness: 120,
-    damping: 25,
-    restDelta: 0.001,
-  })
-  const orbOneY = useTransform(scrollYProgress, [0, 1], prefersReducedMotion ? [0, 0] : [0, -160])
-  const orbTwoY = useTransform(scrollYProgress, [0, 1], prefersReducedMotion ? [0, 0] : [0, 120])
 
   return (
-    <div className="relative min-h-screen overflow-x-clip bg-[var(--color-bg-deep)] text-[var(--color-text)]">
-      <motion.div
-        style={{ scaleX: progressScaleX }}
-        className="fixed left-0 right-0 top-0 z-[60] h-0.5 origin-left bg-gradient-to-r from-[var(--color-terminal)] via-[var(--color-accent)] to-[var(--color-terminal-dim)]"
+    <div className="relative h-[100dvh] overflow-hidden bg-[var(--color-bg-deep)] text-[var(--color-text)]">
+      <div
+        className="pointer-events-none fixed left-0 right-0 top-0 z-[60] h-0.5 bg-gradient-to-r from-[var(--color-terminal)] via-[var(--color-accent)] to-[var(--color-terminal-dim)] opacity-90"
         aria-hidden
       />
       <div className="pointer-events-none fixed inset-0 -z-10">
@@ -33,12 +17,14 @@ function App() {
         {!prefersReducedMotion && (
           <>
             <motion.div
-              style={{ y: orbOneY }}
+              animate={{ y: [0, -12, 0] }}
+              transition={{ duration: 14, repeat: Infinity, ease: 'easeInOut' }}
               className="absolute -left-32 top-24 h-72 w-72 rounded-full bg-[var(--color-terminal)]/10 blur-3xl"
               aria-hidden
             />
             <motion.div
-              style={{ y: orbTwoY }}
+              animate={{ y: [0, 16, 0] }}
+              transition={{ duration: 18, repeat: Infinity, ease: 'easeInOut' }}
               className="absolute -right-24 top-1/3 h-[22rem] w-[22rem] rounded-full bg-[var(--color-accent)]/8 blur-3xl"
               aria-hidden
             />
@@ -49,16 +35,9 @@ function App() {
           aria-hidden
         />
       </div>
-      <Navigation />
-      <main className="relative z-10">
-        <HeroSection />
-        <ProjectsSection />
-        <ExperienceSection />
-        <SkillsSection />
-        <HomelabSection />
-        <BlogSection />
-        <ContactSection />
-      </main>
+      <div className="relative z-10 h-full min-h-0">
+        <PortfolioShell />
+      </div>
     </div>
   )
 }

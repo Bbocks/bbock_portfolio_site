@@ -125,7 +125,7 @@ const categoryIcon: Record<Project['category'], LucideIcon> = {
   coursework: BookOpen,
 }
 
-const ProjectsSection = () => {
+const ProjectsSection = ({ enableParallax = true }: { enableParallax?: boolean }) => {
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.08,
@@ -161,7 +161,12 @@ const ProjectsSection = () => {
   }
 
   return (
-    <ScrollSection id="projects" className="bg-[var(--color-bg-elevated)] py-20" movement={48}>
+    <ScrollSection
+      id="projects"
+      className="bg-[var(--color-bg-elevated)] py-12 lg:py-20"
+      movement={48}
+      enableParallax={enableParallax}
+    >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <motion.div
           ref={ref}

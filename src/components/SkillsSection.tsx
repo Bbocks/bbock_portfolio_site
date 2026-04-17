@@ -54,7 +54,7 @@ const skills: Skill[] = [
   { name: 'TanStack Query', level: 15, category: 'frameworks', color: '#ff4154' },
 ]
 
-const SkillsSection = () => {
+const SkillsSection = ({ enableParallax = true }: { enableParallax?: boolean }) => {
   const [selectedCategory, setSelectedCategory] = useState<'languages' | 'tools' | 'os' | 'frameworks'>('languages')
   const [hoveredSkill, setHoveredSkill] = useState<string | null>(null)
   const [ref, inView] = useInView({
@@ -91,7 +91,12 @@ const SkillsSection = () => {
   }
 
   return (
-    <ScrollSection id="skills" className="bg-[var(--color-bg-elevated)] py-20" movement={40}>
+    <ScrollSection
+      id="skills"
+      className="bg-[var(--color-bg-elevated)] py-12 lg:py-20"
+      movement={40}
+      enableParallax={enableParallax}
+    >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <motion.div
           ref={ref}

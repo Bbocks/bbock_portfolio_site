@@ -28,13 +28,21 @@
 
 @layer base {
   html {
-    scroll-behavior: smooth;
+    height: 100%;
+    overflow: hidden;
   }
 
   body {
+    height: 100%;
+    overflow: hidden;
     font-family: 'Source Sans 3', system-ui, sans-serif;
     background-color: var(--color-bg-deep);
     color: var(--color-text);
+  }
+
+  #root {
+    height: 100%;
+    overflow: hidden;
   }
 }
 

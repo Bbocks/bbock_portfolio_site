@@ -151,7 +151,7 @@ const experiences: Experience[] = [
   },
 ]
 
-const ExperienceSection = () => {
+const ExperienceSection = ({ enableParallax = true }: { enableParallax?: boolean }) => {
   const [expandedExperience, setExpandedExperience] = useState<string | null>(null)
   const prefersReducedMotion = useReducedMotion()
   const [ref, inView] = useInView({
@@ -164,7 +164,12 @@ const ExperienceSection = () => {
   }
 
   return (
-    <ScrollSection id="experience" className="bg-[var(--color-bg-deep)] py-20" movement={44}>
+    <ScrollSection
+      id="experience"
+      className="bg-[var(--color-bg-deep)] py-12 lg:py-20"
+      movement={44}
+      enableParallax={enableParallax}
+    >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <motion.div
           ref={ref}

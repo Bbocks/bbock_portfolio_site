@@ -86,7 +86,7 @@ const blogPosts: BlogPost[] = [
   },
 ]
 
-const BlogSection = () => {
+const BlogSection = ({ enableParallax = true }: { enableParallax?: boolean }) => {
   const [selectedCategory, setSelectedCategory] = useState<string>('all')
   const [ref, inView] = useInView({
     triggerOnce: true,
@@ -120,7 +120,12 @@ const BlogSection = () => {
   }
 
   return (
-    <ScrollSection id="blog" className="bg-[var(--color-bg-elevated)] py-20" movement={32}>
+    <ScrollSection
+      id="blog"
+      className="bg-[var(--color-bg-elevated)] py-12 lg:py-20"
+      movement={32}
+      enableParallax={enableParallax}
+    >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <motion.div
           ref={ref}

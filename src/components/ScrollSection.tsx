@@ -7,9 +7,17 @@ interface ScrollSectionProps {
   className: string
   children: ReactNode
   movement?: number
+  /** When false, skip window scroll-linked parallax (use inside scrollable panes). */
+  enableParallax?: boolean
 }
 
-const ScrollSection = ({ id, className, children, movement = 60 }: ScrollSectionProps) => {
+const ScrollSection = ({
+  id,
+  className,
+  children,
+  movement = 60,
+  enableParallax = true,
+}: ScrollSectionProps) => {
   const sectionRef = useRef<HTMLElement | null>(null)
   const prefersReducedMotion = useReducedMotion()
 
@@ -24,6 +32,14 @@ const ScrollSection = ({ id, className, children, movement = 60 }: ScrollSection
     [0, 0.15, 0.85, 1],
     prefersReducedMotion ? [1, 1, 1, 1] : [0.55, 1, 1, 0.55],
   )
+
+  if (!enableParallax) {
+    return (
+      <section id={id} ref={sectionRef} className={`relative ${className}`}>
+        {children}
+      </section>
+    )
+  }
 
   return (
     <section id={id} ref={sectionRef} className={`relative overflow-hidden ${className}`}>

@@ -9,7 +9,7 @@ import { motionEnter, staggerChildren } from '../lib/motion'
 const fieldClass =
   'min-h-[44px] w-full rounded-md border border-[var(--color-border-subtle)] bg-[var(--color-bg-elevated)] px-4 py-3 text-[var(--color-text)] placeholder:text-[var(--color-text-muted)] focus:border-[var(--color-terminal)] focus:outline-none focus:ring-1 focus:ring-[var(--color-terminal)]'
 
-const ContactSection = () => {
+const ContactSection = ({ enableParallax = true }: { enableParallax?: boolean }) => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -67,7 +67,12 @@ const ContactSection = () => {
   ]
 
   return (
-    <ScrollSection id="contact" className="bg-[var(--color-bg-deep)] py-20" movement={28}>
+    <ScrollSection
+      id="contact"
+      className="bg-[var(--color-bg-deep)] py-12 lg:py-20"
+      movement={28}
+      enableParallax={enableParallax}
+    >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <motion.div
           ref={ref}

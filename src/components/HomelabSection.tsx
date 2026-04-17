@@ -17,7 +17,7 @@ interface SystemStatus {
   lastUpdate: string
 }
 
-const HomelabSection = () => {
+const HomelabSection = ({ enableParallax = true }: { enableParallax?: boolean }) => {
   const [systems, setSystems] = useState<SystemStatus[]>([
     {
       name: 'Proxmox Host',
@@ -115,7 +115,12 @@ const HomelabSection = () => {
   }
 
   return (
-    <ScrollSection id="homelab" className="bg-[var(--color-bg-deep)] py-20" movement={36}>
+    <ScrollSection
+      id="homelab"
+      className="bg-[var(--color-bg-deep)] py-12 lg:py-20"
+      movement={36}
+      enableParallax={enableParallax}
+    >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <motion.div
           ref={ref}

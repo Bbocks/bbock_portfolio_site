@@ -86,8 +86,29 @@ const HeroSection = ({ shell = false }: HeroSectionProps) => {
           </h1>
 
           <div
-            className={`mt-4 flex w-full items-center justify-center text-center sm:mt-6 ${
-              shell ? 'min-h-[2.75rem]' : 'min-h-[3.25rem] md:min-h-[3.5rem]'
+            className={`mx-auto flex justify-center ${shell ? 'mt-4' : 'mt-5 md:mt-7'}`}
+          >
+            <div
+              className={`shrink-0 rounded-full border-4 border-[var(--color-border)] bg-[var(--color-panel-header)] p-2 shadow-[0_12px_40px_rgba(0,0,0,0.45)] ring-4 ring-[var(--color-terminal)]/35 ${
+                shell
+                  ? 'h-48 w-48 sm:h-52 sm:w-52'
+                  : 'h-52 w-52 sm:h-56 sm:w-56 md:h-60 md:w-60 lg:h-[17rem] lg:w-[17rem]'
+              }`}
+            >
+              <img
+                src={`${assetBase}/Headshot-3.jpg`}
+                alt="Brett Bockstein"
+                width={400}
+                height={400}
+                decoding="async"
+                className="h-full w-full rounded-full object-cover object-top"
+              />
+            </div>
+          </div>
+
+          <div
+            className={`mt-5 flex w-full items-center justify-center text-center sm:mt-6 ${
+              shell ? 'min-h-[3rem]' : 'min-h-[3.25rem] md:min-h-[3.5rem]'
             }`}
             aria-live="polite"
           >
@@ -121,8 +142,8 @@ const HeroSection = ({ shell = false }: HeroSectionProps) => {
             initial={{ opacity: 0, y: 12 }}
             animate={shell || inView ? { opacity: 1, y: 0 } : {}}
             transition={{ ...motionEnter, delay: staggerChildren * 2 }}
-            className={`mx-auto mt-4 max-w-2xl text-center leading-relaxed text-[var(--color-text-muted)] sm:mt-6 ${
-              shell ? 'text-sm sm:text-base' : 'text-base md:text-lg'
+            className={`mx-auto max-w-2xl text-center leading-relaxed text-[var(--color-text-muted)] ${
+              shell ? 'mt-6 text-sm sm:mt-7 sm:text-base' : 'mt-4 text-base sm:mt-6 md:text-lg'
             }`}
           >
             Building robust systems and infrastructure solutions. From homelab automation to full stack development, I
@@ -139,25 +160,10 @@ const HeroSection = ({ shell = false }: HeroSectionProps) => {
             initial={{ opacity: 0, y: 16 }}
             animate={shell || inView ? { opacity: 1, y: 0 } : {}}
             transition={{ ...motionEnter, delay: staggerChildren * 4 }}
-            className={`mt-6 flex flex-col items-center justify-center gap-3 sm:mt-8 sm:flex-row sm:gap-4 ${
-              shell ? 'sm:gap-3' : ''
+            className={`flex flex-col items-center justify-center gap-3 sm:gap-4 ${
+              shell ? 'mt-7 sm:mt-8' : 'mt-6 sm:mt-8'
             }`}
           >
-            <motion.a
-              href="/Brett_Resume_8-20-25.pdf"
-              download="Brett_Bockstein_Resume.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              whileHover={{ scale: 1.03 }}
-              whileTap={{ scale: 0.97 }}
-              transition={motionEnter}
-              className={`inline-flex items-center gap-2 rounded-md bg-[var(--color-terminal)] font-mono font-medium text-[var(--color-bg-deep)] shadow-lg hover:brightness-110 focus-visible:focus-ring ${
-                shell ? 'px-4 py-2 text-xs sm:text-sm' : 'px-6 py-3 text-sm'
-              }`}
-            >
-              <Download className={`shrink-0 ${shell ? 'h-4 w-4' : 'h-5 w-5'}`} aria-hidden />
-              <span>Download Resume</span>
-            </motion.a>
             <div className="flex gap-2 sm:gap-3">
               <motion.a
                 whileHover={{ y: -2 }}
@@ -188,6 +194,21 @@ const HeroSection = ({ shell = false }: HeroSectionProps) => {
                 <Github className={shell ? 'h-5 w-5' : 'h-6 w-6'} />
               </motion.a>
             </div>
+            <motion.a
+              href="/Brett_Resume_8-20-25.pdf"
+              download="Brett_Bockstein_Resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ scale: 1.03 }}
+              whileTap={{ scale: 0.97 }}
+              transition={motionEnter}
+              className={`inline-flex items-center gap-2 rounded-md bg-[var(--color-terminal)] font-mono font-medium text-[var(--color-bg-deep)] shadow-lg hover:brightness-110 focus-visible:focus-ring ${
+                shell ? 'px-4 py-2 text-xs sm:text-sm' : 'px-6 py-3 text-sm'
+              }`}
+            >
+              <Download className={`shrink-0 ${shell ? 'h-4 w-4' : 'h-5 w-5'}`} aria-hidden />
+              <span>Download Resume</span>
+            </motion.a>
           </motion.div>
 
           <motion.div
@@ -195,7 +216,7 @@ const HeroSection = ({ shell = false }: HeroSectionProps) => {
             animate={shell || inView ? { opacity: 1 } : {}}
             transition={{ ...motionEnter, delay: staggerChildren * 6 }}
             className={`grid grid-cols-2 gap-3 border-t border-[var(--color-border-subtle)] sm:gap-4 md:grid-cols-4 md:gap-6 ${
-              shell ? 'mt-4 pt-4 sm:mt-auto sm:pt-5' : 'mt-10 pt-8'
+              shell ? 'mt-8 pt-6' : 'mt-10 pt-8'
             }`}
           >
             {[

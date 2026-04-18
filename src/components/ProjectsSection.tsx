@@ -42,7 +42,7 @@ const projects: Project[] = [
     title: 'Personal Portfolio Website',
     description:
       'A modern, responsive portfolio website showcasing my projects, skills, and experience. Features interactive animations, gradient borders, image modals, and a terminal-style project demo. Built with React and TypeScript for optimal performance and developer experience.',
-    image: '',
+    image: '/Portfolio.png',
     githubUrl: 'https://github.com/Bbocks/bbock_portfolio_site',
     liveUrl: 'https://brettbockstein.com',
     techStack: [

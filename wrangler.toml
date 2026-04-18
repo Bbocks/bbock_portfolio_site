@@ -1,0 +1,6 @@
+# Cloudflare Pages — wrangler picks this up during Git builds.
+# Must include pages_build_output_dir (matches Vite: dist).
+# SPA routing: no root 404.html + no /* → /index.html rewrite in _redirects.
+name = "bbock-portfolio"
+compatibility_date = "2026-04-01"
+pages_build_output_dir = "./dist"

@@ -13,6 +13,7 @@ import {
   Cog,
   Globe,
   BookOpen,
+  Layers,
   type LucideIcon,
 } from 'lucide-react'
 import InteractiveTerminal from './InteractiveTerminal'
@@ -30,30 +31,12 @@ interface Project {
   /** Overrides the default 'Demo' label on the live link button. */
   liveLabel?: string
   techStack: string[]
-  category: 'homelab' | 'systems' | 'web' | 'coursework'
+  category: 'homelab' | 'systems' | 'web' | 'fullstack' | 'coursework'
   terminalCommands?: string[]
   expanded?: boolean
 }
 
 const projects: Project[] = [
-  {
-    id: 'homelab',
-    title: 'Proxmox Homelab Infrastructure',
-    description:
-      'Enterprise-grade virtualization setup with automated monitoring, backup systems, and container orchestration. Features Discord webhook notifications and Grafana dashboards.',
-    image: '/Homelab-Dashboard.png',
-    githubUrl: 'https://github.com/Bbocks/Docker-Compose-Files.git',
-    liveUrl: 'https://brettbockstein.com/#homelab',
-    liveLabel: 'Live Stats',
-    techStack: ['Proxmox', 'Docker', 'Grafana', 'Prometheus', 'Discord Webhooks', 'Bash', 'Linux', 'ZFS'],
-    category: 'homelab',
-    terminalCommands: [
-      'ssh root@proxmox.local',
-      'pvesm status',
-      'docker ps',
-      'systemctl status grafana-server',
-    ],
-  },
   {
     id: 'portfolio-website',
     title: 'Personal Portfolio Website',
@@ -76,6 +59,58 @@ const projects: Project[] = [
     ],
     category: 'web',
     terminalCommands: ['npm install', 'npm run dev', 'npm run build', 'npm run preview'],
+  },
+  {
+    id: 'it-dashboard',
+    title: 'ODS IT Dashboard & Helpdesk',
+    description:
+      'Production IT helpdesk and ticket system in a Turborepo monorepo: ticketing with USER/TECH/ADMIN roles, Microsoft SSO (Azure AD), in-app notifications, MinIO attachments, Office 365 email, admin analytics, and onboarding/offboarding workflows. Next.js 15 frontend, NestJS 11 API, Prisma with PostgreSQL or SQL Server, integrated docs at /docs, and Docker Compose or Windows Server (IIS) deployment.',
+    image: '',
+    githubUrl: 'https://github.com/Bbocks/IT-Dashboard',
+    techStack: [
+      'Turborepo',
+      'Next.js 15',
+      'React 19',
+      'TypeScript',
+      'Tailwind CSS 4',
+      'Radix UI',
+      'Better Auth',
+      'Recharts',
+      'NestJS 11',
+      'Prisma',
+      'PostgreSQL',
+      'SQL Server',
+      'MinIO',
+      'Microsoft Graph API',
+      'Docker Compose',
+      'IIS / ARR',
+    ],
+    category: 'fullstack',
+    terminalCommands: [
+      'npm install',
+      'npm run generate',
+      'npm run db:migrate:deploy',
+      'npm run dev',
+      'npm run build',
+    ],
+  },
+  {
+    id: 'homelab',
+    title: 'Proxmox Homelab Infrastructure',
+    description:
+      'Enterprise-grade virtualization setup with automated monitoring, backup systems, and container orchestration. Features Discord webhook notifications and Grafana dashboards.',
+    image: '/Homelab-Dashboard.png',
+    githubUrl: 'https://github.com/Bbocks/Docker-Compose-Files.git',
+    liveUrl: 'https://brettbockstein.com/#homelab',
+    liveLabel: 'Live Stats',
+    techStack: ['Proxmox', 'Docker', 'Grafana', 'Prometheus', 'Discord Webhooks', 'Bash', 'Linux', 'ZFS'],
+    category: 'homelab',
+    terminalCommands: [
+      'ssh root@proxmox.local',
+      'pvesm status',
+      'docker ps',
+      'systemctl status grafana-server',
+    ],
   },
   {
     id: 'snipe-it-automation',
@@ -126,7 +161,16 @@ const categoryIcon: Record<Project['category'], LucideIcon> = {
   homelab: Home,
   systems: Cog,
   web: Globe,
+  fullstack: Layers,
   coursework: BookOpen,
+}
+
+const categoryLabel: Record<Project['category'], string> = {
+  homelab: 'homelab',
+  systems: 'systems',
+  web: 'web',
+  fullstack: 'full stack',
+  coursework: 'coursework',
 }
 
 const ProjectsSection = ({ enableParallax = true }: { enableParallax?: boolean }) => {
@@ -157,6 +201,8 @@ const ProjectsSection = ({ enableParallax = true }: { enableParallax?: boolean }
         return 'bg-emerald-500/90 text-white'
       case 'web':
         return 'bg-violet-500/90 text-white'
+      case 'fullstack':
+        return 'bg-indigo-500/90 text-white'
       case 'coursework':
         return 'bg-amber-500/90 text-white'
       default:
@@ -249,7 +295,7 @@ const ProjectsSection = ({ enableParallax = true }: { enableParallax?: boolean }
                       <span
                         className={`stamp-pill border-0 px-2.5 py-1 text-[11px] font-medium normal-case tracking-normal text-white ${getCategoryStyles(project.category)}`}
                       >
-                        {project.category}
+                        {categoryLabel[project.category]}
                       </span>
                       <button
                         type="button"

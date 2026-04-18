@@ -1,10 +1,6 @@
-# Cloudflare Workers — static assets (`npx wrangler deploy` after `npm run build`).
-# Set `name` to match your Worker. If you use Cloudflare Pages (Git) only, you can
-# delete this file: removing `public/_redirects` fixes the loop warning, and Pages
-# serves SPAs without that file when no root `404.html` is present.
+# Cloudflare Pages — wrangler picks this up during Git builds.
+# Must include pages_build_output_dir (matches Vite: dist).
+# SPA routing: no root 404.html + no /* → /index.html rewrite in _redirects.
 name = "bbock-portfolio"
 compatibility_date = "2026-04-01"
-
-[assets]
-directory = "./dist"
-not_found_handling = "single-page-application"
+pages_build_output_dir = "./dist"

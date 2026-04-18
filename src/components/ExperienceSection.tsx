@@ -46,24 +46,32 @@ interface Experience {
 const experiences: Experience[] = [
   {
     id: 'ods-delaware',
-    title: 'Casual/Seasonal IT Support Technician',
-    company: 'Office of Defence Services, State of Delaware',
+    title: 'C/S Network Technician',
+    company: 'Office of Defense Services, State of Delaware',
     location: 'Wilmington, DE',
     period: 'September 2025 - Present',
     description:
-      'Gained hands-on experience in IT infrastructure management and process optimization for healthcare services.',
+      "IT and network support for Delaware's public defense agency: ticketing, end-user support, and infrastructure operations.",
     achievements: [
-      'Assisted in the deployment and configuration of new workstations, ensuring compliance with organizational standards',
-      'Provided technical support for software and hardware issues, improving resolution times by 20%',
+      'Developed and maintained a new IT ticketing system, improving issue tracking, resolution efficiency, and ticket metric tracking and analysis',
+      'Provided technical support to staff and users, resolving hardware and software issues promptly',
+      'Assisted with installation, configuration, and maintenance of IT infrastructure, including servers, workstations, and networking equipment',
+      'Collaborated with team members to implement IT projects and upgrades, ensuring minimal disruption to operations',
     ],
-    skills: ['IT Infrastructure', 'System Administration', 'Documentation'],
+    skills: [
+      'IT Ticketing Systems',
+      'Technical Support',
+      'IT Infrastructure',
+      'Networking',
+      'System Administration',
+    ],
     iconKey: 'scale',
   },
   {
     id: 'rcm-internship',
     title: 'IT Intern',
     company: 'RCM Healthcare Services',
-    location: 'Long Island, NY',
+    location: 'New York, NY',
     period: 'May 2024 - August 2025 (Summers)',
     description:
       'Gained hands-on experience in IT infrastructure management and process optimization for healthcare services.',
@@ -97,7 +105,7 @@ const experiences: Experience[] = [
     id: 'radulescu-internship',
     title: 'Product Analysis Intern',
     company: 'Radulescu LLP — Patent Litigators',
-    location: 'Long Island, NY',
+    location: 'Roslyn, NY',
     period: 'January 2023/24',
     description: 'Conducted technical analysis and organization of LED products for patent litigation support.',
     achievements: [
@@ -138,7 +146,7 @@ const experiences: Experience[] = [
     id: 'camp-scatico',
     title: 'Assistant Division Leader / Assistant Head of Woodshop',
     company: 'Camp Scatico',
-    location: 'New York',
+    location: 'Elizaville, NY',
     period: 'May 2021 – August 2023 (Summers)',
     description: 'Led educational programs and fostered positive learning environments for children in fitness and woodworking.',
     achievements: [
@@ -182,7 +190,8 @@ const ExperienceSection = ({ enableParallax = true }: { enableParallax?: boolean
             <span className="gradient-text">Experience</span>
           </h2>
           <p className="mx-auto mt-4 max-w-3xl text-lg text-[var(--color-text-muted)]">
-            My journey through systems engineering, from hands-on internships to teaching the next generation of developers.
+            I am a computer science graduate, currently working part-time as a network technician with Delaware's Office of
+            Defense Services, with experience from hands-on internships to teaching the next generation of developers.
           </p>
         </motion.div>
 

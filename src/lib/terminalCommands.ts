@@ -26,8 +26,10 @@ export function helpText(): string {
   hints | guide     Open tips panel (small screens)
   home              Back to hero / welcome
   projects | experience | skills | homelab | contact
+  cd                Go home (same as home)
+  cd ..             Go to previous page
   cd <page>         Same as typing the page name
-  open <page>       Same as cd`
+  open <page> | open ..   Same as cd`
 }
 
 /** Short intro shown above the command list in the mobile tips sheet. */
@@ -43,10 +45,15 @@ function normalizeTokens(line: string): string[] {
     .filter(Boolean)
 }
 
-/** Parsed shell input: navigate, show help, open mobile tips, or error. */
+/** Parsed shell input: navigate, go back, show help, open mobile tips, or error. */
 export function parseNavigationCommand(
   line: string,
-): { view: PortfolioView } | { help: true } | { openHelp: true } | { error: string } {
+):
+  | { view: PortfolioView }
+  | { back: true }
+  | { help: true }
+  | { openHelp: true }
+  | { error: string } {
   const tokens = normalizeTokens(line)
   if (tokens.length === 0) return { error: '(empty)' }
 
@@ -59,8 +66,12 @@ export function parseNavigationCommand(
   }
 
   if (tokens[0] === 'cd' || tokens[0] === 'open') {
-    if (tokens.length < 2) return { error: `${tokens[0]}: missing destination` }
+    if (tokens.length < 2) {
+      if (tokens[0] === 'cd') return { view: 'home' }
+      return { error: `${tokens[0]}: missing destination` }
+    }
     const dest = tokens[1]
+    if (dest === '..') return { back: true }
     if (dest === '~' || dest === 'home') return { view: 'home' }
     if (isPortfolioView(dest)) return { view: dest }
     return { error: `unknown destination: ${dest}` }

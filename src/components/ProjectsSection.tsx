@@ -27,6 +27,8 @@ interface Project {
   image: string
   githubUrl: string
   liveUrl?: string
+  /** Overrides the default 'Demo' label on the live link button. */
+  liveLabel?: string
   techStack: string[]
   category: 'homelab' | 'systems' | 'web' | 'coursework'
   terminalCommands?: string[]
@@ -41,6 +43,8 @@ const projects: Project[] = [
       'Enterprise-grade virtualization setup with automated monitoring, backup systems, and container orchestration. Features Discord webhook notifications and Grafana dashboards.',
     image: '/Homelab-Dashboard.png',
     githubUrl: 'https://github.com/Bbocks/Docker-Compose-Files.git',
+    liveUrl: 'https://brettbockstein.com/#homelab',
+    liveLabel: 'Live Stats',
     techStack: ['Proxmox', 'Docker', 'Grafana', 'Prometheus', 'Discord Webhooks', 'Bash', 'Linux', 'ZFS'],
     category: 'homelab',
     terminalCommands: [
@@ -297,7 +301,7 @@ const ProjectsSection = ({ enableParallax = true }: { enableParallax?: boolean }
                           className="inline-flex items-center justify-center gap-2 rounded-md bg-[var(--color-terminal)] px-3 py-2 font-mono text-sm font-medium text-[var(--color-bg-deep)] hover:brightness-110 focus-visible:focus-ring"
                         >
                           <ExternalLink className="h-4 w-4 shrink-0" aria-hidden />
-                          <span>Demo</span>
+                          <span>{project.liveLabel ?? 'Demo'}</span>
                         </motion.a>
                       )}
                     </div>

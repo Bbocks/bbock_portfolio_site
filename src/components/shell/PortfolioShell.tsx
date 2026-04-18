@@ -9,7 +9,6 @@ import ProjectsSection from '../ProjectsSection'
 import ExperienceSection from '../ExperienceSection'
 import SkillsSection from '../SkillsSection'
 import HomelabSection from '../HomelabSection'
-import BlogSection from '../BlogSection'
 import ContactSection from '../ContactSection'
 import { useIsLg } from '../../lib/useBreakpoint'
 import { hashForView, parseViewFromHash, type PortfolioView } from '../../lib/portfolioViews'
@@ -20,6 +19,9 @@ const PortfolioShell = () => {
   const [activeView, setActiveView] = useState<PortfolioView>(() =>
     typeof window !== 'undefined' ? parseViewFromHash() : 'home',
   )
+  const activeViewRef = useRef<PortfolioView>(activeView)
+  /** Stack for cd .. / open .. (terminal navigation only). */
+  const navHistoryRef = useRef<PortfolioView[]>([])
   const [terminalLines, setTerminalLines] = useState<TerminalLine[]>(TERMINAL_BOOT_LINES)
   const [terminalHelpOpen, setTerminalHelpOpen] = useState(false)
   const mainRef = useRef<HTMLElement>(null)
@@ -32,6 +34,10 @@ const PortfolioShell = () => {
     window.addEventListener('hashchange', onHash)
     return () => window.removeEventListener('hashchange', onHash)
   }, [])
+
+  useEffect(() => {
+    activeViewRef.current = activeView
+  }, [activeView])
 
   useEffect(() => {
     const next = hashForView(activeView)
@@ -92,9 +98,22 @@ const PortfolioShell = () => {
       setTerminalLines((prev) => [...prev, { kind: 'err', text: parsed.error }])
       return
     }
+    if ('back' in parsed && parsed.back) {
+      const stack = navHistoryRef.current
+      const prev = stack.length > 0 ? stack.pop()! : null
+      const next = prev ?? 'home'
+      setTerminalLines((prevLines) => [...prevLines, { kind: 'out', text: `→ ${next}` }])
+      setActiveView(next)
+      return
+    }
     if ('view' in parsed) {
-      setTerminalLines((prev) => [...prev, { kind: 'out', text: `→ ${parsed.view}` }])
-      setActiveView(parsed.view)
+      const cur = activeViewRef.current
+      const next = parsed.view
+      if (next !== cur) {
+        navHistoryRef.current.push(cur)
+      }
+      setTerminalLines((prev) => [...prev, { kind: 'out', text: `→ ${next}` }])
+      setActiveView(next)
     }
   }, [isLg])
 
@@ -150,12 +169,6 @@ const PortfolioShell = () => {
         return (
           <motion.div key="homelab" {...panelMotion} className="min-h-full">
             <HomelabSection {...sectionProps} />
-          </motion.div>
-        )
-      case 'blog':
-        return (
-          <motion.div key="blog" {...panelMotion} className="min-h-full">
-            <BlogSection {...sectionProps} />
           </motion.div>
         )
       case 'contact':

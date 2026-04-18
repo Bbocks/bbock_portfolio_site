@@ -4,7 +4,6 @@ export const PORTFOLIO_VIEWS = [
   'experience',
   'skills',
   'homelab',
-  'blog',
   'contact',
 ] as const
 

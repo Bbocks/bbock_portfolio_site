@@ -12,7 +12,7 @@ const HeroWelcome = () => {
           Welcome to my portfolio
         </h2>
         <p className="mt-4 max-w-xl text-base leading-relaxed text-[var(--color-text-muted)]">
-          Use the shell in the left column to open sections: projects, experience, skills, homelab, blog, and contact.
+          Use the shell in the left column to open sections: projects, experience, skills, homelab, and contact.
           Type <span className="text-[var(--color-terminal)]">help</span> anytime for commands, or{' '}
           <span className="text-[var(--color-terminal)]">home</span> to return here.
         </p>

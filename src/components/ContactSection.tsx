@@ -50,20 +50,20 @@ const ContactSection = ({ enableParallax = true }: { enableParallax?: boolean })
     {
       icon: <Mail className="h-6 w-6" aria-hidden />,
       title: 'Email',
-      value: 'bocksteink@gmail.com',
-      link: 'mailto:bocksteink@gmail.com',
-    },
-    {
-      icon: <Linkedin className="h-6 w-6" aria-hidden />,
-      title: 'LinkedIn',
-      value: 'linkedin.com/in/brettbocks',
-      link: 'https://linkedin.com/in/brettbocks',
+      value: 'blbock04@gmail.com',
+      link: 'mailto:blbock04@gmail.com',
     },
     {
       icon: <Github className="h-6 w-6" aria-hidden />,
       title: 'GitHub',
       value: 'github.com/bbocks',
       link: 'https://github.com/bbocks',
+    },
+    {
+      icon: <Linkedin className="h-6 w-6" aria-hidden />,
+      title: 'LinkedIn',
+      value: 'linkedin.com/in/brettbocks',
+      link: 'https://linkedin.com/in/brettbocks',
     },
   ]
 
@@ -86,8 +86,8 @@ const ContactSection = ({ enableParallax = true }: { enableParallax?: boolean })
             <span className="gradient-text">Get In Touch</span>
           </h2>
           <p className="mx-auto mt-4 max-w-3xl text-lg text-[var(--color-text-muted)]">
-            Interested in collaborating on systems engineering projects or have questions about my work? Let&apos;s connect and
-            discuss how we can work together.
+            Interested in collaborating on full-stack builds, server-side work, or infrastructure projects—or have questions about
+            my work? Let&apos;s connect and discuss how we can work together.
           </p>
         </motion.div>
 

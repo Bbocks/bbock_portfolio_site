@@ -17,7 +17,6 @@ const NAV_ALIASES: Record<string, PortfolioView> = {
   experience: 'experience',
   skills: 'skills',
   homelab: 'homelab',
-  blog: 'blog',
   contact: 'contact',
 }
 
@@ -26,7 +25,7 @@ export function helpText(): string {
   help              Show this list
   hints | guide     Open tips panel (small screens)
   home              Back to hero / welcome
-  projects | experience | skills | homelab | blog | contact
+  projects | experience | skills | homelab | contact
   cd <page>         Same as typing the page name
   open <page>       Same as cd`
 }

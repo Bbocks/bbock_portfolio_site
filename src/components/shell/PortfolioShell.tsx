@@ -9,7 +9,6 @@ import ProjectsSection from '../ProjectsSection'
 import ExperienceSection from '../ExperienceSection'
 import SkillsSection from '../SkillsSection'
 import HomelabSection from '../HomelabSection'
-import BlogSection from '../BlogSection'
 import ContactSection from '../ContactSection'
 import { useIsLg } from '../../lib/useBreakpoint'
 import { hashForView, parseViewFromHash, type PortfolioView } from '../../lib/portfolioViews'
@@ -150,12 +149,6 @@ const PortfolioShell = () => {
         return (
           <motion.div key="homelab" {...panelMotion} className="min-h-full">
             <HomelabSection {...sectionProps} />
-          </motion.div>
-        )
-      case 'blog':
-        return (
-          <motion.div key="blog" {...panelMotion} className="min-h-full">
-            <BlogSection {...sectionProps} />
           </motion.div>
         )
       case 'contact':

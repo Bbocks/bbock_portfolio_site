@@ -25,7 +25,13 @@ interface Project {
   id: string
   title: string
   description: string
-  image: string
+  /** Path served from `public/` (e.g. `/Portfolio.png`). */
+  image?: string
+  /**
+   * Absolute image URL (Open Graph asset, CDN, or e.g. Microlink `embed=screenshot.url`).
+   * When set, used instead of `image` so the card can reflect the live site without redeploying.
+   */
+  previewImageUrl?: string
   githubUrl: string
   liveUrl?: string
   /** Overrides the default 'Demo' label on the live link button. */
@@ -34,6 +40,17 @@ interface Project {
   category: 'homelab' | 'systems' | 'web' | 'fullstack' | 'coursework'
   terminalCommands?: string[]
   expanded?: boolean
+}
+
+function getProjectThumbnailSrc(project: Project): string | null {
+  const staticSrc = project.image?.trim()
+  if (project.previewImageUrl?.trim()) return project.previewImageUrl.trim()
+  if (staticSrc) return staticSrc
+  return null
+}
+
+function isRemoteThumbnail(src: string): boolean {
+  return /^https?:\/\//i.test(src)
 }
 
 const projects: Project[] = [
@@ -132,7 +149,8 @@ const projects: Project[] = [
     title: 'Construct-a-Flow AI Web',
     description:
       'The website for Construct-a-Flow AI, a modern web application for automating the construction bid process using AI-powered solutions. Built for estimators by estimators to streamline workflows and increase efficiency in the construction industry.',
-    image: '/Construct-A-Flow.png',
+    previewImageUrl:
+      'https://api.microlink.io/?url=https%3A%2F%2Fconstruct-a-flow.com&screenshot=true&meta=false&embed=screenshot.url',
     githubUrl: 'https://github.com/Bbocks/construct-a-flow-ai-web.git',
     liveUrl: 'https://construct-a-flow.com',
     techStack: [
@@ -237,7 +255,8 @@ const ProjectsSection = ({ enableParallax = true }: { enableParallax?: boolean }
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
           {projects.map((project, index) => {
             const PlaceholderIcon = categoryIcon[project.category]
-            const hasImage = Boolean(project.image && project.image.startsWith('/'))
+            const thumbnailSrc = getProjectThumbnailSrc(project)
+            const hasImage = Boolean(thumbnailSrc)
             return (
               <motion.div
                 key={project.id}
@@ -252,11 +271,13 @@ const ProjectsSection = ({ enableParallax = true }: { enableParallax?: boolean }
                   contentClassName="p-0"
                 >
                   <div className="relative h-48 overflow-hidden bg-gradient-to-br from-[var(--color-terminal)]/10 to-[var(--color-accent)]/10">
-                    {hasImage ? (
+                    {hasImage && thumbnailSrc ? (
                       <>
                         <img
-                          src={project.image}
+                          src={thumbnailSrc}
                           alt={project.title}
+                          loading={isRemoteThumbnail(thumbnailSrc) ? 'lazy' : undefined}
+                          referrerPolicy={isRemoteThumbnail(thumbnailSrc) ? 'no-referrer' : undefined}
                           className="h-full w-full cursor-pointer object-cover transition-transform duration-motion-enter ease-out hover:scale-[1.02]"
                           onError={(e) => {
                             const target = e.target as HTMLImageElement
@@ -266,7 +287,7 @@ const ProjectsSection = ({ enableParallax = true }: { enableParallax?: boolean }
                           onClick={(e) => {
                             e.preventDefault()
                             e.stopPropagation()
-                            openImageModal(project.image, project.title)
+                            openImageModal(thumbnailSrc, project.title)
                           }}
                         />
                         <div
@@ -274,7 +295,7 @@ const ProjectsSection = ({ enableParallax = true }: { enableParallax?: boolean }
                           onClick={(e) => {
                             e.preventDefault()
                             e.stopPropagation()
-                            openImageModal(project.image, project.title)
+                            openImageModal(thumbnailSrc, project.title)
                           }}
                           role="presentation"
                         >
